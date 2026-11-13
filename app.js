@@ -44,7 +44,7 @@
       progressTitle: 'Completitud del perfil: {n} de {t} acciones',
       'hero.eyebrow': 'Estrategia de marca personal · SEO internacional',
       'hero.title': 'Optimización estratégica del perfil de LinkedIn de Henry Martínez Sarmiento',
-      'hero.lead': 'Director de la Unidad de Informática de la Facultad de Ciencias Económicas (UIFCE) de la Universidad Nacional de Colombia. Simula, edita y copia cada bloque listo para LinkedIn en español e inglés.',
+      'hero.lead': 'Director de la Unidad de Informática de la Facultad de Ciencias Económicas (UIFCE) y profesor asociado de tiempo completo de la Universidad Nacional de Colombia. Simula, edita y copia cada bloque listo para LinkedIn en español e inglés.',
       'hero.open': 'Abrir perfil en LinkedIn ↗',
       'hero.statsAria': 'Indicadores',
       'hero.statYears': 'años de trayectoria', 'hero.statConn': 'contactos actuales',
@@ -97,7 +97,7 @@
       'plan.recPending': 'Pendiente de solicitar', 'plan.recDone': 'Solicitud enviada',
       'plan.recPreview': 'Ver mensaje', 'plan.recLang': 'Idioma del mensaje',
       'plan.copyInvite': 'Copiar mensaje de invitación',
-      'plan.postMeta': 'Director UIFCE · UNAL',
+      'plan.postMeta': 'Director UIFCE · Profesor Asociado UNAL',
       'plan.ideas': 'Ideas',
       'cta.title': 'Guía bilingüe lista para publicar',
       'cta.sub': 'Descarga un Markdown limpio con ambas versiones (ES / EN) para usar con «Agregar perfil en otro idioma».',
@@ -125,7 +125,7 @@
       progressTitle: 'Profile completeness: {n} of {t} actions',
       'hero.eyebrow': 'Personal branding · International SEO',
       'hero.title': 'Strategic LinkedIn profile optimization for Henry Martínez Sarmiento',
-      'hero.lead': 'Director of the IT Unit at the School of Economic Sciences (UIFCE), National University of Colombia. Preview, edit and copy every LinkedIn-ready block in Spanish and English.',
+      'hero.lead': 'Director of the IT Unit at the School of Economic Sciences (UIFCE) and full-time Associate Professor at the National University of Colombia. Preview, edit and copy every LinkedIn-ready block in Spanish and English.',
       'hero.open': 'Open LinkedIn profile ↗',
       'hero.statsAria': 'Key figures',
       'hero.statYears': 'years of experience', 'hero.statConn': 'current connections',
@@ -178,7 +178,7 @@
       'plan.recPending': 'Not requested yet', 'plan.recDone': 'Request sent',
       'plan.recPreview': 'View message', 'plan.recLang': 'Message language',
       'plan.copyInvite': 'Copy invitation message',
-      'plan.postMeta': 'IT Unit Director · UNAL',
+      'plan.postMeta': 'IT Unit Director · Associate Professor, UNAL',
       'plan.ideas': 'Ideas',
       'cta.title': 'Bilingual guide, ready to publish',
       'cta.sub': 'Download a clean Markdown file with both versions (ES / EN) for LinkedIn’s “Add profile in another language”.',
@@ -212,10 +212,10 @@
           'Red de 167 contactos con alto potencial de crecimiento.',
           'Logros clave de gestión TI y virtualización subexpuestos.'
         ],
-        target: 'Referente en Gobierno de TI, Transformación Digital Educativa, Cloud, IA, Analítica de Datos y Enablement Engineering (escalar la autonomía tecnológica de equipos y organizaciones).',
+        target: 'Referente en Gobierno de TI, Transformación Digital Educativa, Cloud, IA, Analítica de Datos y Enablement Engineering (escalar la autonomía tecnológica de equipos y organizaciones), con el respaldo académico de un profesor asociado de la Universidad Nacional de Colombia.',
         audience: ['Gerentes', 'Reclutadores de TI', 'Clientes corporativos', 'Desarrolladores', 'Pares de la industria', 'Comunidad universitaria', 'Aliados académicos'],
         table: [
-          ['Titular', 'Genérico, sin palabras clave', 'Cargo + Gobierno de TI, Cloud, IA y Analítica'],
+          ['Titular', 'Genérico, sin palabras clave', 'Cargo directivo + Profesor Asociado UNAL + Gobierno de TI, Cloud, IA y Analítica'],
           ['Banner', 'Gris predeterminado, vacío', 'Banner 1584×396 con lema de transformación digital'],
           ['Acerca de', 'Sin narrativa de valor', 'Gancho + Enablement Engineering + hitos + llamado a la acción'],
           ['Experiencia', 'Logros de gestión TI subexpuestos', 'Hitos cuantificados: cursos, % de reducción, uptime'],
@@ -227,21 +227,22 @@
       banner: 'Transformación Digital, Gobierno de TI y Enablement Engineering | UIFCE - Universidad Nacional de Colombia',
       oldHeadline: 'Docente de gestión en Universidad Nacional de Colombia',
       headlines: [
-        { title: 'Opción 1 · Institucional', badge: 'recommended', text: 'Director de la Unidad de Informática de la Facultad de Ciencias Económicas de la Universidad Nacional de Colombia.' },
-        { title: 'Opción 2 · Optimizada SEO (máximo alcance)', text: 'Director Unidad de Informática FCE - Universidad Nacional de Colombia | Gobierno de TI, Cloud, IA y Analítica de Datos | Transformación Digital Educativa & Enablement Engineering' },
-        { title: 'Opción 3 · Liderazgo y autonomía tech', text: 'Director de Informática UIFCE (UNAL) | Estrategia TI, Ecosistemas e-Learning & Arquitectura Cloud | Escalando la autonomía tecnológica en educación y organizaciones' }
+        { title: 'Opción 1 · Institucional', badge: 'recommended', text: 'Director de la Unidad de Informática de la Facultad de Ciencias Económicas y Profesor Asociado de la Universidad Nacional de Colombia.' },
+        { title: 'Opción 2 · Optimizada SEO (máximo alcance)', text: 'Director Unidad de Informática FCE y Profesor Asociado - Universidad Nacional de Colombia | Gobierno de TI, Cloud, IA y Analítica de Datos | Transformación Digital Educativa & Enablement Engineering' },
+        { title: 'Opción 3 · Liderazgo y autonomía tech', text: 'Director de Informática UIFCE y Profesor Asociado (UNAL) | MBA | Estrategia TI, e-Learning & Arquitectura Cloud | Escalando la autonomía tecnológica en educación y organizaciones' }
       ],
       about:
 `¿Tu equipo técnico o educativo sigue dependiendo de consultores para resolver sus bloqueos del día a día? El verdadero cuello de botella organizativo no es la falta de talento, sino la falta de autonomía: cuando las personas reciben respuestas prefabricadas en lugar de desarrollar la capacidad de resolver problemas de forma independiente, la escalabilidad de tu organización se detiene.
 
 A lo largo de más de {{years}} años en la intersección entre ingeniería de software, gestión de infraestructura y pedagogía técnica (Enablement Engineering), me he dedicado a transformar equipos altamente dependientes en células autosuficientes mediante metodologías de aprendizaje activo (Aprendizaje Basado en Indagación y ABP) e ingeniería de plataformas de autoservicio.
 
-Como Director de la Unidad de Informática de la Facultad de Ciencias Económicas (UIFCE) de la Universidad Nacional de Colombia, lidero la gobernanza de TI, la continuidad operativa, la ciberseguridad y la adopción de tecnologías emergentes (Cloud, Analítica de Datos e Inteligencia Artificial) al servicio de la docencia, la investigación y la extensión.
+Soy Administrador de Empresas y Magíster en Administración de Empresas de la Universidad Nacional de Colombia, donde me desempeño como profesor asociado de tiempo completo en la Escuela de Gestión y Contaduría Pública. Como Director de la Unidad de Informática de la Facultad de Ciencias Económicas (UIFCE), lidero la gobernanza de TI, la continuidad operativa, la ciberseguridad y la adopción de tecnologías emergentes (Cloud, Analítica de Datos e Inteligencia Artificial) al servicio de la docencia, la investigación y la extensión.
 
 **Hitos destacados:**
 • Creación e implementación integral del Área de Virtualización y e-Learning con ecosistemas LMS escalables.
-• Liderazgo técnico y virtualización de proyectos interinstitucionales para entidades como DIAN, Ministerio de Salud y Protección Social, SENA, INPEC, CORTOLIMA y Facultad de Derecho.
+• Dirección de proyectos de virtualización para diversas entidades, como DIAN, Ministerio de Salud y Protección Social, SENA, INPEC, CORTOLIMA y Facultad de Derecho.
 • Optimización de procesos administrativos y migración a la nube de servicios institucionales de alta demanda.
+• Conferencista del Programa de Educación Continua U.N. y consultor empresarial.
 
 ¿Listo para escalar la tecnología y la autonomía digital de tu entorno académico o empresarial sin fricción? Conectemos.`,
       exp: {
@@ -255,10 +256,18 @@ Como Director de la Unidad de Informática de la Facultad de Ciencias Económica
         ]
       },
       roles: [
+        ['Profesor Asociado de Tiempo Completo', 'Escuela de Gestión y Contaduría Pública · Facultad de Ciencias Económicas, UNAL'],
         ['Director de Informática Nivel Bogotá', 'Universidad Nacional de Colombia'],
         ['Dirección de Escuela', 'Facultad de Ciencias Económicas, UNAL'],
         ['Dirección de Carrera de Administración de Empresas', 'Facultad de Ciencias Económicas, UNAL'],
-        ['Docente de Gestión y Tecnología', 'Universidad Nacional de Colombia']
+        ['Director de Proyectos de Virtualización', 'Diversas entidades públicas'],
+        ['Conferencista', 'Programa de Educación Continua U.N.'],
+        ['Consultor Empresarial', 'Sector empresarial']
+      ],
+      eduTitle: 'Formación académica',
+      education: [
+        ['Maestría en Administración de Empresas', 'Universidad Nacional de Colombia'],
+        ['Administración de Empresas (pregrado)', 'Universidad Nacional de Colombia']
       ],
       alliancesIntro: 'Prueba social: proyectos de virtualización, extensión e interventoría liderados desde la UIFCE.',
       alliances: [
@@ -291,7 +300,7 @@ Henry Martínez Sarmiento`,
         ['headline', 'Titular optimizado aplicado', 'Usa la variante seleccionada en el simulador.'],
         ['about', '«Acerca de» publicado', 'Con años de experiencia confirmados.'],
         ['exp', 'Experiencia UIFCE con 4 hitos', 'Sin métricas pendientes (X / N).'],
-        ['roles', 'Roles directivos y alianzas registrados', 'Informática Nivel Bogotá, Escuela, Carrera y proyectos.'],
+        ['roles', 'Roles, formación y alianzas registrados', 'Profesor asociado, Informática Nivel Bogotá, Escuela, Carrera, Educación Continua y estudios (MBA).'],
         ['skills', '12 aptitudes cargadas', 'Fija las 3 principales: Gobierno de TI, Transformación Digital y Cloud.'],
         ['english', 'Perfil secundario en inglés', 'Perfil → «Agregar perfil en otro idioma» → English.'],
         ['url', 'URL pública personalizada', 'Ej.: linkedin.com/in/henrymartinezsarmiento'],
@@ -359,10 +368,10 @@ Eso es Enablement Engineering: no entregar el pescado, sino enseñar a pescar. H
           '167-connection network with high growth potential.',
           'Underexposed IT management and e-learning achievements.'
         ],
-        target: 'Authority in IT Governance, Educational Digital Transformation, Cloud, AI, Data Analytics, and Enablement Engineering (scaling technological autonomy across teams and organizations).',
+        target: 'Authority in IT Governance, Educational Digital Transformation, Cloud, AI, Data Analytics, and Enablement Engineering (scaling technological autonomy across teams and organizations), backed by the academic standing of an Associate Professor at the National University of Colombia.',
         audience: ['Executives & managers', 'IT recruiters', 'Corporate clients', 'Software developers', 'Industry peers', 'University community', 'Academic partners'],
         table: [
-          ['Headline', 'Generic, no keywords', 'Title + IT Governance, Cloud, AI & Data Analytics'],
+          ['Headline', 'Generic, no keywords', 'Leadership title + UNAL Associate Professor + IT Governance, Cloud, AI & Data Analytics'],
           ['Cover banner', 'Default empty gray', '1584×396 banner with digital transformation tagline'],
           ['About', 'No value narrative', 'Hook + Enablement Engineering + highlights + call to action'],
           ['Experience', 'Underexposed IT achievements', 'Quantified milestones: courses, % reduction, uptime'],
@@ -374,21 +383,22 @@ Eso es Enablement Engineering: no entregar el pescado, sino enseñar a pescar. H
       banner: 'Digital Transformation, IT Governance & Enablement Engineering | UIFCE - National University of Colombia',
       oldHeadline: 'Management Lecturer at National University of Colombia',
       headlines: [
-        { title: 'Option 1 · Institutional', badge: 'recommended', text: 'Director of the IT Unit at the School of Economic Sciences, National University of Colombia.' },
-        { title: 'Option 2 · SEO-optimized (maximum reach)', text: 'IT Unit Director, School of Economic Sciences - National University of Colombia | IT Governance, Cloud, AI & Data Analytics | Higher Ed Digital Transformation & Enablement Engineering' },
-        { title: 'Option 3 · Leadership & tech autonomy', text: 'IT Director UIFCE (UNAL) | IT Strategy, e-Learning Ecosystems & Cloud Architecture | Scaling Technological Autonomy in Higher Education & Enterprises' }
+        { title: 'Option 1 · Institutional', badge: 'recommended', text: 'Director of the IT Unit at the School of Economic Sciences and Associate Professor, National University of Colombia.' },
+        { title: 'Option 2 · SEO-optimized (maximum reach)', text: 'IT Unit Director & Associate Professor, School of Economic Sciences - National University of Colombia | IT Governance, Cloud, AI & Data Analytics | Higher Ed Digital Transformation & Enablement Engineering' },
+        { title: 'Option 3 · Leadership & tech autonomy', text: 'IT Director UIFCE & Associate Professor (UNAL) | MBA | IT Strategy, e-Learning & Cloud Architecture | Scaling Technological Autonomy in Higher Education & Enterprises' }
       ],
       about:
 `Does your technical or academic team still rely on external consultants to resolve day-to-day bottlenecks? The real organizational bottleneck isn't a lack of talent—it's a lack of autonomy. When people are handed pre-packaged answers instead of developing the capability to solve problems independently, organizational scalability stalls.
 
 For more than {{years}} years at the intersection of software engineering, infrastructure management, and technical pedagogy (Enablement Engineering), I have focused on transforming high-dependency teams into self-sufficient units through active learning methodologies (Inquiry-Based Learning and PBL) and self-service platform engineering.
 
-As Director of the IT Unit at the School of Economic Sciences (UIFCE), National University of Colombia, I lead IT governance, operational continuity, cybersecurity, and the adoption of emerging technologies (Cloud, Data Analytics, and Artificial Intelligence) to empower teaching, research, and institutional outreach.
+I hold a Bachelor's degree in Business Administration and an MBA from the National University of Colombia, where I serve as a full-time Associate Professor in the Department of Management and Public Accounting. As Director of the IT Unit at the School of Economic Sciences (UIFCE), I lead IT governance, operational continuity, cybersecurity, and the adoption of emerging technologies (Cloud, Data Analytics, and Artificial Intelligence) to empower teaching, research, and institutional outreach.
 
 **Key Highlights:**
 • End-to-end creation and deployment of the Academic Virtualization & e-Learning Unit featuring scalable LMS ecosystems.
-• Technical leadership and course virtualization for major inter-institutional projects with DIAN, Ministry of Health and Social Protection, SENA, INPEC, CORTOLIMA, and the School of Law.
+• Project Director for course virtualization initiatives across multiple organizations, including DIAN, the Ministry of Health and Social Protection, SENA, INPEC, CORTOLIMA, and the School of Law.
 • Administrative workflow optimization and cloud migration for high-demand institutional services.
+• Speaker for the U.N. Continuing Education Program and business consultant.
 
 Ready to scale technology and digital autonomy across your academic or enterprise ecosystem without friction? Let's connect.`,
       exp: {
@@ -402,10 +412,18 @@ Ready to scale technology and digital autonomy across your academic or enterpris
         ]
       },
       roles: [
+        ['Full-Time Associate Professor', 'Department of Management and Public Accounting · School of Economic Sciences, UNAL'],
         ['Bogotá Campus IT Director', 'National University of Colombia'],
         ['School Director', 'School of Economic Sciences, UNAL'],
         ['Director of the Business Administration Program', 'School of Economic Sciences, UNAL'],
-        ['Management & Technology Lecturer', 'National University of Colombia']
+        ['Virtualization Project Director', 'Multiple public-sector organizations'],
+        ['Speaker', 'U.N. Continuing Education Program'],
+        ['Business Consultant', 'Enterprise sector']
+      ],
+      eduTitle: 'Education',
+      education: [
+        ['Master of Business Administration (MBA)', 'National University of Colombia'],
+        ["Bachelor's Degree in Business Administration", 'National University of Colombia']
       ],
       alliancesIntro: 'Social proof: virtualization, outreach, and project oversight initiatives led from UIFCE.',
       alliances: [
@@ -438,7 +456,7 @@ Henry Martínez Sarmiento`,
         ['headline', 'Optimized headline applied', 'Use the variant selected in the simulator.'],
         ['about', '“About” section published', 'With confirmed years of experience.'],
         ['exp', 'UIFCE experience with 4 milestones', 'No pending metrics (X / N).'],
-        ['roles', 'Leadership roles & partnerships added', 'Bogotá Campus IT, School, Program and projects.'],
+        ['roles', 'Roles, education & partnerships added', 'Associate Professor, Bogotá Campus IT, School, Program, Continuing Education and degrees (MBA).'],
         ['skills', '12 skills added', 'Pin top 3: IT Governance, Digital Transformation, Cloud.'],
         ['english', 'Secondary English profile', 'Profile → “Add profile in another language” → English.'],
         ['url', 'Custom public URL', 'e.g., linkedin.com/in/henrymartinezsarmiento'],
@@ -834,6 +852,8 @@ TAGLINE
     $('#rolesList').innerHTML = C().roles.map(r => `<li><div><strong>${esc(r[0])}</strong><span>${esc(r[1])}</span></div></li>`).join('');
     $('#alliancesIntro').textContent = C().alliancesIntro;
     $('#alliancesList').innerHTML = C().alliances.map(a => `<li><strong>${esc(a[0])}</strong><span>${esc(a[1])}</span></li>`).join('');
+    $('#eduTitle').textContent = C().eduTitle;
+    $('#eduList').innerHTML = C().education.map(r => `<li><div><strong>${esc(r[0])}</strong><span>${esc(r[1])}</span></div></li>`).join('');
   };
 
   const visibleSkills = () => SKILLS.filter(s => state.skillFilter === 'all' || s.cat === state.skillFilter);
@@ -987,6 +1007,7 @@ TAGLINE
   registerCopy('exp', () => expPlain(state.lang), () => C().exp.hitos.map(h => h.d).join(' '));
   registerCopy('roles', () => rolesPlain(state.lang));
   registerCopy('alliances', () => alliancesPlain(state.lang));
+  registerCopy('edu', () => C().education.map(r => `• ${r[0]} — ${r[1]}`).join('\n'));
   registerCopy('stack', () => C().stack.join(' · '));
   registerCopy('skillsLang', () => visibleSkills().map(s => s[state.lang]).join('\n'));
   registerCopy('skillsBoth', () => visibleSkills().map(s => `${s.es} | ${s.en}`).join('\n'));
@@ -1011,6 +1032,7 @@ TAGLINE
         `### ${h.exp}`,
         `**${c.exp.title}** — ${c.exp.org}\n\n${c.exp.hitos.map(x => `- **${x.t}:** ${md(x.d)}`).join('\n')}`,
         `### ${h.roles}`, c.roles.map(r => `- **${r[0]}** — ${r[1]}`).join('\n'),
+        `### ${c.eduTitle}`, c.education.map(r => `- **${r[0]}** — ${r[1]}`).join('\n'),
         `### ${h.all}`, `${c.alliancesIntro}\n\n${c.alliances.map(a => `- **${a[0]}:** ${a[1]}`).join('\n')}`,
         `### ${h.skills}`, SKILLS.map((s, i) => `${i + 1}. ${s[lang]}`).join('\n'),
         `### ${h.stack}`, c.stack.join(' · '),
@@ -1025,7 +1047,7 @@ TAGLINE
 
     return [
       '# Guía Bilingüe de LinkedIn · Bilingual LinkedIn Guide',
-      '**Henry Martínez Sarmiento** — Director UIFCE · Universidad Nacional de Colombia',
+      '**Henry Martínez Sarmiento** — Director UIFCE · Profesor Asociado / Associate Professor · Universidad Nacional de Colombia',
       `Perfil / Profile: ${PROFILE_URL}  \nGenerado / Generated: ${today}`,
       '## Métricas / Metrics',
       `| Variable | Valor / Value |\n|---|---|\n${metrics}`,
