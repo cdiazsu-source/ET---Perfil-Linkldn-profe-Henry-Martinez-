@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LinkedIn Studio · Henry Martínez Sarmiento</title>
+  <meta name="description" content="Herramienta bilingüe (ES/EN) de optimización del perfil de LinkedIn de Henry Martínez Sarmiento, Director de la UIFCE - Universidad Nacional de Colombia.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">Saltar al contenido</a>
+
+  <!-- ============ BARRA SUPERIOR FIJA ============ -->
+  <header class="topbar" role="banner">
+    <div class="topbar__inner">
+      <a class="brand" href="#diagnostico" aria-label="LinkedIn Studio HMS">
+        <span class="brand__mark" aria-hidden="true">HM</span>
+        <span class="brand__text">
+          <strong>LinkedIn Studio</strong>
+          <small>UIFCE · UNAL</small>
+        </span>
+      </a>
+
+      <nav class="mainnav" aria-label="Secciones" data-i18n-aria="navAria">
+        <a href="#diagnostico" data-i18n="nav.diag">Diagnóstico</a>
+        <a href="#cabecera" data-i18n="nav.header">Cabecera</a>
+        <a href="#acerca" data-i18n="nav.about">Acerca de</a>
+        <a href="#experiencia" data-i18n="nav.exp">Experiencia</a>
+        <a href="#aptitudes" data-i18n="nav.skills">Aptitudes</a>
+        <a href="#plan" data-i18n="nav.plan">Plan de acción</a>
+      </nav>
+
+      <div class="topbar__tools">
+        <div class="progress" title="" id="progressWrap">
+          <span class="progress__label" data-i18n="progress">Perfil</span>
+          <span class="progress__track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progressBar">
+            <span class="progress__fill" id="progressFill"></span>
+          </span>
+          <span class="progress__value" id="progressValue">0%</span>
+        </div>
+
+        <div class="langswitch" role="group" aria-label="Idioma / Language">
+          <button type="button" class="langswitch__btn" data-lang="es" aria-pressed="true"><span aria-hidden="true">🇪🇸</span> ES</button>
+          <button type="button" class="langswitch__btn" data-lang="en" aria-pressed="false"><span aria-hidden="true">🇺🇸</span> EN</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <div>
+          <p class="eyebrow" data-i18n="hero.eyebrow">Estrategia de marca personal · SEO internacional</p>
+          <h1 data-i18n="hero.title">Optimización estratégica del perfil de LinkedIn de Henry Martínez Sarmiento</h1>
+          <p class="hero__lead" data-i18n="hero.lead">Director de la Unidad de Informática de la Facultad de Ciencias Económicas (UIFCE) de la Universidad Nacional de Colombia. Simula, edita y copia cada bloque listo para LinkedIn en español e inglés.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="https://www.linkedin.com/in/henry-mart%C3%ADnez-sarmiento-aab963144/" target="_blank" rel="noopener noreferrer" data-i18n="hero.open">Abrir perfil en LinkedIn ↗</a>
+            <button type="button" class="btn btn--ghost" data-action="export" data-i18n="actions.export">Exportar Guía Bilingüe (.md)</button>
+          </div>
+        </div>
+        <aside class="hero__stats" aria-label="Indicadores" data-i18n-aria="hero.statsAria">
+          <div class="stat"><span class="stat__num" id="statYears">15</span><span class="stat__lbl" data-i18n="hero.statYears">años de trayectoria</span></div>
+          <div class="stat"><span class="stat__num">167</span><span class="stat__lbl" data-i18n="hero.statConn">contactos actuales</span></div>
+          <div class="stat"><span class="stat__num">12</span><span class="stat__lbl" data-i18n="hero.statSkills">aptitudes estratégicas</span></div>
+          <div class="stat"><span class="stat__num">2</span><span class="stat__lbl" data-i18n="hero.statLangs">idiomas de perfil</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ A. DIAGNÓSTICO ============ -->
+    <section id="diagnostico" class="section" aria-labelledby="h-diag">
+      <div class="container">
+        <header class="section__head">
+          <span class="section__num">A</span>
+          <div>
+            <h2 id="h-diag" data-i18n="diag.title">Diagnóstico actual vs. objetivo</h2>
+            <p class="section__sub" data-i18n="diag.sub">Dónde está el perfil hoy y hacia dónde debe posicionarse.</p>
+          </div>
+        </header>
+        <div class="grid grid--2">
+          <article class="card card--before">
+            <span class="tag tag--warn" data-i18n="diag.beforeTag">Antes</span>
+            <h3 data-i18n="diag.beforeTitle">Estado actual detectado</h3>
+            <p class="muted" id="diagCurrent"></p>
+            <ul class="checklist-static" id="diagCurrentList"></ul>
+          </article>
+          <article class="card card--after">
+            <span class="tag tag--ok" data-i18n="diag.afterTag">Después</span>
+            <h3 data-i18n="diag.afterTitle">Posicionamiento objetivo</h3>
+            <p id="diagTarget"></p>
+            <h4 class="mini-title" data-i18n="diag.audience">Audiencia objetivo</h4>
+            <ul class="chips" id="diagAudience"></ul>
+          </article>
+        </div>
+        <div class="card card--flush">
+          <div class="table-wrap">
+            <table class="compare">
+              <caption class="sr-only" data-i18n="diag.tableCaption">Comparativo antes y después por elemento del perfil</caption>
+              <thead>
+                <tr>
+                  <th scope="col" data-i18n="diag.colElement">Elemento</th>
+                  <th scope="col" data-i18n="diag.colBefore">Antes</th>
+                  <th scope="col" data-i18n="diag.colAfter">Después</th>
+                </tr>
+              </thead>
+              <tbody id="diagTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ B. SIMULADOR DE CABECERA ============ -->
+    <section id="cabecera" class="section section--alt" aria-labelledby="h-header">
+      <div class="container">
+        <header class="section__head">
+          <span class="section__num">B</span>
+          <div>
+            <h2 id="h-header" data-i18n="sim.title">Simulador visual de cabecera</h2>
+            <p class="section__sub" data-i18n="sim.sub">Banner + foto + titular, tal como se verá en LinkedIn.</p>
+          </div>
+        </header>
+
+        <div class="seg" role="group" aria-label="Vista" data-i18n-aria="sim.viewAria">
+          <button type="button" class="seg__btn" data-sim="before" aria-pressed="false" data-i18n="sim.viewBefore">Perfil actual</button>
+          <button type="button" class="seg__btn" data-sim="after" aria-pressed="true" data-i18n="sim.viewAfter">Perfil optimizado</button>
+        </div>
+
+        <article class="li-card" id="liCard" aria-live="polite">
+          <div class="li-banner" id="liBanner">
+            <div class="li-banner__art" aria-hidden="true">
+              <span class="node n1"></span><span class="node n2"></span><span class="node n3"></span><span class="node n4"></span>
+            </div>
+            <div class="li-banner__content">
+              <span class="li-banner__kicker">UIFCE · UNAL</span>
+              <p class="li-banner__motto" id="bannerMotto"></p>
+            </div>
+          </div>
+          <div class="li-body">
+            <div class="li-avatar" aria-hidden="true">HM</div>
+            <div class="li-info">
+              <h3 class="li-name">Henry Martínez Sarmiento <span class="li-pronoun" aria-hidden="true">· 1st</span></h3>
+              <p class="li-headline" id="liHeadline"></p>
+              <p class="li-meta"><span data-i18n="sim.location">Bogotá, D.C., Colombia</span> · <a href="https://www.linkedin.com/in/henry-mart%C3%ADnez-sarmiento-aab963144/" target="_blank" rel="noopener noreferrer" data-i18n="sim.contact">Información de contacto</a></p>
+              <p class="li-meta li-meta--strong"><span data-i18n="sim.connections">167 contactos</span></p>
+              <div class="li-org">
+                <span class="li-org__logo" aria-hidden="true">UN</span>
+                <span data-i18n="sim.org">Universidad Nacional de Colombia</span>
+              </div>
+              <div class="li-actions" aria-hidden="true">
+                <span class="li-btn li-btn--solid" data-i18n="sim.btnConnect">Conectar</span>
+                <span class="li-btn" data-i18n="sim.btnMessage">Enviar mensaje</span>
+                <span class="li-btn li-btn--ghost" data-i18n="sim.btnMore">Más</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <div class="grid grid--2 mt">
+          <article class="card">
+            <div class="card__head">
+              <h3 data-i18n="sim.bannerSpecs">Especificaciones del banner (Canva / Figma)</h3>
+              <button type="button" class="btn-copy" data-copy="bannerSpecs"></button>
+            </div>
+            <pre class="specs" id="bannerSpecs"></pre>
+          </article>
+          <article class="card">
+            <div class="card__head">
+              <h3 data-i18n="sim.motto">Lema del banner</h3>
+              <button type="button" class="btn-copy" data-copy="bannerMotto"></button>
+            </div>
+            <p class="quote" id="bannerMottoText"></p>
+            <ul class="swatches" aria-label="Paleta" data-i18n-aria="sim.paletteAria">
+              <li><span style="background:#0B2A5B"></span>#0B2A5B <small data-i18n="sim.c1">Azul UNAL</small></li>
+              <li><span style="background:#0F766E"></span>#0F766E <small data-i18n="sim.c2">Teal digital</small></li>
+              <li><span style="background:#14B8A6"></span>#14B8A6 <small data-i18n="sim.c3">Acento</small></li>
+              <li><span style="background:#F3F6FA;border:1px solid #cfd8e3"></span>#F3F6FA <small data-i18n="sim.c4">Superficie</small></li>
+            </ul>
+          </article>
+        </div>
+
+        <h3 class="block-title" data-i18n="sim.headlineTitle">Selector de titular (headline)</h3>
+        <p class="muted" data-i18n="sim.headlineSub">Elige una variante: se aplica al simulador y a la exportación. Límite de LinkedIn: 220 caracteres.</p>
+        <div class="headlines" id="headlines" role="radiogroup" aria-label="Titulares" data-i18n-aria="sim.headlineTitle"></div>
+      </div>
+    </section>
+
+    <!-- ============ C. ACERCA DE ============ -->
+    <section id="acerca" class="section" aria-labelledby="h-about">
+      <div class="container">
+        <header class="section__head">
+          <span class="section__num">C</span>
+          <div>
+            <h2 id="h-about" data-i18n="about.title">Sección «Acerca de»</h2>
+            <p class="section__sub" data-i18n="about.sub">Los campos resaltados son editables y se sincronizan entre español e inglés.</p>
+          </div>
+        </header>
+        <article class="card card--li">
+          <div class="card__head">
+            <h3 data-i18n="about.cardTitle">Acerca de</h3>
+            <div class="card__tools">
+              <span class="counter" data-count="about" data-limit="2600"></span>
+              <button type="button" class="btn-copy" data-copy="about"></button>
+            </div>
+          </div>
+          <div class="rich" id="aboutText"></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ D. EXPERIENCIA ============ -->
+    <section id="experiencia" class="section section--alt" aria-labelledby="h-exp">
+      <div class="container">
+        <header class="section__head">
+          <span class="section__num">D</span>
+          <div>
+            <h2 id="h-exp" data-i18n="exp.title">Experiencia, roles y proyectos de impacto</h2>
+            <p class="section__sub" data-i18n="exp.sub">Completa las métricas pendientes: se actualizan en ambas versiones lingüísticas.</p>
+          </div>
+        </header>
+
+        <article class="card metrics">
+          <div class="card__head">
+            <h3 data-i18n="exp.metricsTitle">Métricas editables</h3>
+            <span class="tag" id="pendingTag"></span>
+          </div>
+          <div class="metrics__grid" id="varsPanel"></div>
+        </article>
+
+        <article class="card card--li">
+          <div class="card__head">
+            <div class="exp-head">
+              <span class="exp-logo" aria-hidden="true">UI</span>
+              <div>
+                <h3 id="expTitle"></h3>
+                <p class="muted" id="expOrg"></p>
+              </div>
+            </div>
+            <button type="button" class="btn-copy" data-copy="exp"></button>
+          </div>
+          <ol class="milestones" id="expHitos"></ol>
+        </article>
+
+        <div class="grid grid--2">
+          <article class="card">
+            <div class="card__head">
+              <h3 data-i18n="exp.rolesTitle">Trayectoria y roles directivos (UNAL)</h3>
+              <button type="button" class="btn-copy" data-copy="roles"></button>
+            </div>
+            <ul class="roles" id="rolesList"></ul>
+          </article>
+          <article class="card">
+            <div class="card__head">
+              <h3 data-i18n="exp.alliancesTitle">Alianzas y proyectos interinstitucionales</h3>
+              <button type="button" class="btn-copy" data-copy="alliances"></button>
+            </div>
+            <p class="muted" id="alliancesIntro"></p>
+            <ul class="alliances" id="alliancesList"></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ E. APTITUDES ============ -->
+    <section id="aptitudes" class="section" aria-labelledby="h-skills">
+      <div class="container">
+        <header class="section__head">
+          <span class="section__num">E</span>
+          <div>
+            <h2 id="h-skills" data-i18n="skills.title">Matriz de aptitudes y stack técnico</h2>
+            <p class="section__sub" data-i18n="skills.sub">12 aptitudes con su equivalente exacto en español e inglés.</p>
+          </div>
+        </header>
+
+        <div class="toolbar">
+          <div class="filters" role="group" aria-label="Filtros" data-i18n-aria="skills.filterAria" id="skillFilters"></div>
+          <div class="toolbar__right">
+            <button type="button" class="btn btn--small" data-copy="skillsLang"></button>
+            <button type="button" class="btn btn--small btn--ghost" data-copy="skillsBoth"></button>
+          </div>
+        </div>
+
+        <div class="card card--flush">
+          <div class="table-wrap">
+            <table class="skills">
+              <caption class="sr-only" data-i18n="skills.caption">Aptitudes en español e inglés</caption>
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col" data-i18n="skills.colEs">Español</th>
+                  <th scope="col" data-i18n="skills.colEn">English</th>
+                  <th scope="col" data-i18n="skills.colCat">Categoría</th>
+                  <th scope="col"><span class="sr-only" data-i18n="skills.colCopy">Copiar</span></th>
+                </tr>
+              </thead>
+              <tbody id="skillsBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <article class="card mt">
+          <div class="card__head">
+            <h3 data-i18n="skills.stackTitle">Stack tecnológico</h3>
+            <button type="button" class="btn-copy" data-copy="stack"></button>
+          </div>
+          <ul class="chips chips--tech" id="stackList"></ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ F. PLAN DE ACCIÓN ============ -->
+    <section id="plan" class="section section--alt" aria-labelledby="h-plan">
+      <div class="container">
+        <header class="section__head">
+          <span class="section__num">F</span>
+          <div>
+            <h2 id="h-plan" data-i18n="plan.title">Plan de acción: recomendaciones y contenido</h2>
+            <p class="section__sub" data-i18n="plan.sub">Nivel 2 · Ejecución y crecimiento de la red.</p>
+          </div>
+        </header>
+
+        <div class="grid grid--2">
+          <article class="card">
+            <div class="card__head">
+              <h3 data-i18n="plan.stepsTitle">Pasos de implementación</h3>
+              <span class="tag tag--ok" id="stepsTag"></span>
+            </div>
+            <ul class="steps" id="stepsList"></ul>
+          </article>
+
+          <article class="card">
+            <div class="card__head">
+              <h3 data-i18n="plan.recsTitle">Gestor de recomendaciones</h3>
+              <span class="tag" id="recsTag"></span>
+            </div>
+            <p class="muted" data-i18n="plan.recsSub">Marca cada solicitud enviada. Elige el idioma del mensaje por contacto.</p>
+            <ul class="recs" id="recsList"></ul>
+          </article>
+        </div>
+
+        <h3 class="block-title" data-i18n="plan.matrixTitle">Matriz de contenidos · 1 a 2 publicaciones por semana</h3>
+        <div class="pillars" id="pillars"></div>
+
+        <h3 class="block-title" data-i18n="plan.postsTitle">Plantillas de publicaciones</h3>
+        <div class="posts" id="posts"></div>
+      </div>
+    </section>
+
+    <!-- ============ CIERRE ============ -->
+    <section class="section section--cta">
+      <div class="container cta">
+        <div>
+          <h2 data-i18n="cta.title">Guía bilingüe lista para publicar</h2>
+          <p data-i18n="cta.sub">Descarga un Markdown limpio con ambas versiones (ES / EN) para usar con «Agregar perfil en otro idioma».</p>
+        </div>
+        <div class="cta__actions">
+          <button type="button" class="btn btn--light" data-action="export" data-i18n="actions.export">Exportar Guía Bilingüe (.md)</button>
+          <button type="button" class="btn btn--outline-light" data-action="reset" data-i18n="actions.reset">Restaurar valores</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p data-i18n="footer">Unidad de Informática · Facultad de Ciencias Económicas · Universidad Nacional de Colombia. Los cambios se guardan automáticamente en este navegador.</p>
+    </div>
+  </footer>
+
+  <div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
