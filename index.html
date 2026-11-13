@@ -205,6 +205,7 @@
           <div class="card__head">
             <h3 data-i18n="about.cardTitle">Acerca de</h3>
             <div class="card__tools">
+              <div class="seg seg--sm" role="group" data-modeseg></div>
               <span class="counter" data-count="about" data-limit="2600"></span>
               <button type="button" class="btn-copy" data-copy="about"></button>
             </div>
@@ -228,8 +229,12 @@
         <article class="card metrics">
           <div class="card__head">
             <h3 data-i18n="exp.metricsTitle">Métricas editables</h3>
-            <span class="tag" id="pendingTag"></span>
+            <div class="card__tools">
+              <div class="seg seg--sm" role="group" data-modeseg></div>
+              <span class="tag" id="pendingTag"></span>
+            </div>
           </div>
+          <p class="mode-note" id="modeNote" hidden></p>
           <div class="metrics__grid" id="varsPanel"></div>
         </article>
 

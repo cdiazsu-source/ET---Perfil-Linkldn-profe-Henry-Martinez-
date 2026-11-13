@@ -277,6 +277,11 @@ tbody tr:last-child td { border-bottom: 0; }
 .seg { display: inline-flex; padding: 4px; background: var(--surface); border-radius: var(--r-pill); box-shadow: var(--shadow-sm); margin-bottom: 18px; }
 .seg__btn { border: 0; background: transparent; padding: 8px 16px; border-radius: var(--r-pill); font-weight: 600; font-size: 14px; color: var(--text-2); }
 .seg__btn[aria-pressed="true"] { background: var(--navy-900); color: #fff; }
+.seg--sm { margin: 0; padding: 3px; background: var(--surface-2); box-shadow: none; border: 1px solid var(--border); }
+.seg--sm .seg__btn { padding: 5px 12px; font-size: 13px; }
+.mode-note { margin: 0 0 14px; padding: 10px 14px; border-radius: var(--r-md); background: var(--teal-50); border: 1px solid var(--teal-100); color: var(--teal-700); font-size: 14px; }
+.metrics.is-generic .metrics__grid { opacity: .5; }
+input.var:disabled { cursor: not-allowed; }
 
 .li-card { background: var(--surface); border-radius: var(--r-lg); box-shadow: var(--shadow-md); overflow: hidden; max-width: 900px; }
 .li-banner {

@@ -106,6 +106,11 @@
       chars: '{n} / {max} caracteres',
       recommended: 'Recomendada', selected: 'Seleccionada',
       pendingN: '{n} métricas pendientes', pending1: '1 métrica pendiente', pendingNone: 'Métricas completas',
+      'mode.aria': 'Tipo de versión', 'mode.generic': 'Versión genérica', 'mode.metrics': 'Con métricas',
+      'mode.genericTag': 'Versión genérica · sin métricas',
+      'mode.genericNote': 'Versión genérica activa: los textos de «Acerca de», Experiencia y la publicación 3 no incluyen cifras. Cambia a «Con métricas» cuando tengas los datos.',
+      'mode.toast.generic': 'Versión genérica activada (sin métricas)', 'mode.toast.metrics': 'Versión con métricas activada',
+      'hero.statGeneric': 'Universidad Nacional de Colombia',
       stepsOf: '{n} de {t}', recsOf: '{n} de {t} enviadas',
       'toast.copied': 'Texto copiado al portapapeles',
       'toast.copiedPending': 'Copiado. Atención: aún hay métricas pendientes (X / N)',
@@ -187,6 +192,11 @@
       chars: '{n} / {max} characters',
       recommended: 'Recommended', selected: 'Selected',
       pendingN: '{n} metrics pending', pending1: '1 metric pending', pendingNone: 'All metrics complete',
+      'mode.aria': 'Version type', 'mode.generic': 'Generic version', 'mode.metrics': 'With metrics',
+      'mode.genericTag': 'Generic version · no metrics',
+      'mode.genericNote': 'Generic version on: the About, Experience and post 3 texts contain no figures. Switch to “With metrics” once the data is available.',
+      'mode.toast.generic': 'Generic version on (no metrics)', 'mode.toast.metrics': 'Metrics version on',
+      'hero.statGeneric': 'National University of Colombia',
       stepsOf: '{n} of {t}', recsOf: '{n} of {t} sent',
       'toast.copied': 'Text copied to clipboard',
       'toast.copiedPending': 'Copied. Heads up: some metrics are still pending (X / N)',
@@ -218,7 +228,7 @@
           ['Titular', 'Genérico, sin palabras clave', 'Cargo directivo + Profesor Asociado UNAL + Gobierno de TI, Cloud, IA y Analítica'],
           ['Banner', 'Gris predeterminado, vacío', 'Banner 1584×396 con lema de transformación digital'],
           ['Acerca de', 'Sin narrativa de valor', 'Gancho + Enablement Engineering + hitos + llamado a la acción'],
-          ['Experiencia', 'Logros de gestión TI subexpuestos', 'Hitos cuantificados: cursos, % de reducción, uptime'],
+          ['Experiencia', 'Logros de gestión TI subexpuestos', 'Hitos de impacto: versión genérica o cuantificada (cursos, % de reducción, uptime)'],
           ['Aptitudes', 'No alineadas al posicionamiento', '12 aptitudes en 3 categorías + stack técnico'],
           ['Red', '167 contactos', 'Crecimiento con contenido semanal y 5 recomendaciones'],
           ['Idiomas', 'Solo español', 'Perfil secundario en inglés para alcance internacional']
@@ -249,10 +259,14 @@ Soy Administrador de Empresas y Magíster en Administración de Empresas de la U
         title: 'Director de la Unidad de Informática (UIFCE)',
         org: 'Facultad de Ciencias Económicas · Universidad Nacional de Colombia · Bogotá',
         hitos: [
-          { t: 'Virtualización y e-Learning', d: 'Creación e implementación integral del Área de Virtualización Académica y e-Learning, con un ecosistema LMS escalable (Moodle / Canvas) proyectado hacia programas de posgrado: {{courses}} cursos virtualizados y {{students}} estudiantes impactados.' },
-          { t: 'Cloud y automatización', d: 'Optimización de los tiempos de respuesta en procesos digitales mediante migración a la nube, destacando el aplicativo de solicitudes y certificados para cursos libres: reducción del {{reduction}} en tiempos de entrega para {{users}} usuarios.' },
-          { t: 'Infraestructura y uptime', d: 'Aseguramiento de alta disponibilidad ({{uptime}} de uptime), ciberseguridad y rendimiento de plataformas académicas y administrativas críticas, incluyendo gestión de licenciamiento y soporte continuo.' },
-          { t: 'Enablement Engineering', d: 'Formación de {{trained}} profesionales y estudiantes bajo metodologías de indagación y ABP («aprender a pescar»), reduciendo la dependencia de terceros en proyectos de desarrollo.' }
+          { t: 'Virtualización y e-Learning', d: 'Creación e implementación integral del Área de Virtualización Académica y e-Learning, con un ecosistema LMS escalable (Moodle / Canvas) proyectado hacia programas de posgrado: {{courses}} cursos virtualizados y {{students}} estudiantes impactados.',
+            g: 'Creación e implementación integral del Área de Virtualización Académica y e-Learning, con un ecosistema LMS escalable (Moodle / Canvas) proyectado hacia programas de posgrado, que amplió la oferta de cursos virtuales y el acceso de estudiantes a la formación en línea.' },
+          { t: 'Cloud y automatización', d: 'Optimización de los tiempos de respuesta en procesos digitales mediante migración a la nube, destacando el aplicativo de solicitudes y certificados para cursos libres: reducción del {{reduction}} en tiempos de entrega para {{users}} usuarios.',
+            g: 'Optimización de los tiempos de respuesta en procesos digitales mediante migración a la nube, destacando el aplicativo de solicitudes y certificados para cursos libres, que agilizó la entrega de certificados y mejoró la experiencia de los usuarios.' },
+          { t: 'Infraestructura y uptime', d: 'Aseguramiento de alta disponibilidad ({{uptime}} de uptime), ciberseguridad y rendimiento de plataformas académicas y administrativas críticas, incluyendo gestión de licenciamiento y soporte continuo.',
+            g: 'Aseguramiento de la alta disponibilidad, la ciberseguridad y el rendimiento de plataformas académicas y administrativas críticas, incluyendo gestión de licenciamiento y soporte continuo.' },
+          { t: 'Enablement Engineering', d: 'Formación de {{trained}} profesionales y estudiantes bajo metodologías de indagación y ABP («aprender a pescar»), reduciendo la dependencia de terceros en proyectos de desarrollo.',
+            g: 'Formación de profesionales y estudiantes bajo metodologías de indagación y ABP («aprender a pescar»), reduciendo la dependencia de terceros en proyectos de desarrollo.' }
         ]
       },
       roles: [
@@ -298,8 +312,8 @@ Henry Martínez Sarmiento`,
         ['photo', 'Foto profesional en alta resolución', 'Fondo neutro, encuadre de hombros, mínimo 400 × 400 px.'],
         ['banner', 'Banner 1584 × 396 publicado', 'Lema bilingüe y paleta institucional.'],
         ['headline', 'Titular optimizado aplicado', 'Usa la variante seleccionada en el simulador.'],
-        ['about', '«Acerca de» publicado', 'Con años de experiencia confirmados.'],
-        ['exp', 'Experiencia UIFCE con 4 hitos', 'Sin métricas pendientes (X / N).'],
+        ['about', '«Acerca de» publicado', 'Versión genérica o con años de experiencia confirmados.'],
+        ['exp', 'Experiencia UIFCE con 4 hitos', 'Versión genérica o con métricas completas.'],
         ['roles', 'Roles, formación y alianzas registrados', 'Profesor asociado, Informática Nivel Bogotá, Escuela, Carrera, Educación Continua y estudios (MBA).'],
         ['skills', '12 aptitudes cargadas', 'Fija las 3 principales: Gobierno de TI, Transformación Digital y Cloud.'],
         ['english', 'Perfil secundario en inglés', 'Perfil → «Agregar perfil en otro idioma» → English.'],
@@ -374,7 +388,7 @@ Eso es Enablement Engineering: no entregar el pescado, sino enseñar a pescar. H
           ['Headline', 'Generic, no keywords', 'Leadership title + UNAL Associate Professor + IT Governance, Cloud, AI & Data Analytics'],
           ['Cover banner', 'Default empty gray', '1584×396 banner with digital transformation tagline'],
           ['About', 'No value narrative', 'Hook + Enablement Engineering + highlights + call to action'],
-          ['Experience', 'Underexposed IT achievements', 'Quantified milestones: courses, % reduction, uptime'],
+          ['Experience', 'Underexposed IT achievements', 'Impact milestones: generic or quantified (courses, % reduction, uptime)'],
           ['Skills', 'Not aligned with positioning', '12 skills across 3 categories + tech stack'],
           ['Network', '167 connections', 'Growth through weekly content and 5 recommendations'],
           ['Languages', 'Spanish only', 'Secondary English profile for international reach']
@@ -405,10 +419,14 @@ Ready to scale technology and digital autonomy across your academic or enterpris
         title: 'IT Unit Director (UIFCE)',
         org: 'School of Economic Sciences · National University of Colombia · Bogotá',
         hitos: [
-          { t: 'Virtualization & e-Learning', d: 'Built and launched the Academic Virtualization & e-Learning Unit end to end, with a scalable LMS ecosystem (Moodle / Canvas) designed to support graduate programs: {{courses}} courses virtualized and {{students}} learners reached.' },
-          { t: 'Cloud & automation', d: 'Cut digital process response times through cloud migration—most notably the request and certificate platform for open courses: {{reduction}} faster turnaround for {{users}} users.' },
-          { t: 'Infrastructure & uptime', d: 'Ensured high availability ({{uptime}} uptime), cybersecurity, and performance for mission-critical academic and administrative platforms, including license management and continuous support.' },
-          { t: 'Enablement Engineering', d: 'Trained {{trained}} professionals and students through inquiry-based learning and PBL (“teach them to fish”), reducing reliance on third parties in software development projects.' }
+          { t: 'Virtualization & e-Learning', d: 'Built and launched the Academic Virtualization & e-Learning Unit end to end, with a scalable LMS ecosystem (Moodle / Canvas) designed to support graduate programs: {{courses}} courses virtualized and {{students}} learners reached.',
+            g: 'Built and launched the Academic Virtualization & e-Learning Unit end to end, with a scalable LMS ecosystem (Moodle / Canvas) designed to support graduate programs—expanding the virtual course portfolio and broadening student access to online learning.' },
+          { t: 'Cloud & automation', d: 'Cut digital process response times through cloud migration—most notably the request and certificate platform for open courses: {{reduction}} faster turnaround for {{users}} users.',
+            g: 'Cut digital process response times through cloud migration—most notably the request and certificate platform for open courses, which streamlined certificate delivery and improved the user experience.' },
+          { t: 'Infrastructure & uptime', d: 'Ensured high availability ({{uptime}} uptime), cybersecurity, and performance for mission-critical academic and administrative platforms, including license management and continuous support.',
+            g: 'Ensured high availability, cybersecurity, and performance for mission-critical academic and administrative platforms, including license management and continuous support.' },
+          { t: 'Enablement Engineering', d: 'Trained {{trained}} professionals and students through inquiry-based learning and PBL (“teach them to fish”), reducing reliance on third parties in software development projects.',
+            g: 'Trained professionals and students through inquiry-based learning and PBL (“teach them to fish”), reducing reliance on third parties in software development projects.' }
         ]
       },
       roles: [
@@ -454,8 +472,8 @@ Henry Martínez Sarmiento`,
         ['photo', 'High-resolution professional photo', 'Neutral background, head-and-shoulders, at least 400 × 400 px.'],
         ['banner', '1584 × 396 cover banner published', 'Bilingual tagline and institutional palette.'],
         ['headline', 'Optimized headline applied', 'Use the variant selected in the simulator.'],
-        ['about', '“About” section published', 'With confirmed years of experience.'],
-        ['exp', 'UIFCE experience with 4 milestones', 'No pending metrics (X / N).'],
+        ['about', '“About” section published', 'Generic version or with confirmed years of experience.'],
+        ['exp', 'UIFCE experience with 4 milestones', 'Generic version or with complete metrics.'],
         ['roles', 'Roles, education & partnerships added', 'Associate Professor, Bogotá Campus IT, School, Program, Continuing Education and degrees (MBA).'],
         ['skills', '12 skills added', 'Pin top 3: IT Governance, Digital Transformation, Cloud.'],
         ['english', 'Secondary English profile', 'Profile → “Add profile in another language” → English.'],
@@ -516,6 +534,12 @@ What has been your biggest lesson in taking learning to digital environments?
     }
   };
 
+  /* Versiones genéricas (sin métricas) de los textos que usan datos */
+  CONTENT.es.aboutG = CONTENT.es.about.replace('A lo largo de más de {{years}} años en la intersección', 'A lo largo de mi trayectoria en la intersección');
+  CONTENT.en.aboutG = CONTENT.en.about.replace('For more than {{years}} years at the intersection', 'Throughout my career at the intersection');
+  CONTENT.es.posts[2].g = CONTENT.es.posts[2].text.replace(' Hoy el Área de Virtualización y e-Learning de la UIFCE suma {{courses}} cursos virtualizados.', '');
+  CONTENT.en.posts[2].g = CONTENT.en.posts[2].text.replace(' Today, the UIFCE Virtualization & e-Learning Unit has {{courses}} courses virtualized.', '');
+
   const SKILLS = [
     { cat: 'ped',  es: 'Aprendizaje Basado en Problemas (ABP) y Proyectos (ABPro)', en: 'Problem-Based Learning (PBL) & Project-Based Learning' },
     { cat: 'ped',  es: 'Diseño Instruccional y Creación de Entornos Virtuales (E-learning)', en: 'Instructional Design & Virtual Learning Environments (e-Learning)' },
@@ -546,6 +570,7 @@ What has been your biggest lesson in taking learning to digital environments?
     lang: 'es',
     vars: { ...DEFAULT_VARS },
     headline: 0,
+    mode: 'generic',
     simView: 'after',
     skillFilter: 'all',
     steps: {},
@@ -566,6 +591,7 @@ What has been your biggest lesson in taking learning to digital environments?
         lang: saved.lang === 'en' ? 'en' : 'es',
         vars: { ...base.vars, ...(saved.vars || {}) },
         headline: [0, 1, 2].includes(saved.headline) ? saved.headline : 0,
+        mode: saved.mode === 'metrics' ? 'metrics' : 'generic',
         steps: saved.steps || {},
         recs: saved.recs || {},
         recLang: saved.recLang || {}
@@ -604,6 +630,10 @@ What has been your biggest lesson in taking learning to digital environments?
 
   const esc = (s) => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const isPending = (v) => !/\d/.test(String(v || ''));
+  const generic = () => state.mode === 'generic';
+  const aboutTpl = (lang = state.lang) => (generic() ? CONTENT[lang].aboutG : CONTENT[lang].about);
+  const hitoTpl = (h) => (generic() ? h.g : h.d);
+  const postTpl = (p) => (generic() && p.g ? p.g : p.text);
   const initials = (name) => name.split(/\s+/).map(w => w[0]).slice(0, 2).join('').toUpperCase();
   const usesPending = (tpl) => {
     const keys = (tpl.match(/\{\{(\w+)\}\}/g) || []).map(m => m.slice(2, -2));
@@ -725,7 +755,16 @@ What has been your biggest lesson in taking learning to digital environments?
     $$('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
     $$('[data-i18n-aria]').forEach(el => { el.setAttribute('aria-label', t(el.dataset.i18nAria)); });
     $$('.langswitch__btn').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === state.lang)));
-    $('#statYears').textContent = state.vars.years || '—';
+    $('#statYears').textContent = generic() ? 'MBA' : (state.vars.years || '—');
+    $('[data-i18n="hero.statYears"]').textContent = generic() ? t('hero.statGeneric') : t('hero.statYears');
+  };
+
+  const renderModeToggles = () => {
+    $$('[data-modeseg]').forEach(box => {
+      box.setAttribute('aria-label', t('mode.aria'));
+      box.innerHTML = ['generic', 'metrics'].map(m =>
+        `<button type="button" class="seg__btn" data-mode="${m}" aria-pressed="${state.mode === m}">${esc(t('mode.' + m))}</button>`).join('');
+    });
   };
 
   const renderDiag = () => {
@@ -786,7 +825,7 @@ TAGLINE
     const c = C();
     const before = state.simView === 'before';
     $('#liCard').classList.toggle('is-before', before);
-    $$('.seg__btn').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.sim === state.simView)));
+    $$('.seg__btn[data-sim]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.sim === state.simView)));
     $('#bannerMotto').textContent = c.banner;
     $('#liHeadline').textContent = before ? c.oldHeadline : c.headlines[state.headline].text;
     $('#bannerSpecs').textContent = bannerSpecs(state.lang);
@@ -819,7 +858,7 @@ TAGLINE
   };
 
   const renderAbout = () => {
-    $('#aboutText').innerHTML = richHTML(C().about);
+    $('#aboutText').innerHTML = richHTML(aboutTpl());
   };
 
   const renderVarsPanel = () => {
@@ -838,8 +877,14 @@ TAGLINE
   };
 
   const updatePendingTag = () => {
-    const n = Object.keys(VAR_META).filter(k => isPending(state.vars[k])).length;
     const tag = $('#pendingTag');
+    const card = tag.closest('.metrics');
+    card.classList.toggle('is-generic', generic());
+    $('#modeNote').hidden = !generic();
+    $('#modeNote').textContent = t('mode.genericNote');
+    $$('#varsPanel input.var').forEach(i => { i.disabled = generic(); });
+    if (generic()) { tag.className = 'tag tag--ok'; tag.textContent = t('mode.genericTag'); return; }
+    const n = Object.keys(VAR_META).filter(k => isPending(state.vars[k])).length;
     tag.className = `tag ${n ? 'tag--warn' : 'tag--ok'}`;
     tag.textContent = n === 0 ? t('pendingNone') : n === 1 ? t('pending1') : t('pendingN', { n });
   };
@@ -848,7 +893,7 @@ TAGLINE
     const e = C().exp;
     $('#expTitle').textContent = e.title;
     $('#expOrg').textContent = e.org;
-    $('#expHitos').innerHTML = e.hitos.map(h => `<li><h4>${esc(h.t)}</h4><p>${inline(h.d)}</p></li>`).join('');
+    $('#expHitos').innerHTML = e.hitos.map(h => `<li><h4>${esc(h.t)}</h4><p>${inline(hitoTpl(h))}</p></li>`).join('');
     $('#rolesList').innerHTML = C().roles.map(r => `<li><div><strong>${esc(r[0])}</strong><span>${esc(r[1])}</span></div></li>`).join('');
     $('#alliancesIntro').textContent = C().alliancesIntro;
     $('#alliancesList').innerHTML = C().alliances.map(a => `<li><strong>${esc(a[0])}</strong><span>${esc(a[1])}</span></li>`).join('');
@@ -934,26 +979,26 @@ TAGLINE
           <span class="post__avatar" aria-hidden="true">HM</span>
           <div class="post__who"><strong>Henry Martínez Sarmiento</strong><span>${esc(t('plan.postMeta'))}</span></div>
         </div>
-        <div class="post__body rich">${richHTML(p.text)}</div>
+        <div class="post__body rich">${richHTML(postTpl(p))}</div>
         <div class="post__foot">
           <span class="tag tag--ok">${esc(p.pillar)}</span>
           <span class="counter" data-count="post-${i}" data-limit="3000"></span>
           <button type="button" class="btn-copy" data-copy="post-${i}"></button>
         </div>
       </article>`).join('');
-    C().posts.forEach((p, i) => registerCopy(`post-${i}`, () => plain(C().posts[i].text), () => C().posts[i].text));
+    C().posts.forEach((p, i) => registerCopy(`post-${i}`, () => plain(postTpl(C().posts[i])), () => postTpl(C().posts[i])));
   };
 
   /* Contadores de caracteres */
   const counterSources = {
-    about: () => plain(C().about)
+    about: () => plain(aboutTpl())
   };
   const updateCounters = () => {
     $$('[data-count]').forEach(el => {
       const key = el.dataset.count;
       let text = '';
       if (counterSources[key]) text = counterSources[key]();
-      else if (key.startsWith('post-')) text = plain(C().posts[+key.slice(5)].text);
+      else if (key.startsWith('post-')) text = plain(postTpl(C().posts[+key.slice(5)]));
       const max = +el.dataset.limit;
       el.textContent = t('chars', { n: text.length, max });
       el.classList.toggle('is-over', text.length > max);
@@ -976,6 +1021,7 @@ TAGLINE
 
   const renderAll = () => {
     renderStatic();
+    renderModeToggles();
     renderDiag();
     renderSim();
     renderHeadlines();
@@ -996,15 +1042,15 @@ TAGLINE
      ------------------------------------------------------------------ */
   const expPlain = (lang) => {
     const e = CONTENT[lang].exp;
-    return `${e.title}\n${e.org}\n\n${e.hitos.map(h => `• ${h.t}: ${plain(h.d)}`).join('\n')}`;
+    return `${e.title}\n${e.org}\n\n${e.hitos.map(h => `• ${h.t}: ${plain(hitoTpl(h))}`).join('\n')}`;
   };
   const rolesPlain = (lang) => CONTENT[lang].roles.map(r => `• ${r[0]} — ${r[1]}`).join('\n');
   const alliancesPlain = (lang) => `${CONTENT[lang].alliancesIntro}\n\n${CONTENT[lang].alliances.map(a => `• ${a[0]}: ${a[1]}`).join('\n')}`;
 
   registerCopy('bannerSpecs', () => bannerSpecs(state.lang));
   registerCopy('bannerMotto', () => C().banner);
-  registerCopy('about', () => plain(C().about), () => C().about);
-  registerCopy('exp', () => expPlain(state.lang), () => C().exp.hitos.map(h => h.d).join(' '));
+  registerCopy('about', () => plain(aboutTpl()), () => aboutTpl());
+  registerCopy('exp', () => expPlain(state.lang), () => C().exp.hitos.map(hitoTpl).join(' '));
   registerCopy('roles', () => rolesPlain(state.lang));
   registerCopy('alliances', () => alliancesPlain(state.lang));
   registerCopy('edu', () => C().education.map(r => `• ${r[0]} — ${r[1]}`).join('\n'));
@@ -1028,9 +1074,9 @@ TAGLINE
         `### ${h.banner}`, `> ${c.banner}`,
         `### ${h.head}`,
         c.headlines.map((x, i) => `${i + 1}. **${x.title}**${i === state.headline ? ` _(${h.sel})_` : ''}\n   ${x.text}`).join('\n'),
-        `### ${h.about}`, md(c.about),
+        `### ${h.about}`, md(aboutTpl(lang)),
         `### ${h.exp}`,
-        `**${c.exp.title}** — ${c.exp.org}\n\n${c.exp.hitos.map(x => `- **${x.t}:** ${md(x.d)}`).join('\n')}`,
+        `**${c.exp.title}** — ${c.exp.org}\n\n${c.exp.hitos.map(x => `- **${x.t}:** ${md(hitoTpl(x))}`).join('\n')}`,
         `### ${h.roles}`, c.roles.map(r => `- **${r[0]}** — ${r[1]}`).join('\n'),
         `### ${c.eduTitle}`, c.education.map(r => `- **${r[0]}** — ${r[1]}`).join('\n'),
         `### ${h.all}`, `${c.alliancesIntro}\n\n${c.alliances.map(a => `- **${a[0]}:** ${a[1]}`).join('\n')}`,
@@ -1038,7 +1084,7 @@ TAGLINE
         `### ${h.stack}`, c.stack.join(' · '),
         `### ${h.rec}`, '```text\n' + c.rec(es ? '[Nombre]' : '[Name]') + '\n```',
         `### ${h.posts}`,
-        c.posts.map((p, i) => `#### ${i + 1}. ${h.pillar}: ${p.pillar}\n\n${md(p.text)}`).join('\n\n---\n\n')
+        c.posts.map((p, i) => `#### ${i + 1}. ${h.pillar}: ${p.pillar}\n\n${md(postTpl(p))}`).join('\n\n---\n\n')
       ].join('\n\n');
     };
 
@@ -1049,9 +1095,13 @@ TAGLINE
       '# Guía Bilingüe de LinkedIn · Bilingual LinkedIn Guide',
       '**Henry Martínez Sarmiento** — Director UIFCE · Profesor Asociado / Associate Professor · Universidad Nacional de Colombia',
       `Perfil / Profile: ${PROFILE_URL}  \nGenerado / Generated: ${today}`,
-      '## Métricas / Metrics',
-      `| Variable | Valor / Value |\n|---|---|\n${metrics}`,
-      pendingList.length ? `> ⚠️ ${pendingList.length} métricas pendientes / pending metrics. Complétalas antes de publicar.` : '> ✅ Todas las métricas completas / All metrics complete.',
+      ...(generic()
+        ? ['> ℹ️ Versión genérica: los textos no incluyen métricas / Generic version: texts contain no metrics.']
+        : [
+          '## Métricas / Metrics',
+          `| Variable | Valor / Value |\n|---|---|\n${metrics}`,
+          pendingList.length ? `> ⚠️ ${pendingList.length} métricas pendientes / pending metrics. Complétalas antes de publicar.` : '> ✅ Todas las métricas completas / All metrics complete.'
+        ]),
       '---',
       L('es'),
       '---',
@@ -1092,6 +1142,16 @@ TAGLINE
 
     const copyBtn = target.closest('[data-copy]');
     if (copyBtn) { e.preventDefault(); handleCopy(copyBtn); return; }
+
+    const modeBtn = target.closest('[data-mode]');
+    if (modeBtn) {
+      if (modeBtn.dataset.mode === state.mode) return;
+      state.mode = modeBtn.dataset.mode;
+      save();
+      renderAll();
+      toast(t(generic() ? 'mode.toast.generic' : 'mode.toast.metrics'));
+      return;
+    }
 
     const simBtn = target.closest('[data-sim]');
     if (simBtn) { state.simView = simBtn.dataset.sim; save(); renderSim(); return; }
