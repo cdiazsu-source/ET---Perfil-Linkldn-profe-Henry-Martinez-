@@ -218,6 +218,11 @@ button { font: inherit; cursor: pointer; }
 .grid > .card { margin-bottom: 0; }
 .grid + .card, .grid + .grid { margin-top: 20px; }
 .card--flush { padding: 0; overflow: hidden; }
+.follow { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; border-left: 4px solid var(--teal-700); }
+.follow__txt { flex: 1 1 360px; min-width: 0; }
+.follow__txt p { margin: 4px 0 8px; }
+.follow__url { font-weight: 600; color: var(--teal-700); word-break: break-all; }
+.follow__actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .card h3 { font-size: 18px; }
 .card__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
 .card__tools { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }

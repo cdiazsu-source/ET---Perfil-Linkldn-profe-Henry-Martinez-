@@ -6,6 +6,7 @@
   'use strict';
 
   const STORAGE_KEY = 'hms-linkedin-studio-v1';
+  const UIFCE_URL = 'https://www.linkedin.com/in/uifce/';
   const PROFILE_URL = 'https://www.linkedin.com/in/henry-mart%C3%ADnez-sarmiento-aab963144/';
 
   /* ------------------------------------------------------------------
@@ -99,6 +100,11 @@
       'plan.copyInvite': 'Copiar mensaje de invitación',
       'plan.postMeta': 'Director UIFCE · Profesor Asociado UNAL',
       'plan.ideas': 'Ideas',
+      'follow.title': 'Sigue a la UIFCE en LinkedIn',
+      'follow.sub': 'Invita a colegas, estudiantes, aliados y contactos a seguir el perfil de la Unidad de Informática de la FCE. Cada publicación, mensaje y la guía exportada ya incluyen esta invitación.',
+      'follow.open': 'Seguir a la UIFCE',
+      'follow.copy': 'Copiar invitación',
+      'follow.aria': 'Abrir el perfil de la UIFCE en LinkedIn (nueva pestaña)',
       'cta.title': 'Guía bilingüe lista para publicar',
       'cta.sub': 'Descarga un Markdown limpio con ambas versiones (ES / EN) para usar con «Agregar perfil en otro idioma».',
       footer: 'Unidad de Informática · Facultad de Ciencias Económicas · Universidad Nacional de Colombia. Los cambios se guardan automáticamente en este navegador.',
@@ -185,6 +191,11 @@
       'plan.copyInvite': 'Copy invitation message',
       'plan.postMeta': 'IT Unit Director · Associate Professor, UNAL',
       'plan.ideas': 'Ideas',
+      'follow.title': 'Follow UIFCE on LinkedIn',
+      'follow.sub': 'Invite colleagues, students, partners and contacts to follow the IT Unit of the School of Economic Sciences. Every post, message and the exported guide already include this invitation.',
+      'follow.open': 'Follow UIFCE',
+      'follow.copy': 'Copy invitation',
+      'follow.aria': 'Open the UIFCE LinkedIn profile (new tab)',
       'cta.title': 'Bilingual guide, ready to publish',
       'cta.sub': 'Download a clean Markdown file with both versions (ES / EN) for LinkedIn’s “Add profile in another language”.',
       footer: 'IT Unit · School of Economic Sciences · National University of Colombia. Changes are saved automatically in this browser.',
@@ -254,7 +265,7 @@ Soy Administrador de Empresas y Magíster en Administración de Empresas de la U
 • Optimización de procesos administrativos y migración a la nube de servicios institucionales de alta demanda.
 • Conferencista del Programa de Educación Continua U.N. y consultor empresarial.
 
-¿Listo para escalar la tecnología y la autonomía digital de tu entorno académico o empresarial sin fricción? Conectemos.`,
+¿Listo para escalar la tecnología y la autonomía digital de tu entorno académico o empresarial sin fricción? Conectemos. Y te invito a seguir a la UIFCE en LinkedIn: linkedin.com/in/uifce`,
       exp: {
         title: 'Director de la Unidad de Informática (UIFCE)',
         org: 'Facultad de Ciencias Económicas · Universidad Nacional de Colombia · Bogotá',
@@ -304,6 +315,8 @@ Valoro mucho tu criterio y la experiencia que hemos compartido. ¿Te animarías 
 • La creación del Área de Virtualización y e-Learning.
 • El enfoque de formar equipos autónomos («enseñar a pescar»).
 
+Y si aún no lo haces, te invito a seguir el perfil de la UIFCE en LinkedIn (linkedin.com/in/uifce), donde compartimos proyectos y novedades de la Unidad.
+
 Con gusto puedo corresponder con una recomendación para ti. ¡Muchas gracias de antemano!
 
 Un abrazo,
@@ -318,7 +331,8 @@ Henry Martínez Sarmiento`,
         ['skills', '12 aptitudes cargadas', 'Fija las 3 principales: Gobierno de TI, Transformación Digital y Cloud.'],
         ['english', 'Perfil secundario en inglés', 'Perfil → «Agregar perfil en otro idioma» → English.'],
         ['url', 'URL pública personalizada', 'Ej.: linkedin.com/in/henrymartinezsarmiento'],
-        ['post', 'Primera publicación de la matriz', 'Usa una de las 3 plantillas listas.']
+        ['post', 'Primera publicación de la matriz', 'Usa una de las 3 plantillas listas.'],
+        ['uifce', 'Invitación a seguir a la UIFCE', 'Comparte linkedin.com/in/uifce con colegas, estudiantes y contactos.']
       ],
       pillars: [
         { icon: '🤖', c: '#4f46e5', name: 'Inteligencia Artificial en Educación', desc: 'IA generativa como aliada del aprendizaje activo y la autonomía.', ideas: ['IA como tutor socrático', 'Políticas de uso responsable', 'Casos en el aula UNAL'] },
@@ -414,7 +428,7 @@ I hold a Bachelor's degree in Business Administration and an MBA from the Nation
 • Administrative workflow optimization and cloud migration for high-demand institutional services.
 • Speaker for the U.N. Continuing Education Program and business consultant.
 
-Ready to scale technology and digital autonomy across your academic or enterprise ecosystem without friction? Let's connect.`,
+Ready to scale technology and digital autonomy across your academic or enterprise ecosystem without friction? Let's connect—and follow UIFCE on LinkedIn: linkedin.com/in/uifce`,
       exp: {
         title: 'IT Unit Director (UIFCE)',
         org: 'School of Economic Sciences · National University of Colombia · Bogotá',
@@ -464,6 +478,8 @@ I truly value your perspective and the experience we've shared. Would you be ope
 • Building the Virtualization & e-Learning Unit.
 • The focus on developing autonomous teams (“teach them to fish”).
 
+Also, if you don't already, I'd love for you to follow UIFCE on LinkedIn (linkedin.com/in/uifce), where we share our projects and news.
+
 I'd be glad to return the favor with a recommendation for you. Thank you in advance!
 
 Best regards,
@@ -478,7 +494,8 @@ Henry Martínez Sarmiento`,
         ['skills', '12 skills added', 'Pin top 3: IT Governance, Digital Transformation, Cloud.'],
         ['english', 'Secondary English profile', 'Profile → “Add profile in another language” → English.'],
         ['url', 'Custom public URL', 'e.g., linkedin.com/in/henrymartinezsarmiento'],
-        ['post', 'First content-matrix post', 'Use one of the 3 ready-made templates.']
+        ['post', 'First content-matrix post', 'Use one of the 3 ready-made templates.'],
+        ['uifce', 'Invite people to follow UIFCE', 'Share linkedin.com/in/uifce with colleagues, students and contacts.']
       ],
       pillars: [
         { icon: '🤖', c: '#4f46e5', name: 'AI in Education', desc: 'Generative AI as an ally of active learning and autonomy.', ideas: ['AI as a Socratic tutor', 'Responsible-use policies', 'Classroom cases at UNAL'] },
@@ -539,6 +556,27 @@ What has been your biggest lesson in taking learning to digital environments?
   CONTENT.en.aboutG = CONTENT.en.about.replace('For more than {{years}} years at the intersection', 'Throughout my career at the intersection');
   CONTENT.es.posts[2].g = CONTENT.es.posts[2].text.replace(' Hoy el Área de Virtualización y e-Learning de la UIFCE suma {{courses}} cursos virtualizados.', '');
   CONTENT.en.posts[2].g = CONTENT.en.posts[2].text.replace(' Today, the UIFCE Virtualization & e-Learning Unit has {{courses}} courses virtualized.', '');
+
+  /* Invitación a seguir el perfil de la UIFCE */
+  CONTENT.es.follow =
+`¡Hola! Te invito a seguir el perfil de la Unidad de Informática de la Facultad de Ciencias Económicas (UIFCE) de la Universidad Nacional de Colombia en LinkedIn. Allí compartimos proyectos de transformación digital, e-learning, analítica de datos e inteligencia artificial, además de eventos y microtalleres para la comunidad.
+
+👉 ${UIFCE_URL}`;
+  CONTENT.en.follow =
+`Hi! I invite you to follow the IT Unit of the School of Economic Sciences (UIFCE), National University of Colombia, on LinkedIn. We share digital transformation, e-learning, data analytics and AI projects, plus events and micro-workshops for the community.
+
+👉 ${UIFCE_URL}`;
+  const POST_CTA = {
+    es: '👉 Sigue a la UIFCE en LinkedIn para más contenido sobre tecnología y educación: linkedin.com/in/uifce',
+    en: '👉 Follow UIFCE on LinkedIn for more on technology and education: linkedin.com/in/uifce'
+  };
+  ['es', 'en'].forEach(lang => CONTENT[lang].posts.forEach(p => {
+    ['text', 'g'].forEach(k => {
+      if (!p[k]) return;
+      const cut = p[k].lastIndexOf('\n\n#');
+      p[k] = p[k].slice(0, cut) + '\n\n' + POST_CTA[lang] + p[k].slice(cut) + ' #UIFCE';
+    });
+  }));
 
   const SKILLS = [
     { cat: 'ped',  es: 'Aprendizaje Basado en Problemas (ABP) y Proyectos (ABPro)', en: 'Problem-Based Learning (PBL) & Project-Based Learning' },
@@ -1054,6 +1092,7 @@ TAGLINE
   registerCopy('roles', () => rolesPlain(state.lang));
   registerCopy('alliances', () => alliancesPlain(state.lang));
   registerCopy('edu', () => C().education.map(r => `• ${r[0]} — ${r[1]}`).join('\n'));
+  registerCopy('followInvite', () => C().follow);
   registerCopy('stack', () => C().stack.join(' · '));
   registerCopy('skillsLang', () => visibleSkills().map(s => s[state.lang]).join('\n'));
   registerCopy('skillsBoth', () => visibleSkills().map(s => `${s.es} | ${s.en}`).join('\n'));
@@ -1067,8 +1106,8 @@ TAGLINE
       const c = CONTENT[lang];
       const es = lang === 'es';
       const h = es
-        ? { title: '🇪🇸 Versión en Español', banner: 'Lema del banner', head: 'Titulares', sel: 'seleccionado', about: 'Acerca de', exp: 'Experiencia', roles: 'Trayectoria y roles directivos', all: 'Alianzas y proyectos interinstitucionales', skills: 'Aptitudes', stack: 'Stack tecnológico', rec: 'Mensaje de solicitud de recomendación', posts: 'Plantillas de publicaciones', pillar: 'Pilar' }
-        : { title: '🇺🇸 English Version', banner: 'Cover banner tagline', head: 'Headlines', sel: 'selected', about: 'About', exp: 'Experience', roles: 'Leadership track record', all: 'Inter-institutional partnerships & projects', skills: 'Skills', stack: 'Tech stack', rec: 'Recommendation request message', posts: 'Post templates', pillar: 'Pillar' };
+        ? { title: '🇪🇸 Versión en Español', banner: 'Lema del banner', head: 'Titulares', sel: 'seleccionado', about: 'Acerca de', exp: 'Experiencia', roles: 'Trayectoria y roles directivos', all: 'Alianzas y proyectos interinstitucionales', skills: 'Aptitudes', stack: 'Stack tecnológico', rec: 'Mensaje de solicitud de recomendación', posts: 'Plantillas de publicaciones', pillar: 'Pilar', follow: 'Invitación a seguir a la UIFCE' }
+        : { title: '🇺🇸 English Version', banner: 'Cover banner tagline', head: 'Headlines', sel: 'selected', about: 'About', exp: 'Experience', roles: 'Leadership track record', all: 'Inter-institutional partnerships & projects', skills: 'Skills', stack: 'Tech stack', rec: 'Recommendation request message', posts: 'Post templates', pillar: 'Pillar', follow: 'Invitation to follow UIFCE' };
       return [
         `## ${h.title}`,
         `### ${h.banner}`, `> ${c.banner}`,
@@ -1083,6 +1122,7 @@ TAGLINE
         `### ${h.skills}`, SKILLS.map((s, i) => `${i + 1}. ${s[lang]}`).join('\n'),
         `### ${h.stack}`, c.stack.join(' · '),
         `### ${h.rec}`, '```text\n' + c.rec(es ? '[Nombre]' : '[Name]') + '\n```',
+        `### ${h.follow}`, '```text\n' + c.follow + '\n```',
         `### ${h.posts}`,
         c.posts.map((p, i) => `#### ${i + 1}. ${h.pillar}: ${p.pillar}\n\n${md(postTpl(p))}`).join('\n\n---\n\n')
       ].join('\n\n');
@@ -1094,7 +1134,7 @@ TAGLINE
     return [
       '# Guía Bilingüe de LinkedIn · Bilingual LinkedIn Guide',
       '**Henry Martínez Sarmiento** — Director UIFCE · Profesor Asociado / Associate Professor · Universidad Nacional de Colombia',
-      `Perfil / Profile: ${PROFILE_URL}  \nGenerado / Generated: ${today}`,
+      `Perfil / Profile: ${PROFILE_URL}  \nUIFCE en LinkedIn / on LinkedIn: ${UIFCE_URL}  \nGenerado / Generated: ${today}`,
       ...(generic()
         ? ['> ℹ️ Versión genérica: los textos no incluyen métricas / Generic version: texts contain no metrics.']
         : [
