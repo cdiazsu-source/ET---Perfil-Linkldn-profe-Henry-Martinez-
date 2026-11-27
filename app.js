@@ -151,6 +151,7 @@
       openProfile: 'Abrir mi perfil de LinkedIn ↗',
       enNote: 'Estos textos son para tu perfil en inglés. Créalo así: en tu perfil, a la derecha, «Añadir perfil en otro idioma» → English. Luego sigue los mismos pasos.',
       where: 'Dónde:',
+      tip: '<strong>Esto es lo sugerido.</strong> ¿Quieres algo más específico u otro enfoque? Pídeselo al Máster de Estrategias Tecnológicas de la UIFCE.',
       copy: 'Copiar', copied: '¡Copiado!', done: 'Hecho', progress: (n, t) => `${n} de ${t} pasos hechos`,
       toast: 'Copiado. Ahora pégalo en LinkedIn (Ctrl + V).', fail: 'No se pudo copiar. Selecciona el texto y cópialo a mano.',
       langAria: 'Idioma de los textos',
@@ -180,6 +181,7 @@
       openProfile: 'Open my LinkedIn profile ↗',
       enNote: 'These texts are for your English profile. Create it like this: on your profile, on the right, “Add profile in another language” → English. Then follow the same steps.',
       where: 'Where:',
+      tip: '<strong>This is our suggestion.</strong> Want something more specific or a different angle? Ask the UIFCE Tech Strategy Master.',
       copy: 'Copy', copied: 'Copied!', done: 'Done', progress: (n, t) => `${n} of ${t} steps done`,
       toast: 'Copied. Now paste it on LinkedIn (Ctrl + V).', fail: 'Copy failed. Select the text and copy it manually.',
       langAria: 'Text language',
@@ -331,6 +333,7 @@
         </div>
         <p class="step__where"><strong>${esc(u.where)}</strong> ${esc(s.w)}</p>
         <div class="step__body">${stepBody(id)}</div>
+        <p class="step__tip"><span aria-hidden="true">💡</span> <span>${u.tip}</span></p>
       </li>`;
     }).join('');
     updateProgress();

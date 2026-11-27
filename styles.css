@@ -84,6 +84,8 @@ a { color: var(--action); }
 .step.is-done .step__done { background: var(--green-50); border-color: var(--green); color: var(--green); }
 .step__where { margin: 12px 0 14px; background: var(--surface-2); border-left: 4px solid var(--primary); padding: 10px 14px; border-radius: 0 10px 10px 0; }
 .step__body { display: grid; gap: 14px; justify-items: start; }
+.step__tip { display: flex; gap: 8px; margin: 16px 0 0; padding: 10px 14px; background: var(--cream); border-radius: 12px; font-size: 15px; }
+.step__tip strong { color: var(--navy); }
 
 /* Campos copiables */
 .field { width: 100%; }
