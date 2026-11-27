@@ -108,8 +108,14 @@
   /* Interfaz */
   const UI = {
     es: {
-      title: 'Tu perfil de LinkedIn, listo para copiar y pegar',
-      intro: 'Son 7 pasos. En cada uno: abre la sección que se indica en LinkedIn, pulsa «Copiar» y pega el texto. Marca el paso como hecho al terminar.',
+      kicker: 'Misión UIFCE · 7 pasos · unos 20 minutos',
+      title: 'Profe, arregla tu perfil de LinkedIn',
+      intro: 'Tu perfil dice «Docente de gestión» y un banner gris… y tú diriges la informática de toda una Facultad. Aquí ya está todo escrito: solo copia, pega y marca cada paso como hecho.',
+      bubble: '¡Profe, sin excusas! Ya te lo dejé todo listo 😎',
+      cheers: ['¡Arrancamos, profe! 💪', '¡Eso, profe! Va tomando forma.', '¡Vamos por la mitad! 🔥', '¡Ya casi, profe! Últimos detalles.', '¡Perfil arreglado! 🎉'],
+      finishTitle: '¡Listo, profe! Perfil arreglado 🎉',
+      finishText: 'Ahora sí: tu perfil cuenta lo que haces. Revísalo una vez más y compártelo con tus colegas.',
+      finishLink: 'Ver cómo quedó mi perfil ↗',
       openProfile: 'Abrir mi perfil de LinkedIn ↗',
       enNote: 'Estos textos son para tu perfil en inglés. Créalo así: en tu perfil, a la derecha, «Añadir perfil en otro idioma» → English. Luego sigue los mismos pasos.',
       where: 'Dónde:',
@@ -118,20 +124,26 @@
       langAria: 'Idioma de los textos',
       steps: {
         cover: { t: 'Elige y cambia la foto de portada', w: 'Elige una de las 14 fotos de la Facultad y descárgala. Luego, en tu perfil, pulsa el ícono de cámara ( 📷 ) arriba a la derecha de la portada → «Cambiar foto» → sube la imagen → «Aplicar».', dl: 'Descargar esta portada', grad: 'Con degradado azul', noGrad: 'Sin degradado', gradAria: 'Estilo de la portada', pick: 'Toca una foto para elegirla:', sel: 'Elegida' },
-        headline: { t: 'Pega el titular', w: 'En tu perfil, pulsa el lápiz ( ✎ ) a la derecha de tu foto → campo «Titular» → borra el texto anterior y pega → «Guardar».' },
-        about: { t: 'Pega el «Acerca de»', w: 'En tu perfil, sección «Acerca de» → lápiz ( ✎ ) → borra el texto anterior y pega → «Guardar». Si no tienes la sección: «Añadir sección» → «Acerca de».' },
+        headline: { t: 'Adiós a «Docente de gestión»: pega el titular', w: 'En tu perfil, pulsa el lápiz ( ✎ ) a la derecha de tu foto → campo «Titular» → borra el texto anterior y pega → «Guardar».' },
+        about: { t: 'Cuenta tu historia en «Acerca de»', w: 'En tu perfil, sección «Acerca de» → lápiz ( ✎ ) → borra el texto anterior y pega → «Guardar». Si no tienes la sección: «Añadir sección» → «Acerca de».' },
         exp: { t: 'Experiencia: Director de la UIFCE', w: 'En tu perfil, sección «Experiencia» → «+» → «Añadir cargo» (o el lápiz si ya existe). Copia y pega cada campo → «Guardar».' },
         prof: { t: 'Experiencia: Profesor Asociado', w: 'Igual que el paso anterior: «Experiencia» → «+» → «Añadir cargo». Copia y pega cada campo → «Guardar».' },
-        skills: { t: 'Agrega las 12 aptitudes', w: 'En tu perfil, sección «Aptitudes» → «+» → pega una aptitud → «Guardar». Repite con cada una (la que copias queda marcada).' },
-        follow: { t: 'Sigue a la UIFCE y compártela', w: 'Abre el perfil de la UIFCE y pulsa «Seguir». Después, si quieres, copia esta invitación y envíala a tus contactos.', open: 'Abrir perfil de la UIFCE ↗' }
+        skills: { t: 'Presume tus 12 aptitudes', w: 'En tu perfil, sección «Aptitudes» → «+» → pega una aptitud → «Guardar». Repite con cada una (la que copias queda marcada).' },
+        follow: { t: 'Remate: sigue a la UIFCE y compártela', w: 'Abre el perfil de la UIFCE y pulsa «Seguir». Después, si quieres, copia esta invitación y envíala a tus contactos.', open: 'Abrir perfil de la UIFCE ↗' }
       },
       f: { title: 'Cargo', type: 'Tipo de empleo', typeV: 'Jornada completa (elígelo de la lista)', org: 'Empresa', loc: 'Ubicación', desc: 'Descripción', invite: 'Invitación' },
       orgV: 'Universidad Nacional de Colombia', locV: 'Bogotá, D.C., Colombia',
       footer: 'Unidad de Informática · Facultad de Ciencias Económicas · Universidad Nacional de Colombia'
     },
     en: {
-      title: 'Your LinkedIn profile, ready to copy and paste',
-      intro: 'There are 7 steps. In each one, open the LinkedIn section shown, click “Copy” and paste the text. Mark the step as done when you finish.',
+      kicker: 'UIFCE mission · 7 steps · about 20 minutes',
+      title: 'Prof, fix your LinkedIn profile',
+      intro: 'Your profile says “Management Lecturer” with a gray banner… and you run IT for an entire School. Everything is already written here: just copy, paste and mark each step as done.',
+      bubble: 'No excuses, Prof! I got it all ready for you 😎',
+      cheers: ['Let’s go, Prof! 💪', 'Nice, Prof! It’s taking shape.', 'Halfway there! 🔥', 'Almost there, Prof! Final touches.', 'Profile fixed! 🎉'],
+      finishTitle: 'Done, Prof! Profile fixed 🎉',
+      finishText: 'Now your profile tells what you really do. Give it one last look and share it with your colleagues.',
+      finishLink: 'See how my profile looks ↗',
       openProfile: 'Open my LinkedIn profile ↗',
       enNote: 'These texts are for your English profile. Create it like this: on your profile, on the right, “Add profile in another language” → English. Then follow the same steps.',
       where: 'Where:',
@@ -140,12 +152,12 @@
       langAria: 'Text language',
       steps: {
         cover: { t: 'Pick and change the cover photo', w: 'Pick one of the 14 School photos and download it. Then, on your profile, click the camera icon ( 📷 ) at the top right of the cover → “Change photo” → upload the image → “Apply”.', dl: 'Download this cover', grad: 'With blue gradient', noGrad: 'No gradient', gradAria: 'Cover style', pick: 'Tap a photo to pick it:', sel: 'Selected' },
-        headline: { t: 'Paste the headline', w: 'On your profile, click the pencil ( ✎ ) to the right of your photo → “Headline” field → delete the old text and paste → “Save”.' },
-        about: { t: 'Paste the “About” section', w: 'On your profile, “About” section → pencil ( ✎ ) → delete the old text and paste → “Save”. If you don’t have it: “Add section” → “About”.' },
+        headline: { t: 'Bye “Management Lecturer”: paste the headline', w: 'On your profile, click the pencil ( ✎ ) to the right of your photo → “Headline” field → delete the old text and paste → “Save”.' },
+        about: { t: 'Tell your story in “About”', w: 'On your profile, “About” section → pencil ( ✎ ) → delete the old text and paste → “Save”. If you don’t have it: “Add section” → “About”.' },
         exp: { t: 'Experience: UIFCE Director', w: 'On your profile, “Experience” section → “+” → “Add position” (or the pencil if it already exists). Copy and paste each field → “Save”.' },
         prof: { t: 'Experience: Associate Professor', w: 'Same as the previous step: “Experience” → “+” → “Add position”. Copy and paste each field → “Save”.' },
-        skills: { t: 'Add the 12 skills', w: 'On your profile, “Skills” section → “+” → paste one skill → “Save”. Repeat for each one (the one you copy gets checked).' },
-        follow: { t: 'Follow UIFCE and share it', w: 'Open the UIFCE profile and click “Follow”. Then, if you like, copy this invitation and send it to your contacts.', open: 'Open the UIFCE profile ↗' }
+        skills: { t: 'Show off your 12 skills', w: 'On your profile, “Skills” section → “+” → paste one skill → “Save”. Repeat for each one (the one you copy gets checked).' },
+        follow: { t: 'Final touch: follow UIFCE and share it', w: 'Open the UIFCE profile and click “Follow”. Then, if you like, copy this invitation and send it to your contacts.', open: 'Open the UIFCE profile ↗' }
       },
       f: { title: 'Title', type: 'Employment type', typeV: 'Full-time (pick it from the list)', org: 'Company', loc: 'Location', desc: 'Description', invite: 'Invitation' },
       orgV: 'National University of Colombia', locV: 'Bogotá, D.C., Colombia',
@@ -245,6 +257,11 @@
     const u = UI[state.lang];
     document.documentElement.lang = state.lang;
     $('#title').textContent = u.title;
+    $('#kicker').textContent = u.kicker;
+    $('#finishTitle').textContent = u.finishTitle;
+    $('#finishText').textContent = u.finishText;
+    $('#finishLink').textContent = u.finishLink;
+    $('#finishLink').href = PROFILE_URL;
     $('#intro').textContent = u.intro;
     $('#openProfile').textContent = u.openProfile;
     $('#enNote').hidden = state.lang !== 'en';
@@ -280,6 +297,10 @@
     const n = STEP_IDS.filter(id => state.done[id]).length;
     $('#progressText').textContent = UI[state.lang].progress(n, STEP_IDS.length);
     $('#progressBar').style.width = `${(n / STEP_IDS.length) * 100}%`;
+    const u = UI[state.lang], total = STEP_IDS.length;
+    const idx = n === 0 ? -1 : n === total ? 4 : n <= 2 ? 1 : n <= 4 ? 2 : 3;
+    $('#bubble').textContent = idx < 0 ? u.bubble : u.cheers[idx];
+    $('#finish').hidden = n !== total;
   };
 
   /* Portapapeles */
@@ -342,6 +363,11 @@
     li.classList.toggle('is-done', box.checked);
     li.querySelector('.step__num').textContent = box.checked ? '✓' : STEP_IDS.indexOf(box.dataset.done) + 1;
     updateProgress();
+    if (box.checked) {
+      const n = STEP_IDS.filter(id => state.done[id]).length;
+      toast(n === STEP_IDS.length ? UI[state.lang].finishTitle : UI[state.lang].cheers[Math.min(3, Math.floor(n / 2))]);
+      if (n === STEP_IDS.length) $('#finish').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   });
 
   $('#openProfile').href = PROFILE_URL;

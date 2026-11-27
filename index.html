@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Perfil LinkedIn · Henry Martínez</title>
+  <title>Profe, arregla tu LinkedIn</title>
   <meta name="description" content="Guía de copiar y pegar para actualizar el perfil de LinkedIn de Henry Martínez Sarmiento, Director de la UIFCE - Universidad Nacional de Colombia.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,9 +27,13 @@
 
   <main class="panel">
     <section class="intro">
-      <img class="intro__mascot" src="assets/uifcito.webp" alt="" width="501" height="640">
+      <div class="intro__side">
+        <div class="bubble" id="bubble"></div>
+        <img class="intro__mascot" src="assets/uifcito.webp" alt="" width="501" height="640">
+      </div>
       <div>
-        <h1 id="title">Tu perfil de LinkedIn, listo para copiar y pegar</h1>
+        <p class="kicker" id="kicker"></p>
+        <h1 id="title">Profe, arregla tu perfil de LinkedIn</h1>
         <p id="intro"></p>
         <a class="btn btn--ghost" id="openProfile" href="#" target="_blank" rel="noopener">Abrir mi perfil de LinkedIn ↗</a>
         <p class="note" id="enNote" hidden></p>
@@ -37,6 +41,12 @@
     </section>
 
     <ol class="steps" id="steps"></ol>
+
+    <section class="finish" id="finish" hidden>
+      <p class="finish__big" id="finishTitle"></p>
+      <p id="finishText"></p>
+      <a class="btn btn--primary" id="finishLink" href="#" target="_blank" rel="noopener"></a>
+    </section>
   </main>
 
   <footer class="footer">
