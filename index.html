@@ -7,7 +7,7 @@
   <meta name="description" content="Herramienta bilingüe (ES/EN) de optimización del perfil de LinkedIn de Henry Martínez Sarmiento, Director de la UIFCE - Universidad Nacional de Colombia.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&family=Montserrat:wght@600;700;800;900&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,10 +17,10 @@
   <header class="topbar" role="banner">
     <div class="topbar__inner">
       <a class="brand" href="#diagnostico" aria-label="LinkedIn Studio HMS">
-        <span class="brand__mark" aria-hidden="true">HM</span>
+        <img class="brand__logo" src="assets/logo-uifce-et.webp" alt="UIFCE Estrategias Tecnológicas" width="720" height="114">
         <span class="brand__text">
+          <small>2026-2S · UIFCE · UNAL</small>
           <strong>LinkedIn Studio</strong>
-          <small>UIFCE · UNAL</small>
         </span>
       </a>
 
@@ -64,11 +64,17 @@
             <button type="button" class="btn btn--ghost" data-action="export" data-i18n="actions.export">Exportar Guía Bilingüe (.md)</button>
           </div>
         </div>
-        <aside class="hero__stats" aria-label="Indicadores" data-i18n-aria="hero.statsAria">
+        <aside class="hero__side">
+        <div class="mascot" aria-hidden="true">
+          <div class="dialog"><span class="g-top"></span><span class="g-corner"></span><div class="dialog-in" data-i18n="hero.mascot">¡Hola! Soy Uifcito. Aquí tienes el perfil de Henry listo para copiar.</div></div>
+          <img src="assets/uifcito.webp" alt="" width="501" height="640">
+        </div>
+        <div class="hero__stats" role="group" aria-label="Indicadores" data-i18n-aria="hero.statsAria">
           <div class="stat"><span class="stat__num" id="statYears">15</span><span class="stat__lbl" data-i18n="hero.statYears">años de trayectoria</span></div>
           <div class="stat"><span class="stat__num">167</span><span class="stat__lbl" data-i18n="hero.statConn">contactos actuales</span></div>
           <div class="stat"><span class="stat__num">12</span><span class="stat__lbl" data-i18n="hero.statSkills">aptitudes estratégicas</span></div>
           <div class="stat"><span class="stat__num">2</span><span class="stat__lbl" data-i18n="hero.statLangs">idiomas de perfil</span></div>
+        </div>
         </aside>
       </div>
     </section>
@@ -134,13 +140,8 @@
 
         <article class="li-card" id="liCard" aria-live="polite">
           <div class="li-banner" id="liBanner">
-            <div class="li-banner__art" aria-hidden="true">
-              <span class="node n1"></span><span class="node n2"></span><span class="node n3"></span><span class="node n4"></span>
-            </div>
-            <div class="li-banner__content">
-              <span class="li-banner__kicker">UIFCE · UNAL</span>
-              <p class="li-banner__motto" id="bannerMotto"></p>
-            </div>
+            <img class="li-banner__img" id="bannerImg" src="portadas/portada-2-patio-escultura.jpg" alt="" width="1584" height="396">
+            <img class="li-banner__logo" src="assets/logo-uifce-blanco.png" alt="" width="900" height="397">
           </div>
           <div class="li-body">
             <div class="li-avatar" aria-hidden="true">HM</div>
@@ -162,6 +163,27 @@
           </div>
         </article>
 
+        <article class="card covers mt" aria-labelledby="h-covers">
+          <div class="card__head">
+            <div>
+              <h3 id="h-covers" data-i18n="cover.title">Portadas UIFCE · 1584 × 396 px</h3>
+              <p class="muted" data-i18n="cover.sub">Para la portada usa únicamente el logo de la unidad. Elige una foto de la Facultad que ya lo lleva aplicado.</p>
+            </div>
+            <div class="seg seg--sm" role="group" aria-label="Degradado" data-i18n-aria="cover.gradAria">
+              <button type="button" class="seg__btn" data-grad="1" aria-pressed="true" data-i18n="cover.withGrad">Con degradado azul</button>
+              <button type="button" class="seg__btn" data-grad="0" aria-pressed="false" data-i18n="cover.noGrad">Sin degradado</button>
+            </div>
+          </div>
+          <div class="covers__bar">
+            <button type="button" class="btn-copy btn-copy--icon" data-cover-step="-1" aria-label="Anterior" data-i18n-aria="cover.prev">‹</button>
+            <span class="covers__name" id="coverName" aria-live="polite"></span>
+            <button type="button" class="btn-copy btn-copy--icon" data-cover-step="1" aria-label="Siguiente" data-i18n-aria="cover.next">›</button>
+            <a class="btn btn--primary btn--small" id="coverDownload" href="#" download data-i18n="cover.download">Descargar portada</a>
+            <a class="btn btn--ghost btn--small" id="coverOpen" href="#" target="_blank" rel="noopener" data-i18n="cover.open">Abrir imagen ↗</a>
+          </div>
+          <div class="gal" id="coverGallery" role="radiogroup" aria-label="Portadas listas" data-i18n-aria="cover.galAria"></div>
+        </article>
+
         <div class="grid grid--2 mt">
           <article class="card">
             <div class="card__head">
@@ -177,10 +199,12 @@
             </div>
             <p class="quote" id="bannerMottoText"></p>
             <ul class="swatches" aria-label="Paleta" data-i18n-aria="sim.paletteAria">
-              <li><span style="background:#0B2A5B"></span>#0B2A5B <small data-i18n="sim.c1">Azul UNAL</small></li>
-              <li><span style="background:#0F766E"></span>#0F766E <small data-i18n="sim.c2">Teal digital</small></li>
-              <li><span style="background:#14B8A6"></span>#14B8A6 <small data-i18n="sim.c3">Acento</small></li>
-              <li><span style="background:#F3F6FA;border:1px solid #cfd8e3"></span>#F3F6FA <small data-i18n="sim.c4">Superficie</small></li>
+              <li><span style="background:#042361"></span>#042361 <small data-i18n="sim.c1">Azul marino</small></li>
+              <li><span style="background:#4574B9"></span>#4574B9 <small data-i18n="sim.c2">Azul UIFCE</small></li>
+              <li><span style="background:#44D3FE"></span>#44D3FE <small data-i18n="sim.c3">Cian</small></li>
+              <li><span style="background:#AFC6E4"></span>#AFC6E4 <small data-i18n="sim.c4">Textura</small></li>
+              <li><span style="background:#EAE9CB"></span>#EAE9CB <small data-i18n="sim.c5">Crema</small></li>
+              <li><span style="background:#F4CB18"></span>#F4CB18 <small data-i18n="sim.c6">Amarillo</small></li>
             </ul>
           </article>
         </div>
@@ -394,6 +418,7 @@
 
   <footer class="footer">
     <div class="container">
+      <img class="footer__logo" src="assets/logo-uifce-blanco.png" alt="UIFCE · Unidad de Informática de la Facultad de Ciencias Económicas" width="900" height="397">
       <p data-i18n="footer">Unidad de Informática · Facultad de Ciencias Económicas · Universidad Nacional de Colombia. Los cambios se guardan automáticamente en este navegador.</p>
     </div>
   </footer>

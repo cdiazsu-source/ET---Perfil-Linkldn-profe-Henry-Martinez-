@@ -66,9 +66,17 @@
       'sim.location': 'Bogotá, D.C., Colombia', 'sim.contact': 'Información de contacto',
       'sim.connections': '167 contactos', 'sim.org': 'Universidad Nacional de Colombia',
       'sim.btnConnect': 'Conectar', 'sim.btnMessage': 'Enviar mensaje', 'sim.btnMore': 'Más',
-      'sim.bannerSpecs': 'Especificaciones del banner (Canva / Figma)',
-      'sim.motto': 'Lema del banner', 'sim.paletteAria': 'Paleta de color',
-      'sim.c1': 'Azul UNAL', 'sim.c2': 'Teal digital', 'sim.c3': 'Acento', 'sim.c4': 'Superficie',
+      'sim.bannerSpecs': 'Lineamientos de la portada (línea gráfica UIFCE)',
+      'sim.motto': 'Lema de marca (opcional)', 'sim.paletteAria': 'Paleta de color',
+      'sim.c1': 'Azul marino', 'sim.c2': 'Azul UIFCE', 'sim.c3': 'Cian', 'sim.c4': 'Textura', 'sim.c5': 'Crema', 'sim.c6': 'Amarillo',
+      'hero.mascot': '¡Hola! Soy Uifcito. Aquí tienes el perfil de Henry listo para copiar.',
+      'cover.title': 'Portadas UIFCE · 1584 × 396 px',
+      'cover.sub': 'Para la portada usa únicamente el logo de la unidad. Elige una foto de la Facultad que ya lo lleva aplicado.',
+      'cover.gradAria': 'Degradado de la portada', 'cover.withGrad': 'Con degradado azul', 'cover.noGrad': 'Sin degradado',
+      'cover.prev': 'Portada anterior', 'cover.next': 'Portada siguiente', 'cover.galAria': 'Portadas listas',
+      'cover.download': 'Descargar portada', 'cover.open': 'Abrir imagen ↗', 'cover.plain': 'Fondo liso',
+      'cover.plainNote': 'El fondo liso es una referencia: descarga una foto o monta el logo en blanco sobre fondo oscuro.',
+      'cover.toast': 'Portada aplicada al simulador',
       'sim.headlineTitle': 'Selector de titular (headline)',
       'sim.headlineSub': 'Elige una variante: se aplica al simulador y a la exportación. Límite de LinkedIn: 220 caracteres.',
       'about.title': 'Sección «Acerca de»',
@@ -157,9 +165,17 @@
       'sim.location': 'Bogotá, D.C., Colombia', 'sim.contact': 'Contact info',
       'sim.connections': '167 connections', 'sim.org': 'National University of Colombia',
       'sim.btnConnect': 'Connect', 'sim.btnMessage': 'Message', 'sim.btnMore': 'More',
-      'sim.bannerSpecs': 'Cover banner specs (Canva / Figma)',
-      'sim.motto': 'Banner tagline', 'sim.paletteAria': 'Color palette',
-      'sim.c1': 'UNAL blue', 'sim.c2': 'Digital teal', 'sim.c3': 'Accent', 'sim.c4': 'Surface',
+      'sim.bannerSpecs': 'Cover guidelines (UIFCE visual identity)',
+      'sim.motto': 'Brand tagline (optional)', 'sim.paletteAria': 'Color palette',
+      'sim.c1': 'Navy', 'sim.c2': 'UIFCE blue', 'sim.c3': 'Cyan', 'sim.c4': 'Texture', 'sim.c5': 'Cream', 'sim.c6': 'Yellow',
+      'hero.mascot': 'Hi! I am Uifcito. Here is Henry’s profile, ready to copy.',
+      'cover.title': 'UIFCE covers · 1584 × 396 px',
+      'cover.sub': 'For the cover, use the unit logo only. Pick a School photo that already has it applied.',
+      'cover.gradAria': 'Cover gradient', 'cover.withGrad': 'With blue gradient', 'cover.noGrad': 'No gradient',
+      'cover.prev': 'Previous cover', 'cover.next': 'Next cover', 'cover.galAria': 'Ready-made covers',
+      'cover.download': 'Download cover', 'cover.open': 'Open image ↗', 'cover.plain': 'Plain background',
+      'cover.plainNote': 'The plain background is a reference: download a photo or place the white logo over a dark background.',
+      'cover.toast': 'Cover applied to the simulator',
       'sim.headlineTitle': 'Headline selector',
       'sim.headlineSub': 'Pick a variant: it is applied to the simulator and the export. LinkedIn limit: 220 characters.',
       'about.title': '“About” section',
@@ -604,12 +620,37 @@ What has been your biggest lesson in taking learning to digital environments?
   /* ------------------------------------------------------------------
      4. ESTADO + PERSISTENCIA
      ------------------------------------------------------------------ */
+  const COVERS = [
+    { f: null, es: 'Fondo liso', en: 'Plain background' },
+    { f: 'portada-1-esquina-ventanales', es: 'Esquina de ventanales', en: 'Window corner' },
+    { f: 'portada-2-patio-escultura', es: 'Patio y escultura', en: 'Courtyard & sculpture' },
+    { f: 'portada-3-plaza-estudiantil', es: 'Plaza estudiantil', en: 'Student plaza' },
+    { f: 'portada-4-fachada-blanca-panoramica', es: 'Fachada blanca (panorámica)', en: 'White façade (panoramic)' },
+    { f: 'portada-5-fachada-blanca', es: 'Fachada blanca', en: 'White façade' },
+    { f: 'portada-6-entrada-ladrillo', es: 'Entrada del edificio de ladrillo', en: 'Brick building entrance' },
+    { f: 'portada-7-entrada-jardin', es: 'Entrada con árbol', en: 'Entrance with tree' },
+    { f: 'portada-8-campus-panoramico', es: 'Campus panorámico', en: 'Campus panorama' },
+    { f: 'portada-9-unal-cesped', es: '#UNAL en el césped', en: '#UNAL on the lawn' },
+    { f: 'portada-10-edificio-303b', es: 'Edificio 303 B', en: 'Building 303 B' },
+    { f: 'portada-11-plaza-torre', es: 'Plaza y torre', en: 'Plaza & tower' },
+    { f: 'portada-12-terrazas-ladrillo', es: 'Terrazas de ladrillo', en: 'Brick terraces' },
+    { f: 'portada-13-unal-campus', es: '#UNAL y el campus', en: '#UNAL & campus' },
+    { f: 'portada-14-cielo-y-ladrillo', es: 'Cielo y ladrillo', en: 'Sky & brick' }
+  ];
+  const coverSrc = (i, grad) => {
+    const c = COVERS[i];
+    if (!c || !c.f) return null;
+    return grad ? `portadas/${c.f}.jpg` : `portadas/sin-degradado/${c.f}-sin-degradado.jpg`;
+  };
+
   const defaultState = () => ({
     lang: 'es',
     vars: { ...DEFAULT_VARS },
     headline: 0,
     mode: 'generic',
     simView: 'after',
+    cover: 2,
+    coverGrad: true,
     skillFilter: 'all',
     steps: {},
     recs: {},
@@ -630,6 +671,8 @@ What has been your biggest lesson in taking learning to digital environments?
         vars: { ...base.vars, ...(saved.vars || {}) },
         headline: [0, 1, 2].includes(saved.headline) ? saved.headline : 0,
         mode: saved.mode === 'metrics' ? 'metrics' : 'generic',
+        cover: Number.isInteger(saved.cover) && saved.cover >= 0 && saved.cover < COVERS.length ? saved.cover : 2,
+        coverGrad: saved.coverGrad !== false,
         steps: saved.steps || {},
         recs: saved.recs || {},
         recLang: saved.recLang || {}
@@ -815,48 +858,68 @@ What has been your biggest lesson in taking learning to digital environments?
   };
 
   const bannerSpecs = (lang) => {
-    const motto = CONTENT[lang].banner;
+    const cv = COVERS[state.cover];
+    const file = cv.f ? coverSrc(state.cover, state.coverGrad).split('/').pop() : '—';
     return lang === 'es'
 ? `FORMATO
-• Dimensiones: 1584 × 396 px (relación 4:1)
-• Exportar: PNG o JPG, máx. 8 MB, perfil de color sRGB
+• Dimensiones: 1584 × 396 px (relación 4:1) · JPG o PNG, máx. 8 MB, sRGB
+• Portada seleccionada: ${cv.es} (${state.coverGrad ? 'con' : 'sin'} degradado azul)
+• Archivo: ${file}
 
-ZONA SEGURA
-• La foto de perfil cubre la esquina inferior izquierda (≈ 0–560 px en X / 200–396 px en Y)
-• Ubicar el lema en los dos tercios derechos, alineado a la derecha
-• Margen interno mínimo: 60 px · En móvil se recortan ~10 % por lado
+LOGO
+• Solo el logo de la UIFCE, en blanco, arriba a la izquierda
+• La foto de perfil queda abajo a la izquierda: por eso el logo va arriba
+• ¿Otra foto? Usa el logo UIFCE en blanco sobre un fondo oscuro
 
-TIPOGRAFÍA
-• Lema: Plus Jakarta Sans ExtraBold, 44–52 px, #FFFFFF
-• Etiqueta «UIFCE · UNAL»: Plus Jakarta Sans Bold, 18 px, espaciado 18 %, #7EE8D8
+EVITA
+• Añadir fotos, textos largos o más logos junto al de la UIFCE
+• Estirar, deformar o recolorear el logo
+• Usar una imagen pixelada o con el logo muy pequeño
 
-COLOR Y GRÁFICOS
-• Degradado 120°: #061733 → #0B2A5B (45 %) → #0F766E
-• Retícula técnica: líneas #FFFFFF al 5 %, cada 28 px
-• Nodos de red: círculos #14B8A6 con resplandor suave
-
-LEMA
-"${motto}"`
+LÍNEA GRÁFICA
+• Azul marino #042361 · Azul UIFCE #4574B9 · Cian #44D3FE
+• Textura #AFC6E4 · Crema #EAE9CB · Amarillo #F4CB18
+• Tipografías: Montserrat (títulos), Ubuntu (subtítulos), Fira Sans (texto), JetBrains Mono (código)`
 : `FORMAT
-• Size: 1584 × 396 px (4:1 ratio)
-• Export: PNG or JPG, max 8 MB, sRGB color profile
+• Size: 1584 × 396 px (4:1 ratio) · JPG or PNG, max 8 MB, sRGB
+• Selected cover: ${cv.en} (${state.coverGrad ? 'with' : 'without'} blue gradient)
+• File: ${file}
 
-SAFE ZONE
-• Profile photo covers the bottom-left corner (≈ 0–560 px on X / 200–396 px on Y)
-• Place the tagline across the right two-thirds, right-aligned
-• Minimum inner margin: 60 px · Mobile crops ~10% per side
+LOGO
+• UIFCE logo only, in white, top left
+• The profile photo sits bottom left: that is why the logo is at the top
+• Another photo? Place the white UIFCE logo over a dark background
 
-TYPOGRAPHY
-• Tagline: Plus Jakarta Sans ExtraBold, 44–52 px, #FFFFFF
-• “UIFCE · UNAL” label: Plus Jakarta Sans Bold, 18 px, 18% tracking, #7EE8D8
+AVOID
+• Adding photos, long text or extra logos next to the UIFCE one
+• Stretching, distorting or recoloring the logo
+• Using a pixelated image or a tiny logo
 
-COLOR & GRAPHICS
-• 120° gradient: #061733 → #0B2A5B (45%) → #0F766E
-• Tech grid: #FFFFFF lines at 5% opacity, every 28 px
-• Network nodes: #14B8A6 circles with a soft glow
+VISUAL IDENTITY
+• Navy #042361 · UIFCE blue #4574B9 · Cyan #44D3FE
+• Texture #AFC6E4 · Cream #EAE9CB · Yellow #F4CB18
+• Typefaces: Montserrat (titles), Ubuntu (subtitles), Fira Sans (body), JetBrains Mono (code)`;
+  };
 
-TAGLINE
-"${motto}"`;
+  const renderCovers = () => {
+    const lang = state.lang;
+    const i = state.cover;
+    const src = coverSrc(i, state.coverGrad);
+    $('#liBanner').classList.toggle('is-plain', !src);
+    if (src) $('#bannerImg').src = src;
+    $('#coverName').textContent = `${COVERS[i][lang]} · ${i + 1} / ${COVERS.length}`;
+    $$('.seg__btn[data-grad]').forEach(b => b.setAttribute('aria-pressed', String((b.dataset.grad === '1') === state.coverGrad)));
+    const dl = $('#coverDownload');
+    const op = $('#coverOpen');
+    [dl, op].forEach(el => { el.hidden = !src; if (src) el.href = src; });
+    if (src) dl.setAttribute('download', src.split('/').pop());
+    $('#coverGallery').innerHTML = COVERS.map((c, k) => {
+      const th = coverSrc(k, state.coverGrad);
+      const media = th
+        ? `<img src="${th}" alt="" loading="lazy" width="1584" height="396">`
+        : `<span class="thumb__plain"><img src="assets/logo-uifce-blanco.png" alt="" width="900" height="397"></span>`;
+      return `<button type="button" class="thumb${k === i ? ' on' : ''}" role="radio" aria-checked="${k === i}" data-cover="${k}">${media}<span>${esc(c[lang])}</span></button>`;
+    }).join('') + (src ? '' : `<p class="muted gal__note">${esc(t('cover.plainNote'))}</p>`);
   };
 
   const renderSim = () => {
@@ -864,7 +927,7 @@ TAGLINE
     const before = state.simView === 'before';
     $('#liCard').classList.toggle('is-before', before);
     $$('.seg__btn[data-sim]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.sim === state.simView)));
-    $('#bannerMotto').textContent = c.banner;
+    renderCovers();
     $('#liHeadline').textContent = before ? c.oldHeadline : c.headlines[state.headline].text;
     $('#bannerSpecs').textContent = bannerSpecs(state.lang);
     $('#bannerMottoText').textContent = c.banner;
@@ -1100,17 +1163,30 @@ TAGLINE
   /* ------------------------------------------------------------------
      10. EXPORTACIÓN MARKDOWN BILINGÜE
      ------------------------------------------------------------------ */
+  const coverMd = (lang) => {
+    const cv = COVERS[state.cover];
+    const src = coverSrc(state.cover, state.coverGrad);
+    const es = lang === 'es';
+    const name = `${cv[lang]} (${es ? (state.coverGrad ? 'con' : 'sin') : (state.coverGrad ? 'with' : 'without')} ${es ? 'degradado azul' : 'blue gradient'})`;
+    return src
+      ? `- ${es ? 'Seleccionada' : 'Selected'}: **${name}**
+- ${es ? 'Archivo' : 'File'}: \`${src}\`
+- ${es ? 'Solo el logo de la UIFCE, en blanco, arriba a la izquierda.' : 'UIFCE logo only, in white, top left.'}`
+      : `- ${es ? 'Fondo liso con el logo de la UIFCE en blanco, arriba a la izquierda.' : 'Plain background with the white UIFCE logo, top left.'}`;
+  };
+
   const buildMarkdown = () => {
     const today = new Date().toISOString().slice(0, 10);
     const L = (lang) => {
       const c = CONTENT[lang];
       const es = lang === 'es';
       const h = es
-        ? { title: '🇪🇸 Versión en Español', banner: 'Lema del banner', head: 'Titulares', sel: 'seleccionado', about: 'Acerca de', exp: 'Experiencia', roles: 'Trayectoria y roles directivos', all: 'Alianzas y proyectos interinstitucionales', skills: 'Aptitudes', stack: 'Stack tecnológico', rec: 'Mensaje de solicitud de recomendación', posts: 'Plantillas de publicaciones', pillar: 'Pilar', follow: 'Invitación a seguir a la UIFCE' }
-        : { title: '🇺🇸 English Version', banner: 'Cover banner tagline', head: 'Headlines', sel: 'selected', about: 'About', exp: 'Experience', roles: 'Leadership track record', all: 'Inter-institutional partnerships & projects', skills: 'Skills', stack: 'Tech stack', rec: 'Recommendation request message', posts: 'Post templates', pillar: 'Pillar', follow: 'Invitation to follow UIFCE' };
+        ? { title: '🇪🇸 Versión en Español', banner: 'Portada (1584 × 396 px)', motto: 'Lema de marca', head: 'Titulares', sel: 'seleccionado', about: 'Acerca de', exp: 'Experiencia', roles: 'Trayectoria y roles directivos', all: 'Alianzas y proyectos interinstitucionales', skills: 'Aptitudes', stack: 'Stack tecnológico', rec: 'Mensaje de solicitud de recomendación', posts: 'Plantillas de publicaciones', pillar: 'Pilar', follow: 'Invitación a seguir a la UIFCE' }
+        : { title: '🇺🇸 English Version', banner: 'Cover (1584 × 396 px)', motto: 'Brand tagline', head: 'Headlines', sel: 'selected', about: 'About', exp: 'Experience', roles: 'Leadership track record', all: 'Inter-institutional partnerships & projects', skills: 'Skills', stack: 'Tech stack', rec: 'Recommendation request message', posts: 'Post templates', pillar: 'Pillar', follow: 'Invitation to follow UIFCE' };
       return [
         `## ${h.title}`,
-        `### ${h.banner}`, `> ${c.banner}`,
+        `### ${h.banner}`, coverMd(lang),
+        `### ${h.motto}`, `> ${c.banner}`,
         `### ${h.head}`,
         c.headlines.map((x, i) => `${i + 1}. **${x.title}**${i === state.headline ? ` _(${h.sel})_` : ''}\n   ${x.text}`).join('\n'),
         `### ${h.about}`, md(aboutTpl(lang)),
@@ -1192,6 +1268,13 @@ TAGLINE
       toast(t(generic() ? 'mode.toast.generic' : 'mode.toast.metrics'));
       return;
     }
+
+    const coverBtn = target.closest('[data-cover]');
+    if (coverBtn) { state.cover = Number(coverBtn.dataset.cover); save(); renderSim(); toast(t('cover.toast')); return; }
+    const coverStep = target.closest('[data-cover-step]');
+    if (coverStep) { state.cover = (state.cover + Number(coverStep.dataset.coverStep) + COVERS.length) % COVERS.length; save(); renderSim(); return; }
+    const gradBtn = target.closest('[data-grad]');
+    if (gradBtn) { state.coverGrad = gradBtn.dataset.grad === '1'; save(); renderSim(); return; }
 
     const simBtn = target.closest('[data-sim]');
     if (simBtn) { state.simView = simBtn.dataset.sim; save(); renderSim(); return; }
