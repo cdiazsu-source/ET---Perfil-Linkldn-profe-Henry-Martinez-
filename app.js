@@ -8,6 +8,38 @@
   const STORAGE_KEY = 'hms-linkedin-guia-v1';
   const PROFILE_URL = 'https://www.linkedin.com/in/henry-mart%C3%ADnez-sarmiento-aab963144/';
   const UIFCE_URL = 'https://www.linkedin.com/in/uifce/';
+
+  /* Monitores UIFCE 2026-2 (fuente: MejoraTuPerfilUIFCE). k = nivel */
+  const TEAM = [
+    {"n": "Lina Fernanda Sanabria Muñoz", "k": 0, "l": "https://www.linkedin.com/in/lina-fernanda-sanabria-munoz-97ab9b2a4"},
+    {"n": "David Santiago Parra Herrera", "k": 0, "l": "https://www.linkedin.com/in/santiago-parra-herrera-08b277341/"},
+    {"n": "Brayan Santiago Maldonado Aparicio", "k": 1, "l": "https://www.linkedin.com/in/brayan-maldonado-549336276"},
+    {"n": "Sebastian Stiff Quiroga Rios", "k": 2, "l": "https://www.linkedin.com/in/sebastian-stiff-quiroga-rios-546aa5430/"},
+    {"n": "Ángela Lucía Fierro Aponte", "k": 2, "l": "https://www.linkedin.com/in/angela-lucia-fierro-aponte-992548386"},
+    {"n": "Diego Fernando López Abril", "k": 2, "l": "https://www.linkedin.com/in/diegoloabril/"},
+    {"n": "Cesar Steven Diaz Suarez", "k": 2, "l": "https://www.linkedin.com/in/cesar-steven-diaz-suarez-744b82250/"},
+    {"n": "Juan Esteban Laguna Beltrán", "k": 2, "l": "https://www.linkedin.com/in/juan-esteban-laguna-beltr%C3%A1n-312b4829a"},
+    {"n": "Yony Sebastian Chaparro Mesa", "k": 2, "l": "https://www.linkedin.com/in/yony-sebastian-chaparro-mesa-7a69b8215/"},
+    {"n": "Laura Angélica Cárdenas Cely", "k": 3, "l": "https://www.linkedin.com/in/ang%C3%A9lica-c%C3%A1rdenas-657a692b4/"},
+    {"n": "Juan David Delgado Moreno", "k": 3, "l": "https://www.linkedin.com/in/juan-david-delgado-moreno-701b20412/"},
+    {"n": "Paula Sofia Bocarejo Alberto", "k": 3, "l": "https://www.linkedin.com/in/paula-sofia-bocarejo-alberto"},
+    {"n": "Angel Stiven Gutierrez Diaz", "k": 3, "l": "https://www.linkedin.com/in/angel-stiven-gutierrez-diaz"},
+    {"n": "Jean Carlos Baquero Garcia", "k": 3, "l": "https://www.linkedin.com/in/jean-carlos-baquero-garcia-a048a33a8"},
+    {"n": "Diego Alejandro Garnica Mamanché", "k": 3, "l": "https://www.linkedin.com/in/alejandro-garnica-125a86309"},
+    {"n": "María Fernanda Celis Mora", "k": 3, "l": "https://www.linkedin.com/in/mar%C3%ADa-fernanda-celis-mora-673b44291/"},
+    {"n": "Camilo Alejandro Lagos Malaver", "k": 3, "l": "https://www.linkedin.com/in/camilo-alejandro-lagos-malaver"},
+    {"n": "Diego Fernando Mellizo Pedraza", "k": 3, "l": "https://www.linkedin.com/in/diego-fernando-mellizo-pedraza-5083782b3"},
+    {"n": "Nicolas Daniel Ramirez Camargo", "k": 3, "l": "https://www.linkedin.com/in/nicol%C3%A1s-daniel-ram%C3%ADrez-camargo-353836432"},
+    {"n": "Jeferson David Anzola Grajales", "k": 3, "l": "https://www.linkedin.com/in/jeferson-david-anzola-grajales-b55aa4375"},
+    {"n": "Angel David Ruiz Barbosa", "k": 3, "l": "https://www.linkedin.com/in/angel-ruiz-96314a192/"},
+    {"n": "Deivid Farid Ardila Herrera", "k": 3, "l": "https://www.linkedin.com/in/faridardila/"},
+    {"n": "Joel Santiago Rodríguez Guzmán", "k": 4, "l": "https://www.linkedin.com/in/joel-santiago-rodriguez-guzman-2b9892432/"},
+    {"n": "Keller Joseph Guzmán Ariza", "k": 4, "l": "https://www.linkedin.com/in/keller-guzm%C3%A1n-365526366"}
+  ];
+  const RANK = {
+    es: ['Coordinador/a', 'Líder de Desarrollo', 'Monitor/a Máster', 'Monitor/a Junior', 'Monitor/a Junior ad honorem'],
+    en: ['Unit Coordinator', 'Software Development Lead', 'Team Lead', 'Student Fellow', 'Student Fellow (Volunteer)']
+  };
   const COVERS = [
     { f: 'portada-1-esquina-ventanales', es: 'Esquina de ventanales', en: 'Window corner' },
     { f: 'portada-2-patio-escultura', es: 'Patio y escultura', en: 'Courtyard & sculpture' },
@@ -108,7 +140,7 @@
   /* Interfaz */
   const UI = {
     es: {
-      kicker: 'Misión UIFCE · 7 pasos · unos 20 minutos',
+      kicker: 'Misión UIFCE · 8 pasos · unos 25 minutos',
       title: 'Profe, arregla tu perfil de LinkedIn',
       intro: 'Tu perfil dice «Docente de gestión» y un banner gris… y tú diriges la informática de toda una Facultad. Aquí ya está todo escrito: solo copia, pega y marca cada paso como hecho.',
       bubble: '¡Profe, sin excusas! Ya te lo dejé todo listo 😎',
@@ -129,14 +161,15 @@
         exp: { t: 'Experiencia: Director de la UIFCE', w: 'En tu perfil, sección «Experiencia» → «+» → «Añadir cargo» (o el lápiz si ya existe). Copia y pega cada campo → «Guardar».' },
         prof: { t: 'Experiencia: Profesor Asociado', w: 'Igual que el paso anterior: «Experiencia» → «+» → «Añadir cargo». Copia y pega cada campo → «Guardar».' },
         skills: { t: 'Presume tus 12 aptitudes', w: 'En tu perfil, sección «Aptitudes» → «+» → pega una aptitud → «Guardar». Repite con cada una (la que copias queda marcada).' },
-        follow: { t: 'Remate: sigue a la UIFCE y compártela', w: 'Abre el perfil de la UIFCE y pulsa «Seguir». Después, si quieres, copia esta invitación y envíala a tus contactos.', open: 'Abrir perfil de la UIFCE ↗' }
+        follow: { t: 'Sigue a la UIFCE y compártela', w: 'Abre el perfil de la UIFCE y pulsa «Seguir». Después, si quieres, copia esta invitación y envíala a tus contactos.', open: 'Abrir perfil de la UIFCE ↗' },
+        team: { t: 'Remate: sigue a tus monitores UIFCE 2026-2', w: 'Son los estudiantes que hacen posible la UIFCE este semestre. Abre cada perfil y pulsa «Seguir» (o «Conectar»). Cada perfil que abras queda marcado.', follow: 'Seguir', count: (n, t) => `${n} de ${t} monitores visitados` }
       },
       f: { title: 'Cargo', type: 'Tipo de empleo', typeV: 'Jornada completa (elígelo de la lista)', org: 'Empresa', loc: 'Ubicación', desc: 'Descripción', invite: 'Invitación' },
       orgV: 'Universidad Nacional de Colombia', locV: 'Bogotá, D.C., Colombia',
       footer: 'Unidad de Informática · Facultad de Ciencias Económicas · Universidad Nacional de Colombia'
     },
     en: {
-      kicker: 'UIFCE mission · 7 steps · about 20 minutes',
+      kicker: 'UIFCE mission · 8 steps · about 25 minutes',
       title: 'Prof, fix your LinkedIn profile',
       intro: 'Your profile says “Management Lecturer” with a gray banner… and you run IT for an entire School. Everything is already written here: just copy, paste and mark each step as done.',
       bubble: 'No excuses, Prof! I got it all ready for you 😎',
@@ -157,7 +190,8 @@
         exp: { t: 'Experience: UIFCE Director', w: 'On your profile, “Experience” section → “+” → “Add position” (or the pencil if it already exists). Copy and paste each field → “Save”.' },
         prof: { t: 'Experience: Associate Professor', w: 'Same as the previous step: “Experience” → “+” → “Add position”. Copy and paste each field → “Save”.' },
         skills: { t: 'Show off your 12 skills', w: 'On your profile, “Skills” section → “+” → paste one skill → “Save”. Repeat for each one (the one you copy gets checked).' },
-        follow: { t: 'Final touch: follow UIFCE and share it', w: 'Open the UIFCE profile and click “Follow”. Then, if you like, copy this invitation and send it to your contacts.', open: 'Open the UIFCE profile ↗' }
+        follow: { t: 'Follow UIFCE and share it', w: 'Open the UIFCE profile and click “Follow”. Then, if you like, copy this invitation and send it to your contacts.', open: 'Open the UIFCE profile ↗' },
+        team: { t: 'Final touch: follow your UIFCE student team 2026-2', w: 'These are the students who make UIFCE happen this semester. Open each profile and click “Follow” (or “Connect”). Every profile you open gets checked.', follow: 'Follow', count: (n, t) => `${n} of ${t} team members visited` }
       },
       f: { title: 'Title', type: 'Employment type', typeV: 'Full-time (pick it from the list)', org: 'Company', loc: 'Location', desc: 'Description', invite: 'Invitation' },
       orgV: 'National University of Colombia', locV: 'Bogotá, D.C., Colombia',
@@ -165,14 +199,14 @@
     }
   };
 
-  const STEP_IDS = ['cover', 'headline', 'about', 'exp', 'prof', 'skills', 'follow'];
+  const STEP_IDS = ['cover', 'headline', 'about', 'exp', 'prof', 'skills', 'follow', 'team'];
 
   /* Estado */
-  let state = { lang: 'es', done: {}, skills: {}, cover: 1, grad: true };
+  let state = { lang: 'es', done: {}, skills: {}, mates: {}, cover: 1, grad: true };
   try {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
     if (saved) state = {
-      lang: saved.lang === 'en' ? 'en' : 'es', done: saved.done || {}, skills: saved.skills || {},
+      lang: saved.lang === 'en' ? 'en' : 'es', done: saved.done || {}, skills: saved.skills || {}, mates: saved.mates || {},
       cover: Number.isInteger(saved.cover) && saved.cover >= 0 && saved.cover < COVERS.length ? saved.cover : 1,
       grad: saved.grad !== false
     };
@@ -246,6 +280,22 @@
       case 'prof': return copyBox('profTitle', f.title, tx.profTitle) + fixedField(f.type, f.typeV) + copyBox('org', f.org, tx.org) + copyBox('loc', f.loc, tx.loc) + copyBox('profDesc', f.desc, tx.profDesc, true);
       case 'skills': return `<ol class="chips">${DATA[state.lang].skills.map((s, i) => `
         <li><button type="button" class="chip${state.skills[i] ? ' is-done' : ''}" data-skill="${i}" aria-pressed="${!!state.skills[i]}"><span class="chip__n">${i + 1}</span>${esc(s)}</button></li>`).join('')}</ol>`;
+      case 'team': {
+        const c = u.steps.team, seen = TEAM.filter((m, i) => state.mates[i]).length;
+        return `
+        <p class="team__count" id="teamCount">${esc(c.count(seen, TEAM.length))}</p>
+        <ul class="team">${TEAM.map((m, i) => {
+          const w = m.n.split(' ');
+          const ini = (w[0][0] + (w[2] ? w[2][0] : w[1] ? w[1][0] : '')).toUpperCase();
+          return `
+          <li class="mate${state.mates[i] ? ' is-done' : ''}">
+            <span class="mate__ini" aria-hidden="true">${esc(ini)}</span>
+            <span class="mate__tx"><b>${esc(m.n)}</b><small>${esc(RANK[state.lang][m.k])}</small></span>
+            <a class="mate__btn" href="${esc(m.l)}" target="_blank" rel="noopener" data-mate="${i}">${esc(c.follow)} ↗</a>
+          </li>`;
+        }).join('')}
+        </ul>`;
+      }
       case 'follow': return `
         <a class="btn btn--primary" href="${UIFCE_URL}" target="_blank" rel="noopener">${esc(u.steps.follow.open)}</a>
         ${copyBox('follow', f.invite, tx.follow)}`;
@@ -341,6 +391,15 @@
     if (copyBtn) {
       const ok = await writeClipboard(texts()[copyBtn.dataset.copy]);
       if (ok) { flash(copyBtn, u.copied); toast(u.toast); } else toast(u.fail, true);
+      return;
+    }
+
+    const mateLink = ev.target.closest('[data-mate]');
+    if (mateLink) {
+      state.mates[mateLink.dataset.mate] = true; save();
+      mateLink.closest('.mate').classList.add('is-done');
+      const seen = TEAM.filter((m, i) => state.mates[i]).length;
+      $('#teamCount').textContent = u.steps.team.count(seen, TEAM.length);
       return;
     }
 
