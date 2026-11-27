@@ -1,1402 +1,295 @@
 /* ==========================================================================
-   LinkedIn Studio · Henry Martínez Sarmiento (UIFCE - UNAL)
-   Motor bilingüe ES / EN · JavaScript ES6+ vainilla
+   Guía de perfil de LinkedIn · Henry Martínez Sarmiento (UIFCE - UNAL)
+   Solo copiar y pegar · ES / EN · JavaScript vainilla
    ========================================================================== */
 (() => {
   'use strict';
 
-  const STORAGE_KEY = 'hms-linkedin-studio-v1';
-  const UIFCE_URL = 'https://www.linkedin.com/in/uifce/';
+  const STORAGE_KEY = 'hms-linkedin-guia-v1';
   const PROFILE_URL = 'https://www.linkedin.com/in/henry-mart%C3%ADnez-sarmiento-aab963144/';
+  const UIFCE_URL = 'https://www.linkedin.com/in/uifce/';
+  const COVER = 'portadas/portada-2-patio-escultura.jpg';
 
-  /* ------------------------------------------------------------------
-     1. VARIABLES EDITABLES (compartidas entre ES y EN)
-     ------------------------------------------------------------------ */
-  const DEFAULT_VARS = {
-    years: '15',
-    courses: '+X',
-    students: 'X',
-    reduction: 'X%',
-    users: '+N',
-    uptime: 'X%',
-    trained: 'N'
+  /* Textos del perfil (versión sin métricas) */
+  const DATA = {
+    "es": {
+      "headline": "Director Unidad de Informática FCE y Profesor Asociado - Universidad Nacional de Colombia | Gobierno de TI, Cloud, IA y Analítica de Datos | Transformación Digital Educativa & Enablement Engineering",
+      "about": "¿Tu equipo técnico o educativo sigue dependiendo de consultores para resolver sus bloqueos del día a día? El verdadero cuello de botella organizativo no es la falta de talento, sino la falta de autonomía: cuando las personas reciben respuestas prefabricadas en lugar de desarrollar la capacidad de resolver problemas de forma independiente, la escalabilidad de tu organización se detiene.\n\nA lo largo de mi trayectoria en la intersección entre ingeniería de software, gestión de infraestructura y pedagogía técnica (Enablement Engineering), me he dedicado a transformar equipos altamente dependientes en células autosuficientes mediante metodologías de aprendizaje activo (Aprendizaje Basado en Indagación y ABP) e ingeniería de plataformas de autoservicio.\n\nSoy Administrador de Empresas y Magíster en Administración de Empresas de la Universidad Nacional de Colombia, donde me desempeño como profesor asociado de tiempo completo en la Escuela de Gestión y Contaduría Pública. Como Director de la Unidad de Informática de la Facultad de Ciencias Económicas (UIFCE), lidero la gobernanza de TI, la continuidad operativa, la ciberseguridad y la adopción de tecnologías emergentes (Cloud, Analítica de Datos e Inteligencia Artificial) al servicio de la docencia, la investigación y la extensión.\n\nHitos destacados:\n• Creación e implementación integral del Área de Virtualización y e-Learning con ecosistemas LMS escalables.\n• Dirección de proyectos de virtualización para diversas entidades, como DIAN, Ministerio de Salud y Protección Social, SENA, INPEC, CORTOLIMA y Facultad de Derecho.\n• Optimización de procesos administrativos y migración a la nube de servicios institucionales de alta demanda.\n• Conferencista del Programa de Educación Continua U.N. y consultor empresarial.\n\n¿Listo para escalar la tecnología y la autonomía digital de tu entorno académico o empresarial sin fricción? Conectemos. Y te invito a seguir a la UIFCE en LinkedIn: linkedin.com/in/uifce",
+      "exp": {
+        "title": "Director de la Unidad de Informática (UIFCE)",
+        "hitos": [
+          "Creación e implementación integral del Área de Virtualización Académica y e-Learning, con un ecosistema LMS escalable (Moodle / Canvas) proyectado hacia programas de posgrado, que amplió la oferta de cursos virtuales y el acceso de estudiantes a la formación en línea.",
+          "Optimización de los tiempos de respuesta en procesos digitales mediante migración a la nube, destacando el aplicativo de solicitudes y certificados para cursos libres, que agilizó la entrega de certificados y mejoró la experiencia de los usuarios.",
+          "Aseguramiento de la alta disponibilidad, la ciberseguridad y el rendimiento de plataformas académicas y administrativas críticas, incluyendo gestión de licenciamiento y soporte continuo.",
+          "Formación de profesionales y estudiantes bajo metodologías de indagación y ABP («aprender a pescar»), reduciendo la dependencia de terceros en proyectos de desarrollo."
+        ]
+      },
+      "role": [
+        "Profesor Asociado de Tiempo Completo",
+        "Escuela de Gestión y Contaduría Pública · Facultad de Ciencias Económicas, UNAL"
+      ],
+      "follow": "¡Hola! Te invito a seguir el perfil de la Unidad de Informática de la Facultad de Ciencias Económicas (UIFCE) de la Universidad Nacional de Colombia en LinkedIn. Allí compartimos proyectos de transformación digital, e-learning, analítica de datos e inteligencia artificial, además de eventos y microtalleres para la comunidad.\n\n👉 https://www.linkedin.com/in/uifce/",
+      "skills": [
+        "Aprendizaje Basado en Problemas (ABP) y Proyectos (ABPro)",
+        "Diseño Instruccional y Creación de Entornos Virtuales (E-learning)",
+        "Desarrollo de Autonomía y Metacognición en Estudiantes",
+        "Formación de Formadores (Train the Trainers)",
+        "Método Socrático y Facilitación del Aprendizaje",
+        "Evaluación por Competencias y Coevaluación",
+        "Gestión y Gobierno de TI (ITIL / COBIT)",
+        "Transformación Digital e Institucional",
+        "Arquitectura de Infraestructura Cloud y On-Premise (AWS / Azure)",
+        "Implementación y Gestión de Ecosistemas LMS (Moodle / Canvas)",
+        "Ciberseguridad y Continuidad Operativa (Uptime)",
+        "Optimización de Procesos y Eliminación de Cuellos de Botella"
+      ]
+    },
+    "en": {
+      "headline": "IT Unit Director & Associate Professor, School of Economic Sciences - National University of Colombia | IT Governance, Cloud, AI & Data Analytics | Higher Ed Digital Transformation & Enablement Engineering",
+      "about": "Does your technical or academic team still rely on external consultants to resolve day-to-day bottlenecks? The real organizational bottleneck isn't a lack of talent—it's a lack of autonomy. When people are handed pre-packaged answers instead of developing the capability to solve problems independently, organizational scalability stalls.\n\nThroughout my career at the intersection of software engineering, infrastructure management, and technical pedagogy (Enablement Engineering), I have focused on transforming high-dependency teams into self-sufficient units through active learning methodologies (Inquiry-Based Learning and PBL) and self-service platform engineering.\n\nI hold a Bachelor's degree in Business Administration and an MBA from the National University of Colombia, where I serve as a full-time Associate Professor in the Department of Management and Public Accounting. As Director of the IT Unit at the School of Economic Sciences (UIFCE), I lead IT governance, operational continuity, cybersecurity, and the adoption of emerging technologies (Cloud, Data Analytics, and Artificial Intelligence) to empower teaching, research, and institutional outreach.\n\nKey Highlights:\n• End-to-end creation and deployment of the Academic Virtualization & e-Learning Unit featuring scalable LMS ecosystems.\n• Project Director for course virtualization initiatives across multiple organizations, including DIAN, the Ministry of Health and Social Protection, SENA, INPEC, CORTOLIMA, and the School of Law.\n• Administrative workflow optimization and cloud migration for high-demand institutional services.\n• Speaker for the U.N. Continuing Education Program and business consultant.\n\nReady to scale technology and digital autonomy across your academic or enterprise ecosystem without friction? Let's connect—and follow UIFCE on LinkedIn: linkedin.com/in/uifce",
+      "exp": {
+        "title": "IT Unit Director (UIFCE)",
+        "hitos": [
+          "Built and launched the Academic Virtualization & e-Learning Unit end to end, with a scalable LMS ecosystem (Moodle / Canvas) designed to support graduate programs—expanding the virtual course portfolio and broadening student access to online learning.",
+          "Cut digital process response times through cloud migration—most notably the request and certificate platform for open courses, which streamlined certificate delivery and improved the user experience.",
+          "Ensured high availability, cybersecurity, and performance for mission-critical academic and administrative platforms, including license management and continuous support.",
+          "Trained professionals and students through inquiry-based learning and PBL (“teach them to fish”), reducing reliance on third parties in software development projects."
+        ]
+      },
+      "role": [
+        "Full-Time Associate Professor",
+        "Department of Management and Public Accounting · School of Economic Sciences, UNAL"
+      ],
+      "follow": "Hi! I invite you to follow the IT Unit of the School of Economic Sciences (UIFCE), National University of Colombia, on LinkedIn. We share digital transformation, e-learning, data analytics and AI projects, plus events and micro-workshops for the community.\n\n👉 https://www.linkedin.com/in/uifce/",
+      "skills": [
+        "Problem-Based Learning (PBL) & Project-Based Learning",
+        "Instructional Design & Virtual Learning Environments (e-Learning)",
+        "Learner Autonomy & Metacognition Development",
+        "Train the Trainer & Technical Enablement",
+        "Socratic Method & Inquiry-Based Facilitation",
+        "Competency-Based Assessment & Peer Evaluation",
+        "IT Governance & Service Management (ITIL / COBIT)",
+        "Enterprise & Higher Ed Digital Transformation",
+        "Cloud & Hybrid Infrastructure Architecture (AWS / Azure)",
+        "LMS Ecosystem Implementation & Administration (Moodle / Canvas)",
+        "Cybersecurity & Business Continuity (High Availability / Uptime)",
+        "Process Optimization & Bottleneck Elimination"
+      ]
+    }
   };
 
-  const VAR_META = {
-    years:     { es: 'Años de experiencia',                  en: 'Years of experience',              useEs: 'Acerca de',            useEn: 'About' },
-    courses:   { es: 'Cursos virtualizados',                 en: 'Courses virtualized',              useEs: 'Hito 1 · Publicación 3', useEn: 'Milestone 1 · Post 3' },
-    students:  { es: 'Estudiantes impactados',               en: 'Learners reached',                 useEs: 'Hito 1',               useEn: 'Milestone 1' },
-    reduction: { es: 'Reducción en tiempos de entrega',      en: 'Turnaround time reduction',        useEs: 'Hito 2',               useEn: 'Milestone 2' },
-    users:     { es: 'Usuarios del aplicativo de certificados', en: 'Certificate platform users',    useEs: 'Hito 2',               useEn: 'Milestone 2' },
-    uptime:    { es: 'Disponibilidad de plataformas (uptime)', en: 'Platform availability (uptime)', useEs: 'Hito 3',               useEn: 'Milestone 3' },
-    trained:   { es: 'Profesionales y estudiantes formados', en: 'Professionals & students trained', useEs: 'Hito 4',               useEn: 'Milestone 4' }
+  DATA.es.prof = {
+    title: 'Profesor Asociado de Tiempo Completo',
+    desc: 'Profesor asociado de tiempo completo en la Escuela de Gestión y Contaduría Pública de la Facultad de Ciencias Económicas.\n\n• Director de proyectos de virtualización para diversas entidades.\n• Conferencista del Programa de Educación Continua U.N.\n• Consultor empresarial.'
+  };
+  DATA.en.prof = {
+    title: 'Full-time Associate Professor',
+    desc: 'Full-time Associate Professor in the Department of Management and Public Accounting, School of Economic Sciences.\n\n• Project Director for course virtualization initiatives across multiple organizations.\n• Speaker for the U.N. Continuing Education Program.\n• Business consultant.'
   };
 
-  /* ------------------------------------------------------------------
-     2. DICCIONARIO DE INTERFAZ (i18n)
-     ------------------------------------------------------------------ */
+  /* Interfaz */
   const UI = {
     es: {
-      skip: 'Saltar al contenido',
-      navAria: 'Secciones',
-      'nav.diag': 'Diagnóstico', 'nav.header': 'Cabecera', 'nav.about': 'Acerca de',
-      'nav.exp': 'Experiencia', 'nav.skills': 'Aptitudes', 'nav.plan': 'Plan de acción',
-      progress: 'Perfil',
-      progressTitle: 'Completitud del perfil: {n} de {t} acciones',
-      'hero.eyebrow': 'Estrategia de marca personal · SEO internacional',
-      'hero.title': 'Optimización estratégica del perfil de LinkedIn de Henry Martínez Sarmiento',
-      'hero.lead': 'Director de la Unidad de Informática de la Facultad de Ciencias Económicas (UIFCE) y profesor asociado de tiempo completo de la Universidad Nacional de Colombia. Simula, edita y copia cada bloque listo para LinkedIn en español e inglés.',
-      'hero.open': 'Abrir perfil en LinkedIn ↗',
-      'hero.statsAria': 'Indicadores',
-      'hero.statYears': 'años de trayectoria', 'hero.statConn': 'contactos actuales',
-      'hero.statSkills': 'aptitudes estratégicas', 'hero.statLangs': 'idiomas de perfil',
-      'actions.export': 'Exportar Guía Bilingüe (.md)',
-      'actions.reset': 'Restaurar valores',
-      'diag.title': 'Diagnóstico actual vs. objetivo',
-      'diag.sub': 'Dónde está el perfil hoy y hacia dónde debe posicionarse.',
-      'diag.beforeTag': 'Antes', 'diag.afterTag': 'Después',
-      'diag.beforeTitle': 'Estado actual detectado', 'diag.afterTitle': 'Posicionamiento objetivo',
-      'diag.audience': 'Audiencia objetivo',
-      'diag.tableCaption': 'Comparativo antes y después por elemento del perfil',
-      'diag.colElement': 'Elemento', 'diag.colBefore': 'Antes', 'diag.colAfter': 'Después',
-      'sim.title': 'Simulador visual de cabecera',
-      'sim.sub': 'Banner + foto + titular, tal como se verá en LinkedIn.',
-      'sim.viewAria': 'Vista del simulador',
-      'sim.viewBefore': 'Perfil actual', 'sim.viewAfter': 'Perfil optimizado',
-      'sim.location': 'Bogotá, D.C., Colombia', 'sim.contact': 'Información de contacto',
-      'sim.connections': '167 contactos', 'sim.org': 'Universidad Nacional de Colombia',
-      'sim.btnConnect': 'Conectar', 'sim.btnMessage': 'Enviar mensaje', 'sim.btnMore': 'Más',
-      'sim.bannerSpecs': 'Lineamientos de la portada (línea gráfica UIFCE)',
-      'sim.motto': 'Lema de marca (opcional)', 'sim.paletteAria': 'Paleta de color',
-      'sim.c1': 'Azul marino', 'sim.c2': 'Azul UIFCE', 'sim.c3': 'Cian', 'sim.c4': 'Textura', 'sim.c5': 'Crema', 'sim.c6': 'Amarillo',
-      'hero.mascot': '¡Hola! Soy Uifcito. Aquí tienes el perfil de Henry listo para copiar.',
-      'cover.title': 'Portadas UIFCE · 1584 × 396 px',
-      'cover.sub': 'Para la portada usa únicamente el logo de la unidad. Elige una foto de la Facultad que ya lo lleva aplicado.',
-      'cover.gradAria': 'Degradado de la portada', 'cover.withGrad': 'Con degradado azul', 'cover.noGrad': 'Sin degradado',
-      'cover.prev': 'Portada anterior', 'cover.next': 'Portada siguiente', 'cover.galAria': 'Portadas listas',
-      'cover.download': 'Descargar portada', 'cover.open': 'Abrir imagen ↗', 'cover.plain': 'Fondo liso',
-      'cover.plainNote': 'El fondo liso es una referencia: descarga una foto o monta el logo en blanco sobre fondo oscuro.',
-      'cover.toast': 'Portada aplicada al simulador',
-      'sim.headlineTitle': 'Selector de titular (headline)',
-      'sim.headlineSub': 'Elige una variante: se aplica al simulador y a la exportación. Límite de LinkedIn: 220 caracteres.',
-      'about.title': 'Sección «Acerca de»',
-      'about.sub': 'Los campos resaltados son editables y se sincronizan entre español e inglés.',
-      'about.cardTitle': 'Acerca de',
-      'exp.title': 'Experiencia, roles y proyectos de impacto',
-      'exp.sub': 'Completa las métricas pendientes: se actualizan en ambas versiones lingüísticas.',
-      'exp.metricsTitle': 'Métricas editables',
-      'exp.rolesTitle': 'Trayectoria y roles directivos (UNAL)',
-      'exp.alliancesTitle': 'Alianzas y proyectos interinstitucionales',
-      'exp.usedIn': 'Se usa en',
-      'skills.title': 'Matriz de aptitudes y stack técnico',
-      'skills.sub': '12 aptitudes con su equivalente exacto en español e inglés.',
-      'skills.filterAria': 'Filtrar por categoría',
-      'skills.caption': 'Aptitudes en español e inglés',
-      'skills.colEs': 'Español', 'skills.colEn': 'English', 'skills.colCat': 'Categoría', 'skills.colCopy': 'Copiar',
-      'skills.all': 'Todas', 'skills.copyLang': 'Copiar visibles (ES)', 'skills.copyBoth': 'Copiar ES + EN',
-      'skills.stackTitle': 'Stack tecnológico',
-      'cat.ped': 'Pedagogía & Enablement', 'cat.gov': 'Gestión & Gobierno TI', 'cat.arch': 'Arquitectura & Cloud',
-      'plan.title': 'Plan de acción: recomendaciones y contenido',
-      'plan.sub': 'Nivel 2 · Ejecución y crecimiento de la red.',
-      'plan.stepsTitle': 'Pasos de implementación',
-      'plan.recsTitle': 'Gestor de recomendaciones',
-      'plan.recsSub': 'Marca cada solicitud enviada. Elige el idioma del mensaje por contacto.',
-      'plan.matrixTitle': 'Matriz de contenidos · 1 a 2 publicaciones por semana',
-      'plan.postsTitle': 'Plantillas de publicaciones',
-      'plan.recPending': 'Pendiente de solicitar', 'plan.recDone': 'Solicitud enviada',
-      'plan.recPreview': 'Ver mensaje', 'plan.recLang': 'Idioma del mensaje',
-      'plan.copyInvite': 'Copiar mensaje de invitación',
-      'plan.postMeta': 'Director UIFCE · Profesor Asociado UNAL',
-      'plan.ideas': 'Ideas',
-      'follow.title': 'Sigue a la UIFCE en LinkedIn',
-      'follow.sub': 'Invita a colegas, estudiantes, aliados y contactos a seguir el perfil de la Unidad de Informática de la FCE. Cada publicación, mensaje y la guía exportada ya incluyen esta invitación.',
-      'follow.open': 'Seguir a la UIFCE',
-      'follow.copy': 'Copiar invitación',
-      'follow.aria': 'Abrir el perfil de la UIFCE en LinkedIn (nueva pestaña)',
-      'cta.title': 'Guía bilingüe lista para publicar',
-      'cta.sub': 'Descarga un Markdown limpio con ambas versiones (ES / EN) para usar con «Agregar perfil en otro idioma».',
-      footer: 'Unidad de Informática · Facultad de Ciencias Económicas · Universidad Nacional de Colombia. Los cambios se guardan automáticamente en este navegador.',
-      copy: 'Copiar texto', copied: '¡Copiado!',
-      chars: '{n} / {max} caracteres',
-      recommended: 'Recomendada', selected: 'Seleccionada',
-      pendingN: '{n} métricas pendientes', pending1: '1 métrica pendiente', pendingNone: 'Métricas completas',
-      'mode.aria': 'Tipo de versión', 'mode.generic': 'Versión genérica', 'mode.metrics': 'Con métricas',
-      'mode.genericTag': 'Versión genérica · sin métricas',
-      'mode.genericNote': 'Versión genérica activa: los textos de «Acerca de», Experiencia y la publicación 3 no incluyen cifras. Cambia a «Con métricas» cuando tengas los datos.',
-      'mode.toast.generic': 'Versión genérica activada (sin métricas)', 'mode.toast.metrics': 'Versión con métricas activada',
-      'hero.statGeneric': 'Universidad Nacional de Colombia',
-      stepsOf: '{n} de {t}', recsOf: '{n} de {t} enviadas',
-      'toast.copied': 'Texto copiado al portapapeles',
-      'toast.copiedPending': 'Copiado. Atención: aún hay métricas pendientes (X / N)',
-      'toast.copyFail': 'No se pudo copiar. Selecciona el texto manualmente.',
-      'toast.lang': 'Idioma cambiado a Español',
-      'toast.exported': 'Guía bilingüe exportada (.md)',
-      'toast.reset': 'Valores restaurados',
-      'toast.storage': 'El navegador no permite guardar cambios: se perderán al cerrar.',
-      confirmReset: '¿Restaurar todos los valores? Se borrarán métricas, selección de titular y checklists guardados.'
+      title: 'Tu perfil de LinkedIn, listo para copiar y pegar',
+      intro: 'Son 7 pasos. En cada uno: abre la sección que se indica en LinkedIn, pulsa «Copiar» y pega el texto. Marca el paso como hecho al terminar.',
+      openProfile: 'Abrir mi perfil de LinkedIn ↗',
+      enNote: 'Estos textos son para tu perfil en inglés. Créalo así: en tu perfil, a la derecha, «Añadir perfil en otro idioma» → English. Luego sigue los mismos pasos.',
+      where: 'Dónde:',
+      copy: 'Copiar', copied: '¡Copiado!', done: 'Hecho', progress: (n, t) => `${n} de ${t} pasos hechos`,
+      toast: 'Copiado. Ahora pégalo en LinkedIn (Ctrl + V).', fail: 'No se pudo copiar. Selecciona el texto y cópialo a mano.',
+      langAria: 'Idioma de los textos',
+      steps: {
+        cover: { t: 'Cambia la foto de portada', w: 'En tu perfil, pulsa el ícono de cámara ( 📷 ) arriba a la derecha de la portada → «Cambiar foto» → sube la imagen descargada → «Aplicar».', dl: 'Descargar portada' },
+        headline: { t: 'Pega el titular', w: 'En tu perfil, pulsa el lápiz ( ✎ ) a la derecha de tu foto → campo «Titular» → borra el texto anterior y pega → «Guardar».' },
+        about: { t: 'Pega el «Acerca de»', w: 'En tu perfil, sección «Acerca de» → lápiz ( ✎ ) → borra el texto anterior y pega → «Guardar». Si no tienes la sección: «Añadir sección» → «Acerca de».' },
+        exp: { t: 'Experiencia: Director de la UIFCE', w: 'En tu perfil, sección «Experiencia» → «+» → «Añadir cargo» (o el lápiz si ya existe). Copia y pega cada campo → «Guardar».' },
+        prof: { t: 'Experiencia: Profesor Asociado', w: 'Igual que el paso anterior: «Experiencia» → «+» → «Añadir cargo». Copia y pega cada campo → «Guardar».' },
+        skills: { t: 'Agrega las 12 aptitudes', w: 'En tu perfil, sección «Aptitudes» → «+» → pega una aptitud → «Guardar». Repite con cada una (la que copias queda marcada).' },
+        follow: { t: 'Sigue a la UIFCE y compártela', w: 'Abre el perfil de la UIFCE y pulsa «Seguir». Después, si quieres, copia esta invitación y envíala a tus contactos.', open: 'Abrir perfil de la UIFCE ↗' }
+      },
+      f: { title: 'Cargo', type: 'Tipo de empleo', typeV: 'Jornada completa (elígelo de la lista)', org: 'Empresa', loc: 'Ubicación', desc: 'Descripción', invite: 'Invitación' },
+      orgV: 'Universidad Nacional de Colombia', locV: 'Bogotá, D.C., Colombia',
+      footer: 'Unidad de Informática · Facultad de Ciencias Económicas · Universidad Nacional de Colombia'
     },
     en: {
-      skip: 'Skip to content',
-      navAria: 'Sections',
-      'nav.diag': 'Diagnosis', 'nav.header': 'Header', 'nav.about': 'About',
-      'nav.exp': 'Experience', 'nav.skills': 'Skills', 'nav.plan': 'Action plan',
-      progress: 'Profile',
-      progressTitle: 'Profile completeness: {n} of {t} actions',
-      'hero.eyebrow': 'Personal branding · International SEO',
-      'hero.title': 'Strategic LinkedIn profile optimization for Henry Martínez Sarmiento',
-      'hero.lead': 'Director of the IT Unit at the School of Economic Sciences (UIFCE) and full-time Associate Professor at the National University of Colombia. Preview, edit and copy every LinkedIn-ready block in Spanish and English.',
-      'hero.open': 'Open LinkedIn profile ↗',
-      'hero.statsAria': 'Key figures',
-      'hero.statYears': 'years of experience', 'hero.statConn': 'current connections',
-      'hero.statSkills': 'strategic skills', 'hero.statLangs': 'profile languages',
-      'actions.export': 'Export Bilingual Guide (.md)',
-      'actions.reset': 'Reset values',
-      'diag.title': 'Current diagnosis vs. target',
-      'diag.sub': 'Where the profile stands today and where it should be positioned.',
-      'diag.beforeTag': 'Before', 'diag.afterTag': 'After',
-      'diag.beforeTitle': 'Current state', 'diag.afterTitle': 'Target positioning',
-      'diag.audience': 'Target audience',
-      'diag.tableCaption': 'Before and after comparison by profile element',
-      'diag.colElement': 'Element', 'diag.colBefore': 'Before', 'diag.colAfter': 'After',
-      'sim.title': 'Profile header simulator',
-      'sim.sub': 'Cover banner + photo + headline, exactly as it will appear on LinkedIn.',
-      'sim.viewAria': 'Simulator view',
-      'sim.viewBefore': 'Current profile', 'sim.viewAfter': 'Optimized profile',
-      'sim.location': 'Bogotá, D.C., Colombia', 'sim.contact': 'Contact info',
-      'sim.connections': '167 connections', 'sim.org': 'National University of Colombia',
-      'sim.btnConnect': 'Connect', 'sim.btnMessage': 'Message', 'sim.btnMore': 'More',
-      'sim.bannerSpecs': 'Cover guidelines (UIFCE visual identity)',
-      'sim.motto': 'Brand tagline (optional)', 'sim.paletteAria': 'Color palette',
-      'sim.c1': 'Navy', 'sim.c2': 'UIFCE blue', 'sim.c3': 'Cyan', 'sim.c4': 'Texture', 'sim.c5': 'Cream', 'sim.c6': 'Yellow',
-      'hero.mascot': 'Hi! I am Uifcito. Here is Henry’s profile, ready to copy.',
-      'cover.title': 'UIFCE covers · 1584 × 396 px',
-      'cover.sub': 'For the cover, use the unit logo only. Pick a School photo that already has it applied.',
-      'cover.gradAria': 'Cover gradient', 'cover.withGrad': 'With blue gradient', 'cover.noGrad': 'No gradient',
-      'cover.prev': 'Previous cover', 'cover.next': 'Next cover', 'cover.galAria': 'Ready-made covers',
-      'cover.download': 'Download cover', 'cover.open': 'Open image ↗', 'cover.plain': 'Plain background',
-      'cover.plainNote': 'The plain background is a reference: download a photo or place the white logo over a dark background.',
-      'cover.toast': 'Cover applied to the simulator',
-      'sim.headlineTitle': 'Headline selector',
-      'sim.headlineSub': 'Pick a variant: it is applied to the simulator and the export. LinkedIn limit: 220 characters.',
-      'about.title': '“About” section',
-      'about.sub': 'Highlighted fields are editable and stay in sync between Spanish and English.',
-      'about.cardTitle': 'About',
-      'exp.title': 'Experience, roles & impact projects',
-      'exp.sub': 'Fill in pending metrics: they update both language versions.',
-      'exp.metricsTitle': 'Editable metrics',
-      'exp.rolesTitle': 'Leadership track record (UNAL)',
-      'exp.alliancesTitle': 'Inter-institutional partnerships & projects',
-      'exp.usedIn': 'Used in',
-      'skills.title': 'Skills matrix & tech stack',
-      'skills.sub': '12 skills with their exact Spanish and English equivalents.',
-      'skills.filterAria': 'Filter by category',
-      'skills.caption': 'Skills in Spanish and English',
-      'skills.colEs': 'Español', 'skills.colEn': 'English', 'skills.colCat': 'Category', 'skills.colCopy': 'Copy',
-      'skills.all': 'All', 'skills.copyLang': 'Copy visible (EN)', 'skills.copyBoth': 'Copy ES + EN',
-      'skills.stackTitle': 'Tech stack',
-      'cat.ped': 'Pedagogy & Enablement', 'cat.gov': 'IT Management & Governance', 'cat.arch': 'Architecture & Cloud',
-      'plan.title': 'Action plan: recommendations & content',
-      'plan.sub': 'Level 2 · Execution and network growth.',
-      'plan.stepsTitle': 'Implementation steps',
-      'plan.recsTitle': 'Recommendation request manager',
-      'plan.recsSub': 'Check each request once sent. Choose the message language per contact.',
-      'plan.matrixTitle': 'Content matrix · 1–2 posts per week',
-      'plan.postsTitle': 'Post templates',
-      'plan.recPending': 'Not requested yet', 'plan.recDone': 'Request sent',
-      'plan.recPreview': 'View message', 'plan.recLang': 'Message language',
-      'plan.copyInvite': 'Copy invitation message',
-      'plan.postMeta': 'IT Unit Director · Associate Professor, UNAL',
-      'plan.ideas': 'Ideas',
-      'follow.title': 'Follow UIFCE on LinkedIn',
-      'follow.sub': 'Invite colleagues, students, partners and contacts to follow the IT Unit of the School of Economic Sciences. Every post, message and the exported guide already include this invitation.',
-      'follow.open': 'Follow UIFCE',
-      'follow.copy': 'Copy invitation',
-      'follow.aria': 'Open the UIFCE LinkedIn profile (new tab)',
-      'cta.title': 'Bilingual guide, ready to publish',
-      'cta.sub': 'Download a clean Markdown file with both versions (ES / EN) for LinkedIn’s “Add profile in another language”.',
-      footer: 'IT Unit · School of Economic Sciences · National University of Colombia. Changes are saved automatically in this browser.',
-      copy: 'Copy text', copied: 'Copied!',
-      chars: '{n} / {max} characters',
-      recommended: 'Recommended', selected: 'Selected',
-      pendingN: '{n} metrics pending', pending1: '1 metric pending', pendingNone: 'All metrics complete',
-      'mode.aria': 'Version type', 'mode.generic': 'Generic version', 'mode.metrics': 'With metrics',
-      'mode.genericTag': 'Generic version · no metrics',
-      'mode.genericNote': 'Generic version on: the About, Experience and post 3 texts contain no figures. Switch to “With metrics” once the data is available.',
-      'mode.toast.generic': 'Generic version on (no metrics)', 'mode.toast.metrics': 'Metrics version on',
-      'hero.statGeneric': 'National University of Colombia',
-      stepsOf: '{n} of {t}', recsOf: '{n} of {t} sent',
-      'toast.copied': 'Text copied to clipboard',
-      'toast.copiedPending': 'Copied. Heads up: some metrics are still pending (X / N)',
-      'toast.copyFail': 'Copy failed. Please select the text manually.',
-      'toast.lang': 'Language switched to English',
-      'toast.exported': 'Bilingual guide exported (.md)',
-      'toast.reset': 'Values restored',
-      'toast.storage': 'This browser blocks saving: changes will be lost on close.',
-      confirmReset: 'Reset all values? Saved metrics, headline choice and checklists will be cleared.'
+      title: 'Your LinkedIn profile, ready to copy and paste',
+      intro: 'There are 7 steps. In each one, open the LinkedIn section shown, click “Copy” and paste the text. Mark the step as done when you finish.',
+      openProfile: 'Open my LinkedIn profile ↗',
+      enNote: 'These texts are for your English profile. Create it like this: on your profile, on the right, “Add profile in another language” → English. Then follow the same steps.',
+      where: 'Where:',
+      copy: 'Copy', copied: 'Copied!', done: 'Done', progress: (n, t) => `${n} of ${t} steps done`,
+      toast: 'Copied. Now paste it on LinkedIn (Ctrl + V).', fail: 'Copy failed. Select the text and copy it manually.',
+      langAria: 'Text language',
+      steps: {
+        cover: { t: 'Change the cover photo', w: 'On your profile, click the camera icon ( 📷 ) at the top right of the cover → “Change photo” → upload the downloaded image → “Apply”.', dl: 'Download cover' },
+        headline: { t: 'Paste the headline', w: 'On your profile, click the pencil ( ✎ ) to the right of your photo → “Headline” field → delete the old text and paste → “Save”.' },
+        about: { t: 'Paste the “About” section', w: 'On your profile, “About” section → pencil ( ✎ ) → delete the old text and paste → “Save”. If you don’t have it: “Add section” → “About”.' },
+        exp: { t: 'Experience: UIFCE Director', w: 'On your profile, “Experience” section → “+” → “Add position” (or the pencil if it already exists). Copy and paste each field → “Save”.' },
+        prof: { t: 'Experience: Associate Professor', w: 'Same as the previous step: “Experience” → “+” → “Add position”. Copy and paste each field → “Save”.' },
+        skills: { t: 'Add the 12 skills', w: 'On your profile, “Skills” section → “+” → paste one skill → “Save”. Repeat for each one (the one you copy gets checked).' },
+        follow: { t: 'Follow UIFCE and share it', w: 'Open the UIFCE profile and click “Follow”. Then, if you like, copy this invitation and send it to your contacts.', open: 'Open the UIFCE profile ↗' }
+      },
+      f: { title: 'Title', type: 'Employment type', typeV: 'Full-time (pick it from the list)', org: 'Company', loc: 'Location', desc: 'Description', invite: 'Invitation' },
+      orgV: 'National University of Colombia', locV: 'Bogotá, D.C., Colombia',
+      footer: 'IT Unit · School of Economic Sciences · National University of Colombia'
     }
   };
 
-  /* ------------------------------------------------------------------
-     3. CONTENIDO ESTRATÉGICO BILINGÜE
-     ------------------------------------------------------------------ */
-  const CONTENT = {
-    es: {
-      diag: {
-        current: 'Perfil con alto potencial, pero sin señales claras de liderazgo tecnológico para buscadores y reclutadores.',
-        currentList: [
-          'Titular genérico: «Docente de gestión en Universidad Nacional de Colombia».',
-          'Banner gris predeterminado, vacío.',
-          'Red de 167 contactos con alto potencial de crecimiento.',
-          'Logros clave de gestión TI y virtualización subexpuestos.'
-        ],
-        target: 'Referente en Gobierno de TI, Transformación Digital Educativa, Cloud, IA, Analítica de Datos y Enablement Engineering (escalar la autonomía tecnológica de equipos y organizaciones), con el respaldo académico de un profesor asociado de la Universidad Nacional de Colombia.',
-        audience: ['Gerentes', 'Reclutadores de TI', 'Clientes corporativos', 'Desarrolladores', 'Pares de la industria', 'Comunidad universitaria', 'Aliados académicos'],
-        table: [
-          ['Titular', 'Genérico, sin palabras clave', 'Cargo directivo + Profesor Asociado UNAL + Gobierno de TI, Cloud, IA y Analítica'],
-          ['Banner', 'Gris predeterminado, vacío', 'Banner 1584×396 con lema de transformación digital'],
-          ['Acerca de', 'Sin narrativa de valor', 'Gancho + Enablement Engineering + hitos + llamado a la acción'],
-          ['Experiencia', 'Logros de gestión TI subexpuestos', 'Hitos de impacto: versión genérica o cuantificada (cursos, % de reducción, uptime)'],
-          ['Aptitudes', 'No alineadas al posicionamiento', '12 aptitudes en 3 categorías + stack técnico'],
-          ['Red', '167 contactos', 'Crecimiento con contenido semanal y 5 recomendaciones'],
-          ['Idiomas', 'Solo español', 'Perfil secundario en inglés para alcance internacional']
-        ]
-      },
-      banner: 'Transformación Digital, Gobierno de TI y Enablement Engineering | UIFCE - Universidad Nacional de Colombia',
-      oldHeadline: 'Docente de gestión en Universidad Nacional de Colombia',
-      headlines: [
-        { title: 'Opción 1 · Institucional', badge: 'recommended', text: 'Director de la Unidad de Informática de la Facultad de Ciencias Económicas y Profesor Asociado de la Universidad Nacional de Colombia.' },
-        { title: 'Opción 2 · Optimizada SEO (máximo alcance)', text: 'Director Unidad de Informática FCE y Profesor Asociado - Universidad Nacional de Colombia | Gobierno de TI, Cloud, IA y Analítica de Datos | Transformación Digital Educativa & Enablement Engineering' },
-        { title: 'Opción 3 · Liderazgo y autonomía tech', text: 'Director de Informática UIFCE y Profesor Asociado (UNAL) | MBA | Estrategia TI, e-Learning & Arquitectura Cloud | Escalando la autonomía tecnológica en educación y organizaciones' }
-      ],
-      about:
-`¿Tu equipo técnico o educativo sigue dependiendo de consultores para resolver sus bloqueos del día a día? El verdadero cuello de botella organizativo no es la falta de talento, sino la falta de autonomía: cuando las personas reciben respuestas prefabricadas en lugar de desarrollar la capacidad de resolver problemas de forma independiente, la escalabilidad de tu organización se detiene.
+  const STEP_IDS = ['cover', 'headline', 'about', 'exp', 'prof', 'skills', 'follow'];
 
-A lo largo de más de {{years}} años en la intersección entre ingeniería de software, gestión de infraestructura y pedagogía técnica (Enablement Engineering), me he dedicado a transformar equipos altamente dependientes en células autosuficientes mediante metodologías de aprendizaje activo (Aprendizaje Basado en Indagación y ABP) e ingeniería de plataformas de autoservicio.
+  /* Estado */
+  let state = { lang: 'es', done: {}, skills: {} };
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+    if (saved) state = { lang: saved.lang === 'en' ? 'en' : 'es', done: saved.done || {}, skills: saved.skills || {} };
+  } catch (e) { /* sin almacenamiento */ }
+  const save = () => { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) { /* ignorar */ } };
 
-Soy Administrador de Empresas y Magíster en Administración de Empresas de la Universidad Nacional de Colombia, donde me desempeño como profesor asociado de tiempo completo en la Escuela de Gestión y Contaduría Pública. Como Director de la Unidad de Informática de la Facultad de Ciencias Económicas (UIFCE), lidero la gobernanza de TI, la continuidad operativa, la ciberseguridad y la adopción de tecnologías emergentes (Cloud, Analítica de Datos e Inteligencia Artificial) al servicio de la docencia, la investigación y la extensión.
-
-**Hitos destacados:**
-• Creación e implementación integral del Área de Virtualización y e-Learning con ecosistemas LMS escalables.
-• Dirección de proyectos de virtualización para diversas entidades, como DIAN, Ministerio de Salud y Protección Social, SENA, INPEC, CORTOLIMA y Facultad de Derecho.
-• Optimización de procesos administrativos y migración a la nube de servicios institucionales de alta demanda.
-• Conferencista del Programa de Educación Continua U.N. y consultor empresarial.
-
-¿Listo para escalar la tecnología y la autonomía digital de tu entorno académico o empresarial sin fricción? Conectemos. Y te invito a seguir a la UIFCE en LinkedIn: linkedin.com/in/uifce`,
-      exp: {
-        title: 'Director de la Unidad de Informática (UIFCE)',
-        org: 'Facultad de Ciencias Económicas · Universidad Nacional de Colombia · Bogotá',
-        hitos: [
-          { t: 'Virtualización y e-Learning', d: 'Creación e implementación integral del Área de Virtualización Académica y e-Learning, con un ecosistema LMS escalable (Moodle / Canvas) proyectado hacia programas de posgrado: {{courses}} cursos virtualizados y {{students}} estudiantes impactados.',
-            g: 'Creación e implementación integral del Área de Virtualización Académica y e-Learning, con un ecosistema LMS escalable (Moodle / Canvas) proyectado hacia programas de posgrado, que amplió la oferta de cursos virtuales y el acceso de estudiantes a la formación en línea.' },
-          { t: 'Cloud y automatización', d: 'Optimización de los tiempos de respuesta en procesos digitales mediante migración a la nube, destacando el aplicativo de solicitudes y certificados para cursos libres: reducción del {{reduction}} en tiempos de entrega para {{users}} usuarios.',
-            g: 'Optimización de los tiempos de respuesta en procesos digitales mediante migración a la nube, destacando el aplicativo de solicitudes y certificados para cursos libres, que agilizó la entrega de certificados y mejoró la experiencia de los usuarios.' },
-          { t: 'Infraestructura y uptime', d: 'Aseguramiento de alta disponibilidad ({{uptime}} de uptime), ciberseguridad y rendimiento de plataformas académicas y administrativas críticas, incluyendo gestión de licenciamiento y soporte continuo.',
-            g: 'Aseguramiento de la alta disponibilidad, la ciberseguridad y el rendimiento de plataformas académicas y administrativas críticas, incluyendo gestión de licenciamiento y soporte continuo.' },
-          { t: 'Enablement Engineering', d: 'Formación de {{trained}} profesionales y estudiantes bajo metodologías de indagación y ABP («aprender a pescar»), reduciendo la dependencia de terceros en proyectos de desarrollo.',
-            g: 'Formación de profesionales y estudiantes bajo metodologías de indagación y ABP («aprender a pescar»), reduciendo la dependencia de terceros en proyectos de desarrollo.' }
-        ]
-      },
-      roles: [
-        ['Profesor Asociado de Tiempo Completo', 'Escuela de Gestión y Contaduría Pública · Facultad de Ciencias Económicas, UNAL'],
-        ['Director de Informática Nivel Bogotá', 'Universidad Nacional de Colombia'],
-        ['Dirección de Escuela', 'Facultad de Ciencias Económicas, UNAL'],
-        ['Dirección de Carrera de Administración de Empresas', 'Facultad de Ciencias Económicas, UNAL'],
-        ['Director de Proyectos de Virtualización', 'Diversas entidades públicas'],
-        ['Conferencista', 'Programa de Educación Continua U.N.'],
-        ['Consultor Empresarial', 'Sector empresarial']
-      ],
-      eduTitle: 'Formación académica',
-      education: [
-        ['Maestría en Administración de Empresas', 'Universidad Nacional de Colombia'],
-        ['Administración de Empresas (pregrado)', 'Universidad Nacional de Colombia']
-      ],
-      alliancesIntro: 'Prueba social: proyectos de virtualización, extensión e interventoría liderados desde la UIFCE.',
-      alliances: [
-        ['DIAN', 'Virtualización de formación para la Dirección de Impuestos y Aduanas Nacionales.'],
-        ['Ministerio de Salud y Protección Social', 'Virtualización y extensión de programas formativos.'],
-        ['SENA', 'Proyectos de virtualización e interventoría al SENA.'],
-        ['INPEC', 'Virtualización de procesos formativos institucionales.'],
-        ['CORTOLIMA', 'Proyecto interinstitucional de extensión y virtualización.'],
-        ['Facultad de Derecho (UNAL)', 'Virtualización de cursos y apoyo tecnológico académico.'],
-        ['Eventos y microtalleres UIFCE', 'Espacios de formación tecnológica para la comunidad universitaria.']
-      ],
-      stack: ['Python', 'Java', 'Microservicios', 'PostgreSQL', 'MySQL', 'Integración LMS'],
-      rec: (name) =>
-`Hola ${name}, ¡espero que estés muy bien!
-
-Estoy fortaleciendo mi perfil profesional en LinkedIn para reflejar con mayor claridad el trabajo que hemos impulsado desde la Unidad de Informática de la Facultad de Ciencias Económicas (UIFCE) de la Universidad Nacional de Colombia.
-
-Valoro mucho tu criterio y la experiencia que hemos compartido. ¿Te animarías a escribirme una breve recomendación? Si te resulta útil, podrías destacar alguno de estos aspectos:
-• Liderazgo en gobierno de TI y transformación digital.
-• La creación del Área de Virtualización y e-Learning.
-• El enfoque de formar equipos autónomos («enseñar a pescar»).
-
-Y si aún no lo haces, te invito a seguir el perfil de la UIFCE en LinkedIn (linkedin.com/in/uifce), donde compartimos proyectos y novedades de la Unidad.
-
-Con gusto puedo corresponder con una recomendación para ti. ¡Muchas gracias de antemano!
-
-Un abrazo,
-Henry Martínez Sarmiento`,
-      steps: [
-        ['photo', 'Foto profesional en alta resolución', 'Fondo neutro, encuadre de hombros, mínimo 400 × 400 px.'],
-        ['banner', 'Banner 1584 × 396 publicado', 'Lema bilingüe y paleta institucional.'],
-        ['headline', 'Titular optimizado aplicado', 'Usa la variante seleccionada en el simulador.'],
-        ['about', '«Acerca de» publicado', 'Versión genérica o con años de experiencia confirmados.'],
-        ['exp', 'Experiencia UIFCE con 4 hitos', 'Versión genérica o con métricas completas.'],
-        ['roles', 'Roles, formación y alianzas registrados', 'Profesor asociado, Informática Nivel Bogotá, Escuela, Carrera, Educación Continua y estudios (MBA).'],
-        ['skills', '12 aptitudes cargadas', 'Fija las 3 principales: Gobierno de TI, Transformación Digital y Cloud.'],
-        ['english', 'Perfil secundario en inglés', 'Perfil → «Agregar perfil en otro idioma» → English.'],
-        ['url', 'URL pública personalizada', 'Ej.: linkedin.com/in/henrymartinezsarmiento'],
-        ['post', 'Primera publicación de la matriz', 'Usa una de las 3 plantillas listas.'],
-        ['uifce', 'Invitación a seguir a la UIFCE', 'Comparte linkedin.com/in/uifce con colegas, estudiantes y contactos.']
-      ],
-      pillars: [
-        { icon: '🤖', c: '#4f46e5', name: 'Inteligencia Artificial en Educación', desc: 'IA generativa como aliada del aprendizaje activo y la autonomía.', ideas: ['IA como tutor socrático', 'Políticas de uso responsable', 'Casos en el aula UNAL'] },
-        { icon: '📊', c: '#0f766e', name: 'Ciencia y Analítica de Datos', desc: 'Decisiones institucionales basadas en datos y gobierno del dato.', ideas: ['Tableros de gestión académica', 'Calidad y gobierno del dato', 'Indicadores que cambian decisiones'] },
-        { icon: '🧭', c: '#0b2a5b', name: 'Sistemas de Información Gerencial', desc: 'Gobierno de TI (ITIL / COBIT) alineado a la estrategia institucional.', ideas: ['Proceso antes que herramienta', 'Continuidad operativa', 'Arquitectura empresarial'] },
-        { icon: '🦾', c: '#a3540b', name: 'Robótica y Tecnologías Emergentes', desc: 'Tendencias y su impacto en la educación superior y las empresas.', ideas: ['Cloud e hiperautomatización', 'Microtalleres UIFCE', 'Lecturas recomendadas'] },
-        { icon: '🎓', c: '#0d9488', name: 'e-Learning / Enablement Engineering', desc: 'Formar equipos autosuficientes y ecosistemas LMS escalables.', ideas: ['Lecciones de virtualización', '«Enseñar a pescar» en TI', 'Diseño instruccional'] }
-      ],
-      posts: [
-        { pillar: 'Inteligencia Artificial en Educación', text:
-`La Inteligencia Artificial no debería darles la respuesta a nuestros estudiantes. Debería ayudarles a formular mejores preguntas.
-
-En la Unidad de Informática de la Facultad de Ciencias Económicas de la Universidad Nacional de Colombia vemos la IA generativa como una aliada del aprendizaje activo, no como un atajo. La diferencia está en el diseño pedagógico:
-
-• Usarla como «tutor socrático» que repregunta, en lugar de entregar soluciones.
-• Pedir a los estudiantes que documenten su razonamiento y contrasten lo que propone el modelo.
-• Evaluar el proceso (metacognición) y no solo el resultado final.
-
-La meta no es que dependan de una nueva herramienta, sino que desarrollen autonomía para resolver problemas que todavía no existen.
-
-¿Cómo están integrando la IA en sus aulas o equipos sin sacrificar el pensamiento crítico?
-
-#InteligenciaArtificial #EducaciónSuperior #TransformaciónDigital #EnablementEngineering #UNAL` },
-        { pillar: 'Ciencia y Analítica de Datos · SIG', text:
-`Una facultad genera miles de datos cada semestre: inscripciones, uso de plataformas, solicitudes, certificados y tickets de soporte. La pregunta no es cuántos datos tenemos, sino cuántas decisiones tomamos con ellos.
-
-Tres principios que aplicamos desde la gestión de TI:
-
-• Un dato sin responsable no es un activo: cada indicador necesita un dueño y una pregunta de negocio.
-• Primero el proceso, después el tablero: automatizar un flujo deficiente solo produce errores más rápido.
-• Los Sistemas de Información Gerencial deben servir a la docencia, la investigación y la extensión, no al revés.
-
-Cuando la analítica se integra al gobierno de TI, deja de ser un reporte y se convierte en ventaja estratégica.
-
-¿Qué indicador cambió una decisión importante en tu organización este año?
-
-#AnalíticaDeDatos #CienciaDeDatos #GobiernoDeTI #SistemasDeInformación #EducaciónSuperior` },
-        { pillar: 'e-Learning / Enablement Engineering', text:
-`Virtualizar un curso no es subir archivos PDF a una plataforma.
-
-Tras liderar proyectos de virtualización y extensión con entidades como DIAN, Ministerio de Salud y Protección Social, SENA, INPEC y CORTOLIMA, estas son tres lecciones que aplico en cada proyecto:
-
-1. El diseño instruccional va antes que la tecnología: el LMS (Moodle / Canvas) es el medio, no el fin.
-2. La escalabilidad nace en la infraestructura: disponibilidad, seguridad y soporte se planean desde el día uno.
-3. El mayor indicador de éxito es la autonomía: equipos capaces de mantener y mejorar sus cursos sin depender de terceros.
-
-Eso es Enablement Engineering: no entregar el pescado, sino enseñar a pescar. Hoy el Área de Virtualización y e-Learning de la UIFCE suma {{courses}} cursos virtualizados.
-
-¿Cuál ha sido tu mayor aprendizaje llevando la formación a entornos digitales?
-
-#eLearning #DiseñoInstruccional #Moodle #EnablementEngineering #TransformaciónDigital` }
-      ]
-    },
-
-    en: {
-      diag: {
-        current: 'A high-potential profile that still lacks clear technology-leadership signals for search and recruiters.',
-        currentList: [
-          'Generic headline: “Management Lecturer at National University of Colombia”.',
-          'Default empty gray cover banner.',
-          '167-connection network with high growth potential.',
-          'Underexposed IT management and e-learning achievements.'
-        ],
-        target: 'Authority in IT Governance, Educational Digital Transformation, Cloud, AI, Data Analytics, and Enablement Engineering (scaling technological autonomy across teams and organizations), backed by the academic standing of an Associate Professor at the National University of Colombia.',
-        audience: ['Executives & managers', 'IT recruiters', 'Corporate clients', 'Software developers', 'Industry peers', 'University community', 'Academic partners'],
-        table: [
-          ['Headline', 'Generic, no keywords', 'Leadership title + UNAL Associate Professor + IT Governance, Cloud, AI & Data Analytics'],
-          ['Cover banner', 'Default empty gray', '1584×396 banner with digital transformation tagline'],
-          ['About', 'No value narrative', 'Hook + Enablement Engineering + highlights + call to action'],
-          ['Experience', 'Underexposed IT achievements', 'Impact milestones: generic or quantified (courses, % reduction, uptime)'],
-          ['Skills', 'Not aligned with positioning', '12 skills across 3 categories + tech stack'],
-          ['Network', '167 connections', 'Growth through weekly content and 5 recommendations'],
-          ['Languages', 'Spanish only', 'Secondary English profile for international reach']
-        ]
-      },
-      banner: 'Digital Transformation, IT Governance & Enablement Engineering | UIFCE - National University of Colombia',
-      oldHeadline: 'Management Lecturer at National University of Colombia',
-      headlines: [
-        { title: 'Option 1 · Institutional', badge: 'recommended', text: 'Director of the IT Unit at the School of Economic Sciences and Associate Professor, National University of Colombia.' },
-        { title: 'Option 2 · SEO-optimized (maximum reach)', text: 'IT Unit Director & Associate Professor, School of Economic Sciences - National University of Colombia | IT Governance, Cloud, AI & Data Analytics | Higher Ed Digital Transformation & Enablement Engineering' },
-        { title: 'Option 3 · Leadership & tech autonomy', text: 'IT Director UIFCE & Associate Professor (UNAL) | MBA | IT Strategy, e-Learning & Cloud Architecture | Scaling Technological Autonomy in Higher Education & Enterprises' }
-      ],
-      about:
-`Does your technical or academic team still rely on external consultants to resolve day-to-day bottlenecks? The real organizational bottleneck isn't a lack of talent—it's a lack of autonomy. When people are handed pre-packaged answers instead of developing the capability to solve problems independently, organizational scalability stalls.
-
-For more than {{years}} years at the intersection of software engineering, infrastructure management, and technical pedagogy (Enablement Engineering), I have focused on transforming high-dependency teams into self-sufficient units through active learning methodologies (Inquiry-Based Learning and PBL) and self-service platform engineering.
-
-I hold a Bachelor's degree in Business Administration and an MBA from the National University of Colombia, where I serve as a full-time Associate Professor in the Department of Management and Public Accounting. As Director of the IT Unit at the School of Economic Sciences (UIFCE), I lead IT governance, operational continuity, cybersecurity, and the adoption of emerging technologies (Cloud, Data Analytics, and Artificial Intelligence) to empower teaching, research, and institutional outreach.
-
-**Key Highlights:**
-• End-to-end creation and deployment of the Academic Virtualization & e-Learning Unit featuring scalable LMS ecosystems.
-• Project Director for course virtualization initiatives across multiple organizations, including DIAN, the Ministry of Health and Social Protection, SENA, INPEC, CORTOLIMA, and the School of Law.
-• Administrative workflow optimization and cloud migration for high-demand institutional services.
-• Speaker for the U.N. Continuing Education Program and business consultant.
-
-Ready to scale technology and digital autonomy across your academic or enterprise ecosystem without friction? Let's connect—and follow UIFCE on LinkedIn: linkedin.com/in/uifce`,
-      exp: {
-        title: 'IT Unit Director (UIFCE)',
-        org: 'School of Economic Sciences · National University of Colombia · Bogotá',
-        hitos: [
-          { t: 'Virtualization & e-Learning', d: 'Built and launched the Academic Virtualization & e-Learning Unit end to end, with a scalable LMS ecosystem (Moodle / Canvas) designed to support graduate programs: {{courses}} courses virtualized and {{students}} learners reached.',
-            g: 'Built and launched the Academic Virtualization & e-Learning Unit end to end, with a scalable LMS ecosystem (Moodle / Canvas) designed to support graduate programs—expanding the virtual course portfolio and broadening student access to online learning.' },
-          { t: 'Cloud & automation', d: 'Cut digital process response times through cloud migration—most notably the request and certificate platform for open courses: {{reduction}} faster turnaround for {{users}} users.',
-            g: 'Cut digital process response times through cloud migration—most notably the request and certificate platform for open courses, which streamlined certificate delivery and improved the user experience.' },
-          { t: 'Infrastructure & uptime', d: 'Ensured high availability ({{uptime}} uptime), cybersecurity, and performance for mission-critical academic and administrative platforms, including license management and continuous support.',
-            g: 'Ensured high availability, cybersecurity, and performance for mission-critical academic and administrative platforms, including license management and continuous support.' },
-          { t: 'Enablement Engineering', d: 'Trained {{trained}} professionals and students through inquiry-based learning and PBL (“teach them to fish”), reducing reliance on third parties in software development projects.',
-            g: 'Trained professionals and students through inquiry-based learning and PBL (“teach them to fish”), reducing reliance on third parties in software development projects.' }
-        ]
-      },
-      roles: [
-        ['Full-Time Associate Professor', 'Department of Management and Public Accounting · School of Economic Sciences, UNAL'],
-        ['Bogotá Campus IT Director', 'National University of Colombia'],
-        ['School Director', 'School of Economic Sciences, UNAL'],
-        ['Director of the Business Administration Program', 'School of Economic Sciences, UNAL'],
-        ['Virtualization Project Director', 'Multiple public-sector organizations'],
-        ['Speaker', 'U.N. Continuing Education Program'],
-        ['Business Consultant', 'Enterprise sector']
-      ],
-      eduTitle: 'Education',
-      education: [
-        ['Master of Business Administration (MBA)', 'National University of Colombia'],
-        ["Bachelor's Degree in Business Administration", 'National University of Colombia']
-      ],
-      alliancesIntro: 'Social proof: virtualization, outreach, and project oversight initiatives led from UIFCE.',
-      alliances: [
-        ['DIAN', 'Training virtualization for Colombia’s National Tax and Customs Authority.'],
-        ['Ministry of Health and Social Protection', 'Virtualization and outreach of training programs.'],
-        ['SENA', 'Virtualization projects and project oversight (interventoría) for SENA.'],
-        ['INPEC', 'Virtualization of institutional training processes.'],
-        ['CORTOLIMA', 'Inter-institutional outreach and virtualization project.'],
-        ['School of Law (UNAL)', 'Course virtualization and academic technology support.'],
-        ['UIFCE events & micro-workshops', 'Technology training sessions for the university community.']
-      ],
-      stack: ['Python', 'Java', 'Microservices Architecture', 'PostgreSQL', 'MySQL', 'LMS Integration'],
-      rec: (name) =>
-`Hi ${name}, I hope you're doing well!
-
-I'm strengthening my LinkedIn profile to better reflect the work we've driven at the IT Unit of the School of Economic Sciences (UIFCE), National University of Colombia.
-
-I truly value your perspective and the experience we've shared. Would you be open to writing a brief recommendation? If helpful, you could highlight any of these areas:
-• Leadership in IT governance and digital transformation.
-• Building the Virtualization & e-Learning Unit.
-• The focus on developing autonomous teams (“teach them to fish”).
-
-Also, if you don't already, I'd love for you to follow UIFCE on LinkedIn (linkedin.com/in/uifce), where we share our projects and news.
-
-I'd be glad to return the favor with a recommendation for you. Thank you in advance!
-
-Best regards,
-Henry Martínez Sarmiento`,
-      steps: [
-        ['photo', 'High-resolution professional photo', 'Neutral background, head-and-shoulders, at least 400 × 400 px.'],
-        ['banner', '1584 × 396 cover banner published', 'Bilingual tagline and institutional palette.'],
-        ['headline', 'Optimized headline applied', 'Use the variant selected in the simulator.'],
-        ['about', '“About” section published', 'Generic version or with confirmed years of experience.'],
-        ['exp', 'UIFCE experience with 4 milestones', 'Generic version or with complete metrics.'],
-        ['roles', 'Roles, education & partnerships added', 'Associate Professor, Bogotá Campus IT, School, Program, Continuing Education and degrees (MBA).'],
-        ['skills', '12 skills added', 'Pin top 3: IT Governance, Digital Transformation, Cloud.'],
-        ['english', 'Secondary English profile', 'Profile → “Add profile in another language” → English.'],
-        ['url', 'Custom public URL', 'e.g., linkedin.com/in/henrymartinezsarmiento'],
-        ['post', 'First content-matrix post', 'Use one of the 3 ready-made templates.'],
-        ['uifce', 'Invite people to follow UIFCE', 'Share linkedin.com/in/uifce with colleagues, students and contacts.']
-      ],
-      pillars: [
-        { icon: '🤖', c: '#4f46e5', name: 'AI in Education', desc: 'Generative AI as an ally of active learning and autonomy.', ideas: ['AI as a Socratic tutor', 'Responsible-use policies', 'Classroom cases at UNAL'] },
-        { icon: '📊', c: '#0f766e', name: 'Data Science & Analytics', desc: 'Data-driven institutional decisions and data governance.', ideas: ['Academic management dashboards', 'Data quality & governance', 'Metrics that change decisions'] },
-        { icon: '🧭', c: '#0b2a5b', name: 'Management Information Systems', desc: 'IT governance (ITIL / COBIT) aligned with institutional strategy.', ideas: ['Process before tools', 'Business continuity', 'Enterprise architecture'] },
-        { icon: '🦾', c: '#a3540b', name: 'Robotics & Emerging Tech', desc: 'Trends and their impact on higher education and enterprises.', ideas: ['Cloud & hyperautomation', 'UIFCE micro-workshops', 'Recommended reads'] },
-        { icon: '🎓', c: '#0d9488', name: 'e-Learning / Enablement Engineering', desc: 'Building self-sufficient teams and scalable LMS ecosystems.', ideas: ['Virtualization lessons learned', '“Teach them to fish” in IT', 'Instructional design'] }
-      ],
-      posts: [
-        { pillar: 'AI in Education', text:
-`AI shouldn't hand our students the answer. It should help them ask better questions.
-
-At the IT Unit of the School of Economic Sciences, National University of Colombia, we see generative AI as an ally of active learning—not a shortcut. The difference lies in pedagogical design:
-
-• Use it as a “Socratic tutor” that asks follow-up questions instead of delivering solutions.
-• Ask students to document their reasoning and challenge what the model proposes.
-• Assess the process (metacognition), not just the final output.
-
-The goal isn't dependence on yet another tool—it's building the autonomy to solve problems that don't exist yet.
-
-How are you bringing AI into your classrooms or teams without sacrificing critical thinking?
-
-#ArtificialIntelligence #HigherEducation #DigitalTransformation #EnablementEngineering #EdTech` },
-        { pillar: 'Data Science & Analytics · MIS', text:
-`A university school generates thousands of data points every semester: enrollments, platform usage, requests, certificates, and support tickets. The question isn't how much data we have—it's how many decisions we make with it.
-
-Three principles we apply in IT management:
-
-• Data without an owner isn't an asset: every metric needs an accountable owner and a business question.
-• Process first, dashboard second: automating a broken workflow only produces errors faster.
-• Management Information Systems must serve teaching, research, and outreach—not the other way around.
-
-When analytics is embedded in IT governance, it stops being a report and becomes a strategic advantage.
-
-Which metric changed a key decision in your organization this year?
-
-#DataAnalytics #DataScience #ITGovernance #InformationSystems #HigherEducation` },
-        { pillar: 'e-Learning / Enablement Engineering', text:
-`Virtualizing a course isn't uploading PDFs to a platform.
-
-After leading virtualization and outreach projects with organizations such as DIAN, Colombia's Ministry of Health and Social Protection, SENA, INPEC, and CORTOLIMA, here are three lessons I apply to every project:
-
-1. Instructional design comes before technology: the LMS (Moodle / Canvas) is the means, not the end.
-2. Scalability starts with infrastructure: availability, security, and support are planned from day one.
-3. The ultimate success metric is autonomy: teams able to maintain and improve their courses without relying on third parties.
-
-That's Enablement Engineering: don't hand out the fish—teach people to fish. Today, the UIFCE Virtualization & e-Learning Unit has {{courses}} courses virtualized.
-
-What has been your biggest lesson in taking learning to digital environments?
-
-#eLearning #InstructionalDesign #Moodle #EnablementEngineering #DigitalTransformation` }
-      ]
-    }
-  };
-
-  /* Versiones genéricas (sin métricas) de los textos que usan datos */
-  CONTENT.es.aboutG = CONTENT.es.about.replace('A lo largo de más de {{years}} años en la intersección', 'A lo largo de mi trayectoria en la intersección');
-  CONTENT.en.aboutG = CONTENT.en.about.replace('For more than {{years}} years at the intersection', 'Throughout my career at the intersection');
-  CONTENT.es.posts[2].g = CONTENT.es.posts[2].text.replace(' Hoy el Área de Virtualización y e-Learning de la UIFCE suma {{courses}} cursos virtualizados.', '');
-  CONTENT.en.posts[2].g = CONTENT.en.posts[2].text.replace(' Today, the UIFCE Virtualization & e-Learning Unit has {{courses}} courses virtualized.', '');
-
-  /* Invitación a seguir el perfil de la UIFCE */
-  CONTENT.es.follow =
-`¡Hola! Te invito a seguir el perfil de la Unidad de Informática de la Facultad de Ciencias Económicas (UIFCE) de la Universidad Nacional de Colombia en LinkedIn. Allí compartimos proyectos de transformación digital, e-learning, analítica de datos e inteligencia artificial, además de eventos y microtalleres para la comunidad.
-
-👉 ${UIFCE_URL}`;
-  CONTENT.en.follow =
-`Hi! I invite you to follow the IT Unit of the School of Economic Sciences (UIFCE), National University of Colombia, on LinkedIn. We share digital transformation, e-learning, data analytics and AI projects, plus events and micro-workshops for the community.
-
-👉 ${UIFCE_URL}`;
-  const POST_CTA = {
-    es: '👉 Sigue a la UIFCE en LinkedIn para más contenido sobre tecnología y educación: linkedin.com/in/uifce',
-    en: '👉 Follow UIFCE on LinkedIn for more on technology and education: linkedin.com/in/uifce'
-  };
-  ['es', 'en'].forEach(lang => CONTENT[lang].posts.forEach(p => {
-    ['text', 'g'].forEach(k => {
-      if (!p[k]) return;
-      const cut = p[k].lastIndexOf('\n\n#');
-      p[k] = p[k].slice(0, cut) + '\n\n' + POST_CTA[lang] + p[k].slice(cut) + ' #UIFCE';
-    });
-  }));
-
-  const SKILLS = [
-    { cat: 'ped',  es: 'Aprendizaje Basado en Problemas (ABP) y Proyectos (ABPro)', en: 'Problem-Based Learning (PBL) & Project-Based Learning' },
-    { cat: 'ped',  es: 'Diseño Instruccional y Creación de Entornos Virtuales (E-learning)', en: 'Instructional Design & Virtual Learning Environments (e-Learning)' },
-    { cat: 'ped',  es: 'Desarrollo de Autonomía y Metacognición en Estudiantes', en: 'Learner Autonomy & Metacognition Development' },
-    { cat: 'ped',  es: 'Formación de Formadores (Train the Trainers)', en: 'Train the Trainer & Technical Enablement' },
-    { cat: 'ped',  es: 'Método Socrático y Facilitación del Aprendizaje', en: 'Socratic Method & Inquiry-Based Facilitation' },
-    { cat: 'ped',  es: 'Evaluación por Competencias y Coevaluación', en: 'Competency-Based Assessment & Peer Evaluation' },
-    { cat: 'gov',  es: 'Gestión y Gobierno de TI (ITIL / COBIT)', en: 'IT Governance & Service Management (ITIL / COBIT)' },
-    { cat: 'gov',  es: 'Transformación Digital e Institucional', en: 'Enterprise & Higher Ed Digital Transformation' },
-    { cat: 'arch', es: 'Arquitectura de Infraestructura Cloud y On-Premise (AWS / Azure)', en: 'Cloud & Hybrid Infrastructure Architecture (AWS / Azure)' },
-    { cat: 'arch', es: 'Implementación y Gestión de Ecosistemas LMS (Moodle / Canvas)', en: 'LMS Ecosystem Implementation & Administration (Moodle / Canvas)' },
-    { cat: 'arch', es: 'Ciberseguridad y Continuidad Operativa (Uptime)', en: 'Cybersecurity & Business Continuity (High Availability / Uptime)' },
-    { cat: 'gov',  es: 'Optimización de Procesos y Eliminación de Cuellos de Botella', en: 'Process Optimization & Bottleneck Elimination' }
-  ];
-
-  const CONTACTS = [
-    { id: 'carlos-rodriguez', name: 'Carlos Rodríguez' },
-    { id: 'jair-duque', name: 'Jair Duque' },
-    { id: 'orlando-villabona', name: 'Orlando Villabona' },
-    { id: 'alejandro-rodriguez', name: 'Alejandro Rodríguez' },
-    { id: 'cesar-mendoza', name: 'César Mendoza' }
-  ];
-
-  /* ------------------------------------------------------------------
-     4. ESTADO + PERSISTENCIA
-     ------------------------------------------------------------------ */
-  const COVERS = [
-    { f: null, es: 'Fondo liso', en: 'Plain background' },
-    { f: 'portada-1-esquina-ventanales', es: 'Esquina de ventanales', en: 'Window corner' },
-    { f: 'portada-2-patio-escultura', es: 'Patio y escultura', en: 'Courtyard & sculpture' },
-    { f: 'portada-3-plaza-estudiantil', es: 'Plaza estudiantil', en: 'Student plaza' },
-    { f: 'portada-4-fachada-blanca-panoramica', es: 'Fachada blanca (panorámica)', en: 'White façade (panoramic)' },
-    { f: 'portada-5-fachada-blanca', es: 'Fachada blanca', en: 'White façade' },
-    { f: 'portada-6-entrada-ladrillo', es: 'Entrada del edificio de ladrillo', en: 'Brick building entrance' },
-    { f: 'portada-7-entrada-jardin', es: 'Entrada con árbol', en: 'Entrance with tree' },
-    { f: 'portada-8-campus-panoramico', es: 'Campus panorámico', en: 'Campus panorama' },
-    { f: 'portada-9-unal-cesped', es: '#UNAL en el césped', en: '#UNAL on the lawn' },
-    { f: 'portada-10-edificio-303b', es: 'Edificio 303 B', en: 'Building 303 B' },
-    { f: 'portada-11-plaza-torre', es: 'Plaza y torre', en: 'Plaza & tower' },
-    { f: 'portada-12-terrazas-ladrillo', es: 'Terrazas de ladrillo', en: 'Brick terraces' },
-    { f: 'portada-13-unal-campus', es: '#UNAL y el campus', en: '#UNAL & campus' },
-    { f: 'portada-14-cielo-y-ladrillo', es: 'Cielo y ladrillo', en: 'Sky & brick' }
-  ];
-  const coverSrc = (i, grad) => {
-    const c = COVERS[i];
-    if (!c || !c.f) return null;
-    return grad ? `portadas/${c.f}.jpg` : `portadas/sin-degradado/${c.f}-sin-degradado.jpg`;
-  };
-
-  const defaultState = () => ({
-    lang: 'es',
-    vars: { ...DEFAULT_VARS },
-    headline: 0,
-    mode: 'generic',
-    simView: 'after',
-    cover: 2,
-    coverGrad: true,
-    skillFilter: 'all',
-    steps: {},
-    recs: {},
-    recLang: {}
-  });
-
-  let storageOk = true;
-  const load = () => {
-    const base = defaultState();
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (!raw) return base;
-      const saved = JSON.parse(raw);
-      return {
-        ...base,
-        ...saved,
-        lang: saved.lang === 'en' ? 'en' : 'es',
-        vars: { ...base.vars, ...(saved.vars || {}) },
-        headline: [0, 1, 2].includes(saved.headline) ? saved.headline : 0,
-        mode: saved.mode === 'metrics' ? 'metrics' : 'generic',
-        cover: Number.isInteger(saved.cover) && saved.cover >= 0 && saved.cover < COVERS.length ? saved.cover : 2,
-        coverGrad: saved.coverGrad !== false,
-        steps: saved.steps || {},
-        recs: saved.recs || {},
-        recLang: saved.recLang || {}
-      };
-    } catch (e) {
-      storageOk = false;
-      return base;
-    }
-  };
-
-  let state = load();
-  let saveTimer = 0;
-  const save = () => {
-    clearTimeout(saveTimer);
-    saveTimer = setTimeout(() => {
-      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
-      catch (e) {
-        if (storageOk) { storageOk = false; toast(t('toast.storage'), 'warn'); }
-      }
-    }, 150);
-  };
-
-  /* ------------------------------------------------------------------
-     5. UTILIDADES
-     ------------------------------------------------------------------ */
-  const $ = (sel, ctx = document) => ctx.querySelector(sel);
-  const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
-  const C = () => CONTENT[state.lang];
-  const other = () => (state.lang === 'es' ? 'en' : 'es');
-
-  const t = (key, params) => {
-    let s = (UI[state.lang] && UI[state.lang][key]) ?? UI.es[key] ?? key;
-    if (params) Object.keys(params).forEach(k => { s = s.replace(`{${k}}`, params[k]); });
-    return s;
-  };
-
+  const $ = (s) => document.querySelector(s);
   const esc = (s) => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-  const isPending = (v) => !/\d/.test(String(v || ''));
-  const generic = () => state.mode === 'generic';
-  const aboutTpl = (lang = state.lang) => (generic() ? CONTENT[lang].aboutG : CONTENT[lang].about);
-  const hitoTpl = (h) => (generic() ? h.g : h.d);
-  const postTpl = (p) => (generic() && p.g ? p.g : p.text);
-  const initials = (name) => name.split(/\s+/).map(w => w[0]).slice(0, 2).join('').toUpperCase();
-  const usesPending = (tpl) => {
-    const keys = (tpl.match(/\{\{(\w+)\}\}/g) || []).map(m => m.slice(2, -2));
-    return keys.some(k => isPending(state.vars[k]));
+
+  /* Textos copiables del idioma actual */
+  const texts = () => {
+    const d = DATA[state.lang], u = UI[state.lang];
+    return {
+      headline: d.headline,
+      about: d.about,
+      expTitle: d.exp.title,
+      expDesc: d.exp.hitos.map(h => `• ${h}`).join('\n'),
+      profTitle: d.prof.title,
+      profDesc: d.prof.desc,
+      org: u.orgV,
+      loc: u.locV,
+      follow: d.follow
+    };
   };
 
-  /** Texto plano para LinkedIn (sustituye variables, quita marcas Markdown). */
-  const plain = (tpl) => tpl
-    .replace(/\{\{(\w+)\}\}/g, (m, k) => state.vars[k] ?? '')
-    .replace(/\*\*(.+?)\*\*/g, '$1');
+  /* Componentes */
+  const copyBox = (key, label, text, big = false) => `
+    <div class="field">
+      ${label ? `<div class="field__label">${esc(label)}</div>` : ''}
+      <div class="field__row">
+        <div class="field__text${big ? ' field__text--big' : ''}">${esc(text)}</div>
+        <button type="button" class="btn-copy" data-copy="${key}">${esc(UI[state.lang].copy)}</button>
+      </div>
+    </div>`;
 
-  /** Texto Markdown (sustituye variables, conserva negritas). */
-  const md = (tpl) => tpl.replace(/\{\{(\w+)\}\}/g, (m, k) => state.vars[k] ?? '');
+  const fixedField = (label, value) => `
+    <div class="field">
+      <div class="field__label">${esc(label)}</div>
+      <div class="field__text field__text--fixed">${esc(value)}</div>
+    </div>`;
 
-  const varInput = (k) => {
-    const v = state.vars[k] ?? '';
-    const label = VAR_META[k] ? VAR_META[k][state.lang] : k;
-    return `<input type="text" class="var${isPending(v) ? ' is-pending' : ''}" data-var="${k}" value="${esc(v)}" size="${Math.max(String(v).length, 2)}" aria-label="${esc(label)}" spellcheck="false" autocomplete="off">`;
-  };
-
-  const inline = (s) => esc(s)
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\{\{(\w+)\}\}/g, (m, k) => varInput(k));
-
-  /** Convierte una plantilla en HTML con párrafos, viñetas y campos editables. */
-  const richHTML = (tpl) => tpl.split(/\n{2,}/).map(block => {
-    const lines = block.split('\n');
-    let html = '', para = [], list = [];
-    const flushP = () => { if (para.length) { html += `<p>${para.map(inline).join('<br>')}</p>`; para = []; } };
-    const flushL = () => { if (list.length) { html += `<ul class="bullets">${list.map(l => `<li>${inline(l)}</li>`).join('')}</ul>`; list = []; } };
-    lines.forEach(l => {
-      if (/^•\s/.test(l)) { flushP(); list.push(l.replace(/^•\s*/, '')); }
-      else { flushL(); para.push(l); }
-    });
-    flushP(); flushL();
-    return html;
-  }).join('');
-
-  const ICON_COPY = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg>';
-  const ICON_CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
-
-  /* ------------------------------------------------------------------
-     6. TOASTS
-     ------------------------------------------------------------------ */
-  const toast = (msg, type = 'ok') => {
-    const box = $('#toasts');
-    const el = document.createElement('div');
-    el.className = `toast${type === 'warn' ? ' toast--warn' : type === 'error' ? ' toast--error' : ''}`;
-    el.textContent = msg;
-    box.appendChild(el);
-    while (box.children.length > 3) box.firstElementChild.remove();
-    setTimeout(() => {
-      el.classList.add('is-leaving');
-      el.addEventListener('animationend', () => el.remove(), { once: true });
-      setTimeout(() => el.remove(), 400);
-    }, 2600);
-  };
-
-  /* ------------------------------------------------------------------
-     7. PORTAPAPELES
-     ------------------------------------------------------------------ */
-  const copyGetters = {};
-  const registerCopy = (id, fn, tplFn) => { copyGetters[id] = { fn, tplFn }; };
-
-  const writeClipboard = async (text) => {
-    try {
-      if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(text);
-        return true;
-      }
-    } catch (e) { /* se intenta el método alternativo */ }
-    const ta = document.createElement('textarea');
-    ta.value = text;
-    ta.setAttribute('readonly', '');
-    ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;pointer-events:none;';
-    document.body.appendChild(ta);
-    ta.select();
-    let ok = false;
-    try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
-    ta.remove();
-    return ok;
-  };
-
-  const paintCopyButton = (btn) => {
-    if (btn.classList.contains('is-copied')) return;
-    const label = t(btn.dataset.labelKey || 'copy');
-    if (btn.classList.contains('btn-copy--icon')) {
-      btn.innerHTML = `${ICON_COPY}<span class="sr-only">${esc(label)}</span>`;
-    } else if (btn.classList.contains('btn-copy')) {
-      btn.innerHTML = `${ICON_COPY}<span class="lbl">${esc(label)}</span>`;
-    } else {
-      btn.innerHTML = `<span class="lbl">${esc(label)}</span>`;
+  const stepBody = (id) => {
+    const u = UI[state.lang], tx = texts(), f = u.f;
+    switch (id) {
+      case 'cover': return `
+        <img class="cover" src="${COVER}" alt="" width="1584" height="396">
+        <a class="btn btn--primary" href="${COVER}" download="portada-linkedin-uifce.jpg">⬇ ${esc(u.steps.cover.dl)}</a>`;
+      case 'headline': return copyBox('headline', '', tx.headline);
+      case 'about': return copyBox('about', '', tx.about, true);
+      case 'exp': return copyBox('expTitle', f.title, tx.expTitle) + fixedField(f.type, f.typeV) + copyBox('org', f.org, tx.org) + copyBox('loc', f.loc, tx.loc) + copyBox('expDesc', f.desc, tx.expDesc, true);
+      case 'prof': return copyBox('profTitle', f.title, tx.profTitle) + fixedField(f.type, f.typeV) + copyBox('org', f.org, tx.org) + copyBox('loc', f.loc, tx.loc) + copyBox('profDesc', f.desc, tx.profDesc, true);
+      case 'skills': return `<ol class="chips">${DATA[state.lang].skills.map((s, i) => `
+        <li><button type="button" class="chip${state.skills[i] ? ' is-done' : ''}" data-skill="${i}" aria-pressed="${!!state.skills[i]}"><span class="chip__n">${i + 1}</span>${esc(s)}</button></li>`).join('')}</ol>`;
+      case 'follow': return `
+        <a class="btn btn--primary" href="${UIFCE_URL}" target="_blank" rel="noopener">${esc(u.steps.follow.open)}</a>
+        ${copyBox('follow', f.invite, tx.follow)}`;
     }
-  };
-  const paintCopyButtons = () => $$('[data-copy]').forEach(paintCopyButton);
-
-  const handleCopy = async (btn) => {
-    const entry = copyGetters[btn.dataset.copy];
-    if (!entry) return;
-    const text = entry.fn();
-    const ok = await writeClipboard(text);
-    if (!ok) { toast(t('toast.copyFail'), 'error'); return; }
-    const pending = entry.tplFn ? usesPending(entry.tplFn()) : false;
-    toast(pending ? t('toast.copiedPending') : t('toast.copied'), pending ? 'warn' : 'ok');
-    btn.classList.add('is-copied');
-    const icon = (btn.classList.contains('btn-copy')) ? ICON_CHECK : '';
-    btn.innerHTML = btn.classList.contains('btn-copy--icon')
-      ? `${ICON_CHECK}<span class="sr-only">${esc(t('copied'))}</span>`
-      : `${icon}<span class="lbl">${esc(t('copied'))}</span>`;
-    clearTimeout(btn._timer);
-    btn._timer = setTimeout(() => { btn.classList.remove('is-copied'); paintCopyButton(btn); }, 1600);
+    return '';
   };
 
-  /* ------------------------------------------------------------------
-     8. RENDERIZADO
-     ------------------------------------------------------------------ */
-  const renderStatic = () => {
+  const render = () => {
+    const u = UI[state.lang];
     document.documentElement.lang = state.lang;
-    $$('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
-    $$('[data-i18n-aria]').forEach(el => { el.setAttribute('aria-label', t(el.dataset.i18nAria)); });
-    $$('.langswitch__btn').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === state.lang)));
-    $('#statYears').textContent = generic() ? 'MBA' : (state.vars.years || '—');
-    $('[data-i18n="hero.statYears"]').textContent = generic() ? t('hero.statGeneric') : t('hero.statYears');
-  };
+    $('#title').textContent = u.title;
+    $('#intro').textContent = u.intro;
+    $('#openProfile').textContent = u.openProfile;
+    $('#enNote').hidden = state.lang !== 'en';
+    $('#enNote').textContent = u.enNote;
+    $('#footerText').textContent = u.footer;
+    $('#langSwitch').setAttribute('aria-label', u.langAria);
+    document.querySelectorAll('[data-lang]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === state.lang)));
 
-  const renderModeToggles = () => {
-    $$('[data-modeseg]').forEach(box => {
-      box.setAttribute('aria-label', t('mode.aria'));
-      box.innerHTML = ['generic', 'metrics'].map(m =>
-        `<button type="button" class="seg__btn" data-mode="${m}" aria-pressed="${state.mode === m}">${esc(t('mode.' + m))}</button>`).join('');
-    });
-  };
-
-  const renderDiag = () => {
-    const d = C().diag;
-    $('#diagCurrent').textContent = d.current;
-    $('#diagCurrentList').innerHTML = d.currentList.map(i => `<li>${esc(i)}</li>`).join('');
-    $('#diagTarget').textContent = d.target;
-    $('#diagAudience').innerHTML = d.audience.map(a => `<li>${esc(a)}</li>`).join('');
-    $('#diagTable').innerHTML = d.table.map(r => `<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td></tr>`).join('');
-  };
-
-  const bannerSpecs = (lang) => {
-    const cv = COVERS[state.cover];
-    const file = cv.f ? coverSrc(state.cover, state.coverGrad).split('/').pop() : '—';
-    return lang === 'es'
-? `FORMATO
-• Dimensiones: 1584 × 396 px (relación 4:1) · JPG o PNG, máx. 8 MB, sRGB
-• Portada seleccionada: ${cv.es} (${state.coverGrad ? 'con' : 'sin'} degradado azul)
-• Archivo: ${file}
-
-LOGO
-• Solo el logo de la UIFCE, en blanco, arriba a la izquierda
-• La foto de perfil queda abajo a la izquierda: por eso el logo va arriba
-• ¿Otra foto? Usa el logo UIFCE en blanco sobre un fondo oscuro
-
-EVITA
-• Añadir fotos, textos largos o más logos junto al de la UIFCE
-• Estirar, deformar o recolorear el logo
-• Usar una imagen pixelada o con el logo muy pequeño
-
-LÍNEA GRÁFICA
-• Azul marino #042361 · Azul UIFCE #4574B9 · Cian #44D3FE
-• Textura #AFC6E4 · Crema #EAE9CB · Amarillo #F4CB18
-• Tipografías: Montserrat (títulos), Ubuntu (subtítulos), Fira Sans (texto), JetBrains Mono (código)`
-: `FORMAT
-• Size: 1584 × 396 px (4:1 ratio) · JPG or PNG, max 8 MB, sRGB
-• Selected cover: ${cv.en} (${state.coverGrad ? 'with' : 'without'} blue gradient)
-• File: ${file}
-
-LOGO
-• UIFCE logo only, in white, top left
-• The profile photo sits bottom left: that is why the logo is at the top
-• Another photo? Place the white UIFCE logo over a dark background
-
-AVOID
-• Adding photos, long text or extra logos next to the UIFCE one
-• Stretching, distorting or recoloring the logo
-• Using a pixelated image or a tiny logo
-
-VISUAL IDENTITY
-• Navy #042361 · UIFCE blue #4574B9 · Cyan #44D3FE
-• Texture #AFC6E4 · Cream #EAE9CB · Yellow #F4CB18
-• Typefaces: Montserrat (titles), Ubuntu (subtitles), Fira Sans (body), JetBrains Mono (code)`;
-  };
-
-  const renderCovers = () => {
-    const lang = state.lang;
-    const i = state.cover;
-    const src = coverSrc(i, state.coverGrad);
-    $('#liBanner').classList.toggle('is-plain', !src);
-    if (src) $('#bannerImg').src = src;
-    $('#coverName').textContent = `${COVERS[i][lang]} · ${i + 1} / ${COVERS.length}`;
-    $$('.seg__btn[data-grad]').forEach(b => b.setAttribute('aria-pressed', String((b.dataset.grad === '1') === state.coverGrad)));
-    const dl = $('#coverDownload');
-    const op = $('#coverOpen');
-    [dl, op].forEach(el => { el.hidden = !src; if (src) el.href = src; });
-    if (src) dl.setAttribute('download', src.split('/').pop());
-    $('#coverGallery').innerHTML = COVERS.map((c, k) => {
-      const th = coverSrc(k, state.coverGrad);
-      const media = th
-        ? `<img src="${th}" alt="" loading="lazy" width="1584" height="396">`
-        : `<span class="thumb__plain"><img src="assets/logo-uifce-blanco.png" alt="" width="900" height="397"></span>`;
-      return `<button type="button" class="thumb${k === i ? ' on' : ''}" role="radio" aria-checked="${k === i}" data-cover="${k}">${media}<span>${esc(c[lang])}</span></button>`;
-    }).join('') + (src ? '' : `<p class="muted gal__note">${esc(t('cover.plainNote'))}</p>`);
-  };
-
-  const renderSim = () => {
-    const c = C();
-    const before = state.simView === 'before';
-    $('#liCard').classList.toggle('is-before', before);
-    $$('.seg__btn[data-sim]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.sim === state.simView)));
-    renderCovers();
-    $('#liHeadline').textContent = before ? c.oldHeadline : c.headlines[state.headline].text;
-    $('#bannerSpecs').textContent = bannerSpecs(state.lang);
-    $('#bannerMottoText').textContent = c.banner;
-  };
-
-  const renderHeadlines = () => {
-    const c = C();
-    $('#headlines').innerHTML = c.headlines.map((h, i) => {
-      const len = h.text.length;
-      const sel = i === state.headline;
+    $('#steps').innerHTML = STEP_IDS.map((id, i) => {
+      const s = u.steps[id], done = !!state.done[id];
       return `
-        <label class="headline${sel ? ' is-selected' : ''}">
-          <input type="radio" name="headline" value="${i}" ${sel ? 'checked' : ''}>
-          <div>
-            <div class="headline__label">
-              <strong>${esc(h.title)}</strong>
-              ${h.badge ? `<span class="tag tag--ok">${esc(t('recommended'))}</span>` : ''}
-              ${sel ? `<span class="tag">${esc(t('selected'))}</span>` : ''}
-            </div>
-            <p class="headline__text">${esc(h.text)}</p>
-          </div>
-          <div class="headline__side">
-            <span class="counter${len > 220 ? ' is-over' : ''}">${esc(t('chars', { n: len, max: 220 }))}</span>
-            <button type="button" class="btn-copy" data-copy="headline-${i}"></button>
-          </div>
-        </label>`;
-    }).join('');
-    c.headlines.forEach((h, i) => registerCopy(`headline-${i}`, () => C().headlines[i].text));
-  };
-
-  const renderAbout = () => {
-    $('#aboutText').innerHTML = richHTML(aboutTpl());
-  };
-
-  const renderVarsPanel = () => {
-    const lang = state.lang;
-    $('#varsPanel').innerHTML = Object.keys(VAR_META).map(k => {
-      const m = VAR_META[k];
-      const id = `var-${k}`;
-      const v = state.vars[k] ?? '';
-      return `
-        <div class="metric">
-          <label for="${id}">${esc(m[lang])}<small>${esc(t('exp.usedIn'))}: ${esc(lang === 'es' ? m.useEs : m.useEn)} · ${esc(m[other()])}</small></label>
-          <input type="text" id="${id}" class="var${isPending(v) ? ' is-pending' : ''}" data-var="${k}" value="${esc(v)}" spellcheck="false" autocomplete="off">
-        </div>`;
-    }).join('');
-    updatePendingTag();
-  };
-
-  const updatePendingTag = () => {
-    const tag = $('#pendingTag');
-    const card = tag.closest('.metrics');
-    card.classList.toggle('is-generic', generic());
-    $('#modeNote').hidden = !generic();
-    $('#modeNote').textContent = t('mode.genericNote');
-    $$('#varsPanel input.var').forEach(i => { i.disabled = generic(); });
-    if (generic()) { tag.className = 'tag tag--ok'; tag.textContent = t('mode.genericTag'); return; }
-    const n = Object.keys(VAR_META).filter(k => isPending(state.vars[k])).length;
-    tag.className = `tag ${n ? 'tag--warn' : 'tag--ok'}`;
-    tag.textContent = n === 0 ? t('pendingNone') : n === 1 ? t('pending1') : t('pendingN', { n });
-  };
-
-  const renderExp = () => {
-    const e = C().exp;
-    $('#expTitle').textContent = e.title;
-    $('#expOrg').textContent = e.org;
-    $('#expHitos').innerHTML = e.hitos.map(h => `<li><h4>${esc(h.t)}</h4><p>${inline(hitoTpl(h))}</p></li>`).join('');
-    $('#rolesList').innerHTML = C().roles.map(r => `<li><div><strong>${esc(r[0])}</strong><span>${esc(r[1])}</span></div></li>`).join('');
-    $('#alliancesIntro').textContent = C().alliancesIntro;
-    $('#alliancesList').innerHTML = C().alliances.map(a => `<li><strong>${esc(a[0])}</strong><span>${esc(a[1])}</span></li>`).join('');
-    $('#eduTitle').textContent = C().eduTitle;
-    $('#eduList').innerHTML = C().education.map(r => `<li><div><strong>${esc(r[0])}</strong><span>${esc(r[1])}</span></div></li>`).join('');
-  };
-
-  const visibleSkills = () => SKILLS.filter(s => state.skillFilter === 'all' || s.cat === state.skillFilter);
-
-  const renderSkills = () => {
-    const cats = ['all', 'ped', 'gov', 'arch'];
-    $('#skillFilters').innerHTML = cats.map(c => {
-      const count = c === 'all' ? SKILLS.length : SKILLS.filter(s => s.cat === c).length;
-      return `<button type="button" class="filter" data-filter="${c}" aria-pressed="${state.skillFilter === c}">${esc(c === 'all' ? t('skills.all') : t('cat.' + c))}<span class="count">${count}</span></button>`;
-    }).join('');
-    $('#skillsBody').innerHTML = SKILLS.map((s, i) => `
-      <tr class="${state.skillFilter === 'all' || state.skillFilter === s.cat ? '' : 'is-hidden'}">
-        <td>${String(i + 1).padStart(2, '0')}</td>
-        <td lang="es">${esc(s.es)}</td>
-        <td lang="en">${esc(s.en)}</td>
-        <td><span class="cat cat--${s.cat}">${esc(t('cat.' + s.cat))}</span></td>
-        <td><button type="button" class="btn-copy btn-copy--icon" data-copy="skill-${i}" title="${esc(s[state.lang])}"></button></td>
-      </tr>`).join('');
-    SKILLS.forEach((s, i) => registerCopy(`skill-${i}`, () => s[state.lang]));
-    $('#stackList').innerHTML = C().stack.map(s => `<li>${esc(s)}</li>`).join('');
-  };
-
-  const renderSteps = () => {
-    const steps = C().steps;
-    $('#stepsList').innerHTML = steps.map(([id, title, hint]) => {
-      const done = !!state.steps[id];
-      return `<li class="step${done ? ' is-done' : ''}"><label><input type="checkbox" data-step="${id}" ${done ? 'checked' : ''}><span class="step__txt"><strong>${esc(title)}</strong><span>${esc(hint)}</span></span></label></li>`;
-    }).join('');
-    $('#stepsTag').textContent = t('stepsOf', { n: steps.filter(s => state.steps[s[0]]).length, t: steps.length });
-  };
-
-  const recLangOf = (id) => state.recLang[id] || state.lang;
-
-  const renderRecs = () => {
-    $('#recsList').innerHTML = CONTACTS.map(c => {
-      const done = !!state.recs[c.id];
-      const rl = recLangOf(c.id);
-      const cb = `rec-${c.id}`;
-      return `
-        <li class="rec${done ? ' is-done' : ''}">
-          <div class="rec__row">
-            <input type="checkbox" id="${cb}" data-rec="${c.id}" ${done ? 'checked' : ''}>
-            <label class="rec__name" for="${cb}">
-              <span class="rec__avatar" aria-hidden="true">${esc(initials(c.name))}</span>
-              <span>${esc(c.name)}<span class="rec__status">${esc(done ? t('plan.recDone') : t('plan.recPending'))}</span></span>
-            </label>
-            <span class="mini-lang" role="group" aria-label="${esc(t('plan.recLang'))}: ${esc(c.name)}">
-              <button type="button" data-reclang="es" data-id="${c.id}" aria-pressed="${rl === 'es'}">ES</button>
-              <button type="button" data-reclang="en" data-id="${c.id}" aria-pressed="${rl === 'en'}">EN</button>
-            </span>
-            <button type="button" class="btn-copy" data-copy="rec-${c.id}" data-label-key="plan.copyInvite"></button>
-          </div>
-          <details>
-            <summary>${esc(t('plan.recPreview'))} (${rl.toUpperCase()})</summary>
-            <pre lang="${rl}">${esc(CONTENT[rl].rec(c.name.split(' ')[0]))}</pre>
-          </details>
-        </li>`;
-    }).join('');
-    CONTACTS.forEach(c => registerCopy(`rec-${c.id}`, () => CONTENT[recLangOf(c.id)].rec(c.name.split(' ')[0])));
-    const n = CONTACTS.filter(c => state.recs[c.id]).length;
-    const tag = $('#recsTag');
-    tag.className = `tag ${n === CONTACTS.length ? 'tag--ok' : ''}`;
-    tag.textContent = t('recsOf', { n, t: CONTACTS.length });
-  };
-
-  const renderContent = () => {
-    $('#pillars').innerHTML = C().pillars.map(p => `
-      <article class="pillar" style="--c:${p.c}">
-        <span class="pillar__icon" aria-hidden="true">${p.icon}</span>
-        <h4>${esc(p.name)}</h4>
-        <p>${esc(p.desc)}</p>
-        <ul aria-label="${esc(t('plan.ideas'))}">${p.ideas.map(i => `<li>${esc(i)}</li>`).join('')}</ul>
-      </article>`).join('');
-
-    $('#posts').innerHTML = C().posts.map((p, i) => `
-      <article class="post">
-        <div class="post__head">
-          <span class="post__avatar" aria-hidden="true">HM</span>
-          <div class="post__who"><strong>Henry Martínez Sarmiento</strong><span>${esc(t('plan.postMeta'))}</span></div>
+      <li class="step${done ? ' is-done' : ''}" id="paso-${id}">
+        <div class="step__head">
+          <span class="step__num" aria-hidden="true">${done ? '✓' : i + 1}</span>
+          <h2 class="step__title">${esc(s.t)}</h2>
+          <label class="step__done"><input type="checkbox" data-done="${id}"${done ? ' checked' : ''}> ${esc(u.done)}</label>
         </div>
-        <div class="post__body rich">${richHTML(postTpl(p))}</div>
-        <div class="post__foot">
-          <span class="tag tag--ok">${esc(p.pillar)}</span>
-          <span class="counter" data-count="post-${i}" data-limit="3000"></span>
-          <button type="button" class="btn-copy" data-copy="post-${i}"></button>
-        </div>
-      </article>`).join('');
-    C().posts.forEach((p, i) => registerCopy(`post-${i}`, () => plain(postTpl(C().posts[i])), () => postTpl(C().posts[i])));
-  };
-
-  /* Contadores de caracteres */
-  const counterSources = {
-    about: () => plain(aboutTpl())
-  };
-  const updateCounters = () => {
-    $$('[data-count]').forEach(el => {
-      const key = el.dataset.count;
-      let text = '';
-      if (counterSources[key]) text = counterSources[key]();
-      else if (key.startsWith('post-')) text = plain(postTpl(C().posts[+key.slice(5)]));
-      const max = +el.dataset.limit;
-      el.textContent = t('chars', { n: text.length, max });
-      el.classList.toggle('is-over', text.length > max);
-    });
-  };
-
-  /* Progreso del perfil */
-  const updateProgress = () => {
-    const stepIds = CONTENT.es.steps.map(s => s[0]);
-    const done = stepIds.filter(id => state.steps[id]).length + CONTACTS.filter(c => state.recs[c.id]).length;
-    const total = stepIds.length + CONTACTS.length;
-    const pct = Math.round((done / total) * 100);
-    $('#progressFill').style.width = `${pct}%`;
-    $('#progressValue').textContent = `${pct}%`;
-    const bar = $('#progressBar');
-    bar.setAttribute('aria-valuenow', String(pct));
-    bar.setAttribute('aria-label', t('progressTitle', { n: done, t: total }));
-    $('#progressWrap').title = t('progressTitle', { n: done, t: total });
-  };
-
-  const renderAll = () => {
-    renderStatic();
-    renderModeToggles();
-    renderDiag();
-    renderSim();
-    renderHeadlines();
-    renderAbout();
-    renderVarsPanel();
-    renderExp();
-    renderSkills();
-    renderSteps();
-    renderRecs();
-    renderContent();
-    paintCopyButtons();
-    updateCounters();
+        <p class="step__where"><strong>${esc(u.where)}</strong> ${esc(s.w)}</p>
+        <div class="step__body">${stepBody(id)}</div>
+      </li>`;
+    }).join('');
     updateProgress();
   };
 
-  /* ------------------------------------------------------------------
-     9. TEXTOS PARA COPIAR (estáticos)
-     ------------------------------------------------------------------ */
-  const expPlain = (lang) => {
-    const e = CONTENT[lang].exp;
-    return `${e.title}\n${e.org}\n\n${e.hitos.map(h => `• ${h.t}: ${plain(hitoTpl(h))}`).join('\n')}`;
-  };
-  const rolesPlain = (lang) => CONTENT[lang].roles.map(r => `• ${r[0]} — ${r[1]}`).join('\n');
-  const alliancesPlain = (lang) => `${CONTENT[lang].alliancesIntro}\n\n${CONTENT[lang].alliances.map(a => `• ${a[0]}: ${a[1]}`).join('\n')}`;
-
-  registerCopy('bannerSpecs', () => bannerSpecs(state.lang));
-  registerCopy('bannerMotto', () => C().banner);
-  registerCopy('about', () => plain(aboutTpl()), () => aboutTpl());
-  registerCopy('exp', () => expPlain(state.lang), () => C().exp.hitos.map(hitoTpl).join(' '));
-  registerCopy('roles', () => rolesPlain(state.lang));
-  registerCopy('alliances', () => alliancesPlain(state.lang));
-  registerCopy('edu', () => C().education.map(r => `• ${r[0]} — ${r[1]}`).join('\n'));
-  registerCopy('followInvite', () => C().follow);
-  registerCopy('stack', () => C().stack.join(' · '));
-  registerCopy('skillsLang', () => visibleSkills().map(s => s[state.lang]).join('\n'));
-  registerCopy('skillsBoth', () => visibleSkills().map(s => `${s.es} | ${s.en}`).join('\n'));
-
-  /* ------------------------------------------------------------------
-     10. EXPORTACIÓN MARKDOWN BILINGÜE
-     ------------------------------------------------------------------ */
-  const coverMd = (lang) => {
-    const cv = COVERS[state.cover];
-    const src = coverSrc(state.cover, state.coverGrad);
-    const es = lang === 'es';
-    const name = `${cv[lang]} (${es ? (state.coverGrad ? 'con' : 'sin') : (state.coverGrad ? 'with' : 'without')} ${es ? 'degradado azul' : 'blue gradient'})`;
-    return src
-      ? `- ${es ? 'Seleccionada' : 'Selected'}: **${name}**
-- ${es ? 'Archivo' : 'File'}: \`${src}\`
-- ${es ? 'Solo el logo de la UIFCE, en blanco, arriba a la izquierda.' : 'UIFCE logo only, in white, top left.'}`
-      : `- ${es ? 'Fondo liso con el logo de la UIFCE en blanco, arriba a la izquierda.' : 'Plain background with the white UIFCE logo, top left.'}`;
+  const updateProgress = () => {
+    const n = STEP_IDS.filter(id => state.done[id]).length;
+    $('#progressText').textContent = UI[state.lang].progress(n, STEP_IDS.length);
+    $('#progressBar').style.width = `${(n / STEP_IDS.length) * 100}%`;
   };
 
-  const buildMarkdown = () => {
-    const today = new Date().toISOString().slice(0, 10);
-    const L = (lang) => {
-      const c = CONTENT[lang];
-      const es = lang === 'es';
-      const h = es
-        ? { title: '🇪🇸 Versión en Español', banner: 'Portada (1584 × 396 px)', motto: 'Lema de marca', head: 'Titulares', sel: 'seleccionado', about: 'Acerca de', exp: 'Experiencia', roles: 'Trayectoria y roles directivos', all: 'Alianzas y proyectos interinstitucionales', skills: 'Aptitudes', stack: 'Stack tecnológico', rec: 'Mensaje de solicitud de recomendación', posts: 'Plantillas de publicaciones', pillar: 'Pilar', follow: 'Invitación a seguir a la UIFCE' }
-        : { title: '🇺🇸 English Version', banner: 'Cover (1584 × 396 px)', motto: 'Brand tagline', head: 'Headlines', sel: 'selected', about: 'About', exp: 'Experience', roles: 'Leadership track record', all: 'Inter-institutional partnerships & projects', skills: 'Skills', stack: 'Tech stack', rec: 'Recommendation request message', posts: 'Post templates', pillar: 'Pillar', follow: 'Invitation to follow UIFCE' };
-      return [
-        `## ${h.title}`,
-        `### ${h.banner}`, coverMd(lang),
-        `### ${h.motto}`, `> ${c.banner}`,
-        `### ${h.head}`,
-        c.headlines.map((x, i) => `${i + 1}. **${x.title}**${i === state.headline ? ` _(${h.sel})_` : ''}\n   ${x.text}`).join('\n'),
-        `### ${h.about}`, md(aboutTpl(lang)),
-        `### ${h.exp}`,
-        `**${c.exp.title}** — ${c.exp.org}\n\n${c.exp.hitos.map(x => `- **${x.t}:** ${md(hitoTpl(x))}`).join('\n')}`,
-        `### ${h.roles}`, c.roles.map(r => `- **${r[0]}** — ${r[1]}`).join('\n'),
-        `### ${c.eduTitle}`, c.education.map(r => `- **${r[0]}** — ${r[1]}`).join('\n'),
-        `### ${h.all}`, `${c.alliancesIntro}\n\n${c.alliances.map(a => `- **${a[0]}:** ${a[1]}`).join('\n')}`,
-        `### ${h.skills}`, SKILLS.map((s, i) => `${i + 1}. ${s[lang]}`).join('\n'),
-        `### ${h.stack}`, c.stack.join(' · '),
-        `### ${h.rec}`, '```text\n' + c.rec(es ? '[Nombre]' : '[Name]') + '\n```',
-        `### ${h.follow}`, '```text\n' + c.follow + '\n```',
-        `### ${h.posts}`,
-        c.posts.map((p, i) => `#### ${i + 1}. ${h.pillar}: ${p.pillar}\n\n${md(postTpl(p))}`).join('\n\n---\n\n')
-      ].join('\n\n');
-    };
-
-    const pendingList = Object.keys(VAR_META).filter(k => isPending(state.vars[k]));
-    const metrics = Object.keys(VAR_META).map(k => `| ${VAR_META[k].es} / ${VAR_META[k].en} | ${state.vars[k] || '—'}${isPending(state.vars[k]) ? ' ⚠️' : ''} |`).join('\n');
-
-    return [
-      '# Guía Bilingüe de LinkedIn · Bilingual LinkedIn Guide',
-      '**Henry Martínez Sarmiento** — Director UIFCE · Profesor Asociado / Associate Professor · Universidad Nacional de Colombia',
-      `Perfil / Profile: ${PROFILE_URL}  \nUIFCE en LinkedIn / on LinkedIn: ${UIFCE_URL}  \nGenerado / Generated: ${today}`,
-      ...(generic()
-        ? ['> ℹ️ Versión genérica: los textos no incluyen métricas / Generic version: texts contain no metrics.']
-        : [
-          '## Métricas / Metrics',
-          `| Variable | Valor / Value |\n|---|---|\n${metrics}`,
-          pendingList.length ? `> ⚠️ ${pendingList.length} métricas pendientes / pending metrics. Complétalas antes de publicar.` : '> ✅ Todas las métricas completas / All metrics complete.'
-        ]),
-      '---',
-      L('es'),
-      '---',
-      L('en'),
-      '---',
-      '_Tip: LinkedIn → Perfil → «Agregar perfil en otro idioma» / Profile → “Add profile in another language”._'
-    ].join('\n\n') + '\n';
+  /* Portapapeles */
+  const writeClipboard = async (text) => {
+    try { await navigator.clipboard.writeText(text); return true; } catch (e) {
+      const ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      let ok = false; try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
+      ta.remove(); return ok;
+    }
   };
 
-  const exportMarkdown = () => {
-    const blob = new Blob([buildMarkdown()], { type: 'text/markdown;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'Guia-LinkedIn-Henry-Martinez-Sarmiento-ES-EN.md';
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-    toast(t('toast.exported'));
+  let toastTimer;
+  const toast = (msg, bad = false) => {
+    const el = $('#toast');
+    el.textContent = msg; el.classList.toggle('is-bad', bad); el.classList.add('is-on');
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('is-on'), 2600);
   };
 
-  /* ------------------------------------------------------------------
-     11. EVENTOS
-     ------------------------------------------------------------------ */
-  const setLang = (lang) => {
-    if (lang === state.lang) return;
-    state.lang = lang;
-    save();
-    renderAll();
-    toast(t('toast.lang'));
+  const flash = (btn, label) => {
+    const old = btn.innerHTML;
+    btn.classList.add('is-copied'); btn.textContent = label;
+    setTimeout(() => { btn.classList.remove('is-copied'); btn.innerHTML = old; }, 1600);
   };
 
-  document.addEventListener('click', (e) => {
-    const target = e.target;
-    const langBtn = target.closest('.langswitch__btn');
-    if (langBtn) { setLang(langBtn.dataset.lang); return; }
+  document.addEventListener('click', async (ev) => {
+    const u = UI[state.lang];
+    const langBtn = ev.target.closest('[data-lang]');
+    if (langBtn) { state.lang = langBtn.dataset.lang; save(); render(); return; }
 
-    const copyBtn = target.closest('[data-copy]');
-    if (copyBtn) { e.preventDefault(); handleCopy(copyBtn); return; }
-
-    const modeBtn = target.closest('[data-mode]');
-    if (modeBtn) {
-      if (modeBtn.dataset.mode === state.mode) return;
-      state.mode = modeBtn.dataset.mode;
-      save();
-      renderAll();
-      toast(t(generic() ? 'mode.toast.generic' : 'mode.toast.metrics'));
+    const copyBtn = ev.target.closest('[data-copy]');
+    if (copyBtn) {
+      const ok = await writeClipboard(texts()[copyBtn.dataset.copy]);
+      if (ok) { flash(copyBtn, u.copied); toast(u.toast); } else toast(u.fail, true);
       return;
     }
 
-    const coverBtn = target.closest('[data-cover]');
-    if (coverBtn) { state.cover = Number(coverBtn.dataset.cover); save(); renderSim(); toast(t('cover.toast')); return; }
-    const coverStep = target.closest('[data-cover-step]');
-    if (coverStep) { state.cover = (state.cover + Number(coverStep.dataset.coverStep) + COVERS.length) % COVERS.length; save(); renderSim(); return; }
-    const gradBtn = target.closest('[data-grad]');
-    if (gradBtn) { state.coverGrad = gradBtn.dataset.grad === '1'; save(); renderSim(); return; }
-
-    const simBtn = target.closest('[data-sim]');
-    if (simBtn) { state.simView = simBtn.dataset.sim; save(); renderSim(); return; }
-
-    const filterBtn = target.closest('[data-filter]');
-    if (filterBtn) {
-      state.skillFilter = filterBtn.dataset.filter;
-      save();
-      renderSkills();
-      paintCopyButtons();
-      return;
-    }
-
-    const recLangBtn = target.closest('[data-reclang]');
-    if (recLangBtn) {
-      state.recLang[recLangBtn.dataset.id] = recLangBtn.dataset.reclang;
-      save();
-      const openIds = $$('.rec details[open]').map(d => d.closest('.rec').querySelector('[data-rec]').dataset.rec);
-      renderRecs();
-      paintCopyButtons();
-      openIds.forEach(id => { const cb = $(`[data-rec="${id}"]`); if (cb) cb.closest('.rec').querySelector('details').open = true; });
-      return;
-    }
-
-    const action = target.closest('[data-action]');
-    if (action) {
-      if (action.dataset.action === 'export') exportMarkdown();
-      if (action.dataset.action === 'reset') {
-        if (!window.confirm(t('confirmReset'))) return;
-        const lang = state.lang;
-        state = defaultState();
-        state.lang = lang;
-        save();
-        renderAll();
-        toast(t('toast.reset'));
-      }
+    const skillBtn = ev.target.closest('[data-skill]');
+    if (skillBtn) {
+      const i = Number(skillBtn.dataset.skill);
+      const ok = await writeClipboard(DATA[state.lang].skills[i]);
+      if (!ok) { toast(u.fail, true); return; }
+      state.skills[i] = true; save();
+      skillBtn.classList.add('is-done'); skillBtn.setAttribute('aria-pressed', 'true');
+      toast(u.toast);
     }
   });
 
-  document.addEventListener('change', (e) => {
-    const el = e.target;
-    if (el.name === 'headline') {
-      state.headline = +el.value;
-      save();
-      renderHeadlines();
-      paintCopyButtons();
-      renderSim();
-      const radio = $(`input[name="headline"][value="${state.headline}"]`);
-      if (radio) radio.focus();
-    } else if (el.dataset.step) {
-      state.steps[el.dataset.step] = el.checked;
-      save();
-      el.closest('.step').classList.toggle('is-done', el.checked);
-      $('#stepsTag').textContent = t('stepsOf', { n: C().steps.filter(s => state.steps[s[0]]).length, t: C().steps.length });
-      updateProgress();
-    } else if (el.dataset.rec) {
-      state.recs[el.dataset.rec] = el.checked;
-      save();
-      const li = el.closest('.rec');
-      li.classList.toggle('is-done', el.checked);
-      li.querySelector('.rec__status').textContent = el.checked ? t('plan.recDone') : t('plan.recPending');
-      const n = CONTACTS.filter(c => state.recs[c.id]).length;
-      const tag = $('#recsTag');
-      tag.className = `tag ${n === CONTACTS.length ? 'tag--ok' : ''}`;
-      tag.textContent = t('recsOf', { n, t: CONTACTS.length });
-      updateProgress();
-    }
+  document.addEventListener('change', (ev) => {
+    const box = ev.target.closest('[data-done]');
+    if (!box) return;
+    state.done[box.dataset.done] = box.checked; save();
+    const li = box.closest('.step');
+    li.classList.toggle('is-done', box.checked);
+    li.querySelector('.step__num').textContent = box.checked ? '✓' : STEP_IDS.indexOf(box.dataset.done) + 1;
+    updateProgress();
   });
 
-  /* Sincronización en tiempo real de variables entre todas las vistas e idiomas */
-  document.addEventListener('input', (e) => {
-    const el = e.target;
-    if (!el.matches('input.var')) return;
-    const k = el.dataset.var;
-    const v = el.value;
-    state.vars[k] = v;
-    $$(`input.var[data-var="${k}"]`).forEach(i => {
-      if (i !== el) i.value = v;
-      if (!i.closest('.metric')) i.size = Math.max(v.length, 2);
-      i.classList.toggle('is-pending', isPending(v));
-    });
-    if (k === 'years') $('#statYears').textContent = v || '—';
-    updatePendingTag();
-    updateCounters();
-    save();
-  });
-
-  /* Enter dentro de un campo inline confirma (evita saltos de línea accidentales) */
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && e.target.matches('input.var')) { e.preventDefault(); e.target.blur(); }
-  });
-
-  /* Navegación activa según la sección visible */
-  const initScrollSpy = () => {
-    if (!('IntersectionObserver' in window)) return;
-    const links = $$('.mainnav a');
-    const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(en => {
-        if (en.isIntersecting) {
-          links.forEach(a => { a.classList.remove('is-active'); a.removeAttribute('aria-current'); });
-          const a = map.get(en.target.id);
-          if (a) { a.classList.add('is-active'); a.setAttribute('aria-current', 'true'); }
-        }
-      });
-    }, { rootMargin: '-35% 0px -60% 0px' });
-    map.forEach((a, id) => { const s = document.getElementById(id); if (s) io.observe(s); });
-  };
-
-  /* ------------------------------------------------------------------
-     12. INICIO
-     ------------------------------------------------------------------ */
-  const init = () => {
-    $('[data-copy="skillsLang"]').dataset.labelKey = 'skills.copyLang';
-    $('[data-copy="skillsBoth"]').dataset.labelKey = 'skills.copyBoth';
-    renderAll();
-    initScrollSpy();
-    try { localStorage.setItem(STORAGE_KEY + ':probe', '1'); localStorage.removeItem(STORAGE_KEY + ':probe'); }
-    catch (e) { storageOk = false; }
-    if (!storageOk) toast(t('toast.storage'), 'warn');
-  };
-
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
-  else init();
+  $('#openProfile').href = PROFILE_URL;
+  render();
 })();
