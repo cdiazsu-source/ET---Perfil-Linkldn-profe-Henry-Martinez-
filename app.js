@@ -8,7 +8,25 @@
   const STORAGE_KEY = 'hms-linkedin-guia-v1';
   const PROFILE_URL = 'https://www.linkedin.com/in/henry-mart%C3%ADnez-sarmiento-aab963144/';
   const UIFCE_URL = 'https://www.linkedin.com/in/uifce/';
-  const COVER = 'portadas/portada-2-patio-escultura.jpg';
+  const COVERS = [
+    { f: 'portada-1-esquina-ventanales', es: 'Esquina de ventanales', en: 'Window corner' },
+    { f: 'portada-2-patio-escultura', es: 'Patio y escultura', en: 'Courtyard & sculpture' },
+    { f: 'portada-3-plaza-estudiantil', es: 'Plaza estudiantil', en: 'Student plaza' },
+    { f: 'portada-4-fachada-blanca-panoramica', es: 'Fachada blanca (panorámica)', en: 'White façade (panoramic)' },
+    { f: 'portada-5-fachada-blanca', es: 'Fachada blanca', en: 'White façade' },
+    { f: 'portada-6-entrada-ladrillo', es: 'Entrada de ladrillo', en: 'Brick entrance' },
+    { f: 'portada-7-entrada-jardin', es: 'Entrada con árbol', en: 'Entrance with tree' },
+    { f: 'portada-8-campus-panoramico', es: 'Campus panorámico', en: 'Campus panorama' },
+    { f: 'portada-9-unal-cesped', es: '#UNAL en el césped', en: '#UNAL on the lawn' },
+    { f: 'portada-10-edificio-303b', es: 'Edificio 303 B', en: 'Building 303 B' },
+    { f: 'portada-11-plaza-torre', es: 'Plaza y torre', en: 'Plaza & tower' },
+    { f: 'portada-12-terrazas-ladrillo', es: 'Terrazas de ladrillo', en: 'Brick terraces' },
+    { f: 'portada-13-unal-campus', es: '#UNAL y el campus', en: '#UNAL & campus' },
+    { f: 'portada-14-cielo-y-ladrillo', es: 'Cielo y ladrillo', en: 'Sky & brick' }
+  ];
+  const coverSrc = (i, grad) => grad
+    ? `portadas/${COVERS[i].f}.jpg`
+    : `portadas/sin-degradado/${COVERS[i].f}-sin-degradado.jpg`;
 
   /* Textos del perfil (versión sin métricas) */
   const DATA = {
@@ -99,7 +117,7 @@
       toast: 'Copiado. Ahora pégalo en LinkedIn (Ctrl + V).', fail: 'No se pudo copiar. Selecciona el texto y cópialo a mano.',
       langAria: 'Idioma de los textos',
       steps: {
-        cover: { t: 'Cambia la foto de portada', w: 'En tu perfil, pulsa el ícono de cámara ( 📷 ) arriba a la derecha de la portada → «Cambiar foto» → sube la imagen descargada → «Aplicar».', dl: 'Descargar portada' },
+        cover: { t: 'Elige y cambia la foto de portada', w: 'Elige una de las 14 fotos de la Facultad y descárgala. Luego, en tu perfil, pulsa el ícono de cámara ( 📷 ) arriba a la derecha de la portada → «Cambiar foto» → sube la imagen → «Aplicar».', dl: 'Descargar esta portada', grad: 'Con degradado azul', noGrad: 'Sin degradado', gradAria: 'Estilo de la portada', pick: 'Toca una foto para elegirla:', sel: 'Elegida' },
         headline: { t: 'Pega el titular', w: 'En tu perfil, pulsa el lápiz ( ✎ ) a la derecha de tu foto → campo «Titular» → borra el texto anterior y pega → «Guardar».' },
         about: { t: 'Pega el «Acerca de»', w: 'En tu perfil, sección «Acerca de» → lápiz ( ✎ ) → borra el texto anterior y pega → «Guardar». Si no tienes la sección: «Añadir sección» → «Acerca de».' },
         exp: { t: 'Experiencia: Director de la UIFCE', w: 'En tu perfil, sección «Experiencia» → «+» → «Añadir cargo» (o el lápiz si ya existe). Copia y pega cada campo → «Guardar».' },
@@ -121,7 +139,7 @@
       toast: 'Copied. Now paste it on LinkedIn (Ctrl + V).', fail: 'Copy failed. Select the text and copy it manually.',
       langAria: 'Text language',
       steps: {
-        cover: { t: 'Change the cover photo', w: 'On your profile, click the camera icon ( 📷 ) at the top right of the cover → “Change photo” → upload the downloaded image → “Apply”.', dl: 'Download cover' },
+        cover: { t: 'Pick and change the cover photo', w: 'Pick one of the 14 School photos and download it. Then, on your profile, click the camera icon ( 📷 ) at the top right of the cover → “Change photo” → upload the image → “Apply”.', dl: 'Download this cover', grad: 'With blue gradient', noGrad: 'No gradient', gradAria: 'Cover style', pick: 'Tap a photo to pick it:', sel: 'Selected' },
         headline: { t: 'Paste the headline', w: 'On your profile, click the pencil ( ✎ ) to the right of your photo → “Headline” field → delete the old text and paste → “Save”.' },
         about: { t: 'Paste the “About” section', w: 'On your profile, “About” section → pencil ( ✎ ) → delete the old text and paste → “Save”. If you don’t have it: “Add section” → “About”.' },
         exp: { t: 'Experience: UIFCE Director', w: 'On your profile, “Experience” section → “+” → “Add position” (or the pencil if it already exists). Copy and paste each field → “Save”.' },
@@ -138,10 +156,14 @@
   const STEP_IDS = ['cover', 'headline', 'about', 'exp', 'prof', 'skills', 'follow'];
 
   /* Estado */
-  let state = { lang: 'es', done: {}, skills: {} };
+  let state = { lang: 'es', done: {}, skills: {}, cover: 1, grad: true };
   try {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
-    if (saved) state = { lang: saved.lang === 'en' ? 'en' : 'es', done: saved.done || {}, skills: saved.skills || {} };
+    if (saved) state = {
+      lang: saved.lang === 'en' ? 'en' : 'es', done: saved.done || {}, skills: saved.skills || {},
+      cover: Number.isInteger(saved.cover) && saved.cover >= 0 && saved.cover < COVERS.length ? saved.cover : 1,
+      grad: saved.grad !== false
+    };
   } catch (e) { /* sin almacenamiento */ }
   const save = () => { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) { /* ignorar */ } };
 
@@ -183,9 +205,29 @@
   const stepBody = (id) => {
     const u = UI[state.lang], tx = texts(), f = u.f;
     switch (id) {
-      case 'cover': return `
-        <img class="cover" src="${COVER}" alt="" width="1584" height="396">
-        <a class="btn btn--primary" href="${COVER}" download="portada-linkedin-uifce.jpg">⬇ ${esc(u.steps.cover.dl)}</a>`;
+      case 'cover': {
+        const c = u.steps.cover, src = coverSrc(state.cover, state.grad);
+        const file = src.split('/').pop();
+        return `
+        <figure class="cover-main">
+          <img class="cover" id="coverMain" src="${src}" alt="${esc(COVERS[state.cover][state.lang])}" width="1584" height="396">
+          <figcaption><strong>${esc(c.sel)}:</strong> <span id="coverName">${esc(COVERS[state.cover][state.lang])} · ${state.cover + 1} / ${COVERS.length}</span></figcaption>
+        </figure>
+        <div class="cover-actions">
+          <a class="btn btn--primary" id="coverDl" href="${src}" download="${file}">⬇ ${esc(c.dl)}</a>
+          <div class="seg seg--light" role="group" aria-label="${esc(c.gradAria)}">
+            <button type="button" class="seg__btn" data-grad="1" aria-pressed="${state.grad}">${esc(c.grad)}</button>
+            <button type="button" class="seg__btn" data-grad="0" aria-pressed="${!state.grad}">${esc(c.noGrad)}</button>
+          </div>
+        </div>
+        <p class="gal__hint">${esc(c.pick)}</p>
+        <div class="gal" role="radiogroup" aria-label="${esc(c.t)}">${COVERS.map((cv, k) => `
+          <button type="button" class="thumb${k === state.cover ? ' is-on' : ''}" role="radio" aria-checked="${k === state.cover}" data-cover="${k}">
+            <img src="${coverSrc(k, state.grad)}" alt="" loading="lazy" width="1584" height="396">
+            <span>${k + 1}. ${esc(cv[state.lang])}</span>
+          </button>`).join('')}
+        </div>`;
+      }
       case 'headline': return copyBox('headline', '', tx.headline);
       case 'about': return copyBox('about', '', tx.about, true);
       case 'exp': return copyBox('expTitle', f.title, tx.expTitle) + fixedField(f.type, f.typeV) + copyBox('org', f.org, tx.org) + copyBox('loc', f.loc, tx.loc) + copyBox('expDesc', f.desc, tx.expDesc, true);
@@ -227,6 +269,13 @@
     updateProgress();
   };
 
+  const rerenderCover = () => {
+    const body = document.querySelector('#paso-cover .step__body');
+    const y = window.scrollY;
+    body.innerHTML = stepBody('cover');
+    window.scrollTo(0, y);
+  };
+
   const updateProgress = () => {
     const n = STEP_IDS.filter(id => state.done[id]).length;
     $('#progressText').textContent = UI[state.lang].progress(n, STEP_IDS.length);
@@ -261,6 +310,11 @@
     const u = UI[state.lang];
     const langBtn = ev.target.closest('[data-lang]');
     if (langBtn) { state.lang = langBtn.dataset.lang; save(); render(); return; }
+
+    const coverBtn = ev.target.closest('[data-cover]');
+    if (coverBtn) { state.cover = Number(coverBtn.dataset.cover); save(); rerenderCover(); return; }
+    const gradBtn = ev.target.closest('[data-grad]');
+    if (gradBtn) { state.grad = gradBtn.dataset.grad === '1'; save(); rerenderCover(); return; }
 
     const copyBtn = ev.target.closest('[data-copy]');
     if (copyBtn) {

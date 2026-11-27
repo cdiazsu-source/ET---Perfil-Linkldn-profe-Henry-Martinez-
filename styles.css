@@ -88,6 +88,19 @@ a { color: var(--action); }
 .btn-copy.is-copied { background: var(--green); }
 
 .cover { width: 100%; border-radius: 12px; border: 1px solid var(--border); }
+.cover-main { margin: 0; width: 100%; }
+.cover-main figcaption { margin-top: 8px; font-size: 15px; color: var(--muted); }
+.cover-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.seg--light { background: var(--surface-2); border: 1.5px solid var(--border); }
+.seg--light .seg__btn { color: var(--navy); font-size: 13px; }
+.seg--light .seg__btn[aria-pressed="true"] { background: var(--navy); color: #fff; }
+.gal__hint { margin: 4px 0 -4px; font-weight: 600; }
+.gal { width: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.thumb { display: grid; gap: 6px; padding: 5px; background: #fff; border: 2px solid var(--border); border-radius: 12px; cursor: pointer; text-align: left; font: 500 13px/1.3 var(--font-body); color: var(--text); }
+.thumb img { width: 100%; aspect-ratio: 4 / 1; object-fit: cover; border-radius: 8px; }
+.thumb span { padding: 0 3px 2px; }
+.thumb:hover { border-color: var(--primary); }
+.thumb.is-on { border-color: var(--navy); box-shadow: 0 0 0 3px var(--cyan); }
 
 /* Aptitudes */
 .chips { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; width: 100%; }
@@ -116,5 +129,6 @@ a { color: var(--action); }
   .field__row { flex-direction: column; align-items: stretch; }
   .btn-copy { width: 100%; }
   .chips { grid-template-columns: 1fr; }
+  .gal { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
